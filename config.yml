@@ -1,0 +1,69 @@
+baseURL: http://example.org/
+languageCode: en-us
+title: evad.lol
+paginate: 5
+theme: PaperMod
+
+enableInlineShortcodes: true
+enableRobotsTXT: true
+buildDrafts: true
+buildFuture: false
+buildExpired: false
+enableEmoji: true
+pygmentsUseClasses: true
+# googleAnalytics: UA-123-45
+
+minify:
+    disableXML: true
+    # minifyOutput: true
+
+taxonomies:
+    category: categories
+    tag: tags
+    series: series
+
+menu:
+    main:
+        - name: What's on my Desk
+          url: pages/whats-on-my-desk
+          weight: 1
+
+params:
+    defaultTheme: auto
+    # disableThemeToggle: true
+    ShowShareButtons: true
+    ShowReadingTime: true
+    # disableSpecial1stPost: true
+    displayFullLangName: true
+    ShowPostNavLinks: true
+    ShowBreadCrumbs: true
+    ShowCodeCopyButtons: true
+    ShowRssButtonInSectionTermList: true
+    ShowToc: false
+    # comments: false
+    images: ["papermod-cover.png"]
+
+    mainSections:
+    - posts
+
+    homeInfoParams:
+        Title: Dave Curry is a Sr. Design Director for Max (formerly HBO Max) at Warner Bros. Discovery ✌
+        Content: >
+          ### Previously WarnerMedia, HBO, and #AgencyLife ###
+
+          -  
+
+          - Responsible for almost everything after log-in, my amazing team and I are forever evolving Max to improve and expand our global customers' user experience. Product design never ends, we're always pushing forward.
+
+          -  
+          
+          ### Fair warning: ### 
+
+          - 
+          
+          - In addition to design I was once a developer and still write code on the side... I know just enough to be dangerous. 😅
+
+    socialIcons: # optional
+        - name: "LinkedIn"
+          url: "http://linkedin.com/in/davecurry"
+

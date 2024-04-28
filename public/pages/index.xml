@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8" standalone="yes"?>
+<rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
+  <channel>
+    <title>Pages on evad.lol</title>
+    <link>http://localhost:1313/pages/</link>
+    <description>Recent content in Pages on evad.lol</description>
+    <image>
+      <title>evad.lol</title>
+      <url>http://localhost:1313/papermod-cover.png</url>
+      <link>http://localhost:1313/papermod-cover.png</link>
+    </image>
+    <generator>Hugo -- 0.125.4</generator>
+    <language>en-us</language>
+    <atom:link href="http://localhost:1313/pages/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>Contact</title>
+      <link>http://localhost:1313/pages/contact/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pages/contact/</guid>
+      <description>I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.
+Desk
+30” x 60” Javis Powdercoated Standing Desk in black by Fully. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding big, rubbery wheels for rolling on and not destroying our hardwood floors.
+Chair
+A classic Herman Miller Aeron Chair which I’ve had for nearly 20 years.</description>
+    </item>
+    <item>
+      <title>What&#39;s on My Desk</title>
+      <link>http://localhost:1313/pages/whats-on-my-desk/</link>
+      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
+      <guid>http://localhost:1313/pages/whats-on-my-desk/</guid>
+      <description>I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.
+Desk
+30” x 60” Javis Powdercoated Standing Desk in black by Fully. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding big, rubbery wheels for rolling on and not destroying our hardwood floors.
+Chair
+A classic Herman Miller Aeron Chair which I’ve had for nearly 20 years.</description>
+    </item>
+  </channel>
+</rss>
