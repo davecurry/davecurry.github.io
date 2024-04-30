@@ -11,7 +11,7 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-# googleAnalytics: UA-123-45
+googleAnalytics: G-E1BD6QPGYB
 
 minify:
     disableXML: true
@@ -47,7 +47,7 @@ params:
     - posts
 
     homeInfoParams:
-        Title: Dave Curry is a Sr. Design Director for Max (formerly HBO Max) at Warner Bros. Discovery ✌
+        Title: Dave Curry is a Sr. Design Director for Max/HBO Max at Warner Bros. Discovery ✌
         Content: >
           ### Previously WarnerMedia, HBO, and #AgencyLife ###
 
