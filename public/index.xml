@@ -4,11 +4,6 @@
     <title>evad.lol</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on evad.lol</description>
-    <image>
-      <title>evad.lol</title>
-      <url>http://localhost:1313/papermod-cover.png</url>
-      <link>http://localhost:1313/papermod-cover.png</link>
-    </image>
     <generator>Hugo -- 0.125.4</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 27 Apr 2024 11:57:19 -0700</lastBuildDate>
