@@ -1,7 +1,7 @@
 ---
 title: "What's on My Desk"
 date: 2024-05
-draft: true
+draft: false
 ---
 
 I've arguably spent way too much time tweaking and futzing my home office setup. Here's where I'm at.
