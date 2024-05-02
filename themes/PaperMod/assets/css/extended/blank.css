@@ -15,28 +15,9 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
   font-style: normal;
 }
 
-.ubuntu-mono-regular {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.ubuntu-mono-bold {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.ubuntu-mono-regular-italic {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.ubuntu-mono-bold-italic {
-  font-family: "Ubuntu Mono", monospace;
-  font-weight: 700;
-  font-style: italic;
+:root {
+  --tag-block-bg: rgb(28, 29, 33);
+  --tag-bg: rgb(245, 245, 245);
 }
 
 body {
@@ -46,7 +27,36 @@ body {
     margin: 0;
 }
 
-.post-content pre, code {
-    font-family: 'Ubuntu Mono', monospace;
-    max-height: 40rem;
+.post-content code {
+  margin: auto 4px;
+  padding: 4px 6px;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #ee72f1;
+  background: var(--code-bg);
+  border-radius: 2px;
+}
+
+.post-tags a,
+.share-buttons,
+.paginav {
+    border-radius: var(--radius);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+}
+
+.post-tags a {
+    display: block;
+    padding: 0 14px;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 34px;
+    background: var(--tag-bg);
+}
+
+.dark {
+  --tag-block-bg: rgb(46, 46, 51);
+  --tag-bg: rgb(55, 56, 62);
+  --code-block-bg: rgb(238, 114, 241, 0.2);
+  --code-bg: rgb(238, 114, 241, 0.2);
 }

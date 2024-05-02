@@ -5,7 +5,7 @@ tags = ['writing']
 draft = false
 +++
 
-I don't recall where I first ran across this sound advice, but I've referred to it many times over the years.
+I don't recall where I first ran across this `sound advice,` but I've referred to it many times over the years.
 
 ![Five Words](/five-words.png)
 
