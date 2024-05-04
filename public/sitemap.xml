@@ -2,8 +2,14 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
+    <loc>http://localhost:1313/pages/about/</loc>
+    <lastmod>2024-05-03T16:09:07-07:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/</loc>
-    <lastmod>2024-04-27T11:57:19-07:00</lastmod>
+    <lastmod>2024-05-03T16:09:07-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/pages/</loc>
+    <lastmod>2024-05-03T16:09:07-07:00</lastmod>
   </url><url>
     <loc>http://localhost:1313/posts/</loc>
     <lastmod>2024-04-27T11:57:19-07:00</lastmod>
@@ -17,14 +23,14 @@
     <loc>http://localhost:1313/tags/writing/</loc>
     <lastmod>2024-04-27T11:57:19-07:00</lastmod>
   </url><url>
+    <loc>http://localhost:1313/tags/productivity/</loc>
+    <lastmod>2024-04-25T11:57:19-07:00</lastmod>
+  </url><url>
+    <loc>http://localhost:1313/posts/whats-on-my-desk/</loc>
+    <lastmod>2024-04-25T11:57:19-07:00</lastmod>
+  </url><url>
     <loc>http://localhost:1313/categories/</loc>
   </url><url>
-    <loc>http://localhost:1313/pages/contact/</loc>
-  </url><url>
-    <loc>http://localhost:1313/pages/</loc>
-  </url><url>
     <loc>http://localhost:1313/series/</loc>
-  </url><url>
-    <loc>http://localhost:1313/pages/whats-on-my-desk/</loc>
   </url>
 </urlset>

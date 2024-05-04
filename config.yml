@@ -24,8 +24,8 @@ taxonomies:
 
 menu:
     main:
-        - name: What's on my Desk
-          url: pages/whats-on-my-desk
+        - name: About
+          url: pages/about
           weight: 1
 
 params:
@@ -35,26 +35,30 @@ params:
     ShowReadingTime: true
     # disableSpecial1stPost: true
     displayFullLangName: true
-    ShowPostNavLinks: true
+    ShowPostNavLinks: false
     ShowBreadCrumbs: true
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: false
     favicon: "/favicon.ico"
-    # comments: false
+    comments: false
     # images: ["papermod-cover.png"]
 
     mainSections:
     - posts
 
     homeInfoParams:
-        Title: Dave Curry is a Sr. Design Director for Max/HBO Max at Warner Bros. Discovery ✌
+        Title: >
+          Dave Curry
+          
+          ## Sr. Design Director for Max/HBO Max at Warner Bros. Discovery ##
+        
         Content: >
-          ### Previously WarnerMedia, HBO, and #AgencyLife ###
+          - Previously WarnerMedia, HBO, and #AgencyLife
 
-          -  
+          -
 
-          - Responsible for almost everything after log-in, my amazing team and I are forever evolving Max to improve and expand our global customers' user experience. Product design never ends.
+          - My exceptional team and I consistently strive to enhance and broaden Max's user experience for our global customers. Product design is a never-ending journey of improvement and innovation.
 
           -  
           
@@ -62,7 +66,7 @@ params:
 
           - 
           
-          - In addition to design I was once a developer and still write code on the side... I know just enough to be dangerous. 😅
+          - In addition to design I was once a developer and still write code on the side... I know just enough to be dangerous.
 
     socialIcons: # optional
         - name: "LinkedIn"

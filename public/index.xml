@@ -6,8 +6,15 @@
     <description>Recent content on evad.lol</description>
     <generator>Hugo -- 0.125.4</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 27 Apr 2024 11:57:19 -0700</lastBuildDate>
+    <lastBuildDate>Fri, 03 May 2024 16:09:07 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
+    <item>
+      <title>About</title>
+      <link>http://localhost:1313/pages/about/</link>
+      <pubDate>Fri, 03 May 2024 16:09:07 -0700</pubDate>
+      <guid>http://localhost:1313/pages/about/</guid>
+      <description>TBD</description>
+    </item>
     <item>
       <title>The Ear Demands Some Variety</title>
       <link>http://localhost:1313/posts/the-ear-demands-some-variety/</link>
@@ -18,21 +25,10 @@ Transcribed thanks to GPT-4-Vision. 😉
 “This sentence has five words. Here are five more words. Five-word sentences are fine. But several together are monotonous. Listen to what is happening. The writing is getting boring. The sound of it drones. It’s like a stuck record. The ear demands some variety.</description>
     </item>
     <item>
-      <title>Contact</title>
-      <link>http://localhost:1313/pages/contact/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/pages/contact/</guid>
-      <description>I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.
-Desk
-30” x 60” Javis Powdercoated Standing Desk in black by Fully. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding big, rubbery wheels for rolling on and not destroying our hardwood floors.
-Chair
-A classic Herman Miller Aeron Chair which I’ve had for nearly 20 years.</description>
-    </item>
-    <item>
-      <title>What&#39;s on My Desk</title>
-      <link>http://localhost:1313/pages/whats-on-my-desk/</link>
-      <pubDate>Mon, 01 Jan 0001 00:00:00 +0000</pubDate>
-      <guid>http://localhost:1313/pages/whats-on-my-desk/</guid>
+      <title>What&#39;s on My Desk - 04/2024</title>
+      <link>http://localhost:1313/posts/whats-on-my-desk/</link>
+      <pubDate>Thu, 25 Apr 2024 11:57:19 -0700</pubDate>
+      <guid>http://localhost:1313/posts/whats-on-my-desk/</guid>
       <description>I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.
 Desk
 30” x 60” Javis Powdercoated Standing Desk in black by Fully. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding big, rubbery wheels for rolling on and not destroying our hardwood floors.

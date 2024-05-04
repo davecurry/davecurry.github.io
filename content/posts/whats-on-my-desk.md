@@ -1,6 +1,7 @@
 ---
-title: "What's on My Desk"
-date: 2024-05
+title: "What's on My Desk - 04/2024"
+date: 2024-04-25T11:57:19-07:00
+tags: ['productivity']
 draft: false
 ---
 
@@ -54,7 +55,7 @@ My go-to pens for years was the [Uni-ball Signo Gel Ink Pen 0.38mm in Black](htt
 
 **TV Devices, Remotes & Controllers**
 
-I love working on streaming apps, especially for connected TVs. My office TV is a [65" Sony X900H](https://www.sony.com/en-cd/electronics/televisions/x90h-series) and connected to it are a wide variety of TV devices:
+I love working on streaming apps, especially for connected TVs. My office TV is a [65" Sony X900H](https://www.sony.com/en-cd/electronics/televisions/x90h-series) and connected to it are a wide variety of streaming devices:
 
 + [HDMI Switcher](https://www.amazon.com/gp/product/B06WV5YJ6H/)
 + Amazon Fire TVs
