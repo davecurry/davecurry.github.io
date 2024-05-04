@@ -1,10 +1,10 @@
 +++
 title = 'About'
 date = 2024-05-03T16:09:07-07:00
-draft = true
+draft = false
 +++
 
-I've been designing and developing digital products and entertainment experiences for a long time, coming close to almost (omg) three decades now.
+I've been designing and developing digital products and entertainment experiences for a long time, coming up on almost (omg) three decades now.
 
 What I love is leading and working closely with teams of wickedly intelligent designers and partners, all of us obsessed with creating outstanding customer experiences.
 

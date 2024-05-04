@@ -52,6 +52,8 @@ body {
 }
 
 .dark {
+  --theme: #242120;
+  --entry: rgb(48, 46, 45);
   --tag-block-bg: rgb(46, 46, 51);
   --tag-bg: rgb(55, 56, 62);
   --code-block-bg: rgb(238, 114, 241, 0.2);
