@@ -1,7 +1,7 @@
 ---
 title: "What's on My Desk 2024"
 date: 2024-04-25T11:57:19-07:00
-tags: ['productivity']
+tags: ['working well']
 draft: false
 ---
 
@@ -55,7 +55,7 @@ My go-to pens for years was the [Uni-ball Signo Gel Ink Pen 0.38mm in Black](htt
 
 **TV Devices, Remotes & Controllers**
 
-I love working on streaming apps, especially for connected TVs. My office TV is a [65" Sony X900H](https://www.sony.com/en-cd/electronics/televisions/x90h-series) and connected to it are a wide variety of streaming devices:
+My desk is littered with remotes and devices, it's obvious I love working on streaming apps, especially for connected TVs. My office TV is a [65" Sony X900H](https://www.sony.com/en-cd/electronics/televisions/x90h-series) and here's what's connected to it:
 
 + [HDMI Switcher](https://www.amazon.com/gp/product/B06WV5YJ6H/)
 + Amazon Fire TVs
@@ -66,7 +66,7 @@ I love working on streaming apps, especially for connected TVs. My office TV is 
 + XBOX Series S
 + And a few others that aren't always on, but can be quickly hooked up
 
-All CTV devices have fixed IPs on my network for easier build deployments and the signals are split and sent to the TV and an [Elgato HD60 X](https://www.amazon.com/Elgato-HD60-External-Capture-Card/dp/B09V1KJ3J4) for screen captures/recordings, etc. Required, obviously.
+All CTV devices have fixed IPs on my network for easier build deployments and the signals are split and sent to the TV and an [Elgato HD60 X](https://www.amazon.com/Elgato-HD60-External-Capture-Card/dp/B09V1KJ3J4) for screen captures/recordings, etc. A required step indeed.
 
 **There's More, But...**
 
