@@ -4,10 +4,12 @@ date = 2024-05-03T16:09:07-07:00
 draft = false
 +++
 
-I've been designing and developing digital products and entertainment experiences for a long time, coming up on almost (omg) three decades now.
+I've been designing and developing digital products and entertainment experiences for nearly (omg) three decades.
 
-What I love is leading and working closely with teams of wickedly intelligent designers and partners, all of us obsessed with creating outstanding customer experiences.
+What has always truly excited me is leading and collaborating with highly intelligent designers and partners, all of us obsessed with creating an outstanding customer experience.
 
-Over the course of my career, I've worked on so many interesting things with so many interesting people, it's a bit wild to look back and reflect. I know I've been shaped by being in the pressure cooker for so long and surviving and thriving across an almost unbelievable variety of projects and products. 
+Throughout my career, I’ve had the privilege of working on an amazing range of fascinating projects alongside many remarkable individuals. Looking back, I realize how these diverse and challenging experiences have profoundly shaped my professional development.
 
-This journey has instilled in me a great understanding of how to work with people, how to get things done (and done well), and how to provide stable and consistent leadership within an organization.
+My extensive journey has endowed me with a deep understanding of effective teamwork, efficient execution, and the ability to provide stable, consistent leadership within an organization.
+
+And my, how time flies.
