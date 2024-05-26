@@ -24,9 +24,13 @@ taxonomies:
 
 menu:
     main:
-        - name: About
+        - name: Who Me?
           url: pages/about
           weight: 1
+
+        - name: Media
+          url: pages/media
+          weight: 2
 
 params:
     defaultTheme: auto
@@ -60,13 +64,7 @@ params:
 
           - My exceptional team and I consistently strive to enhance and broaden Max's user experience for our global customers. Product design is a never-ending journey of improvement and innovation.
 
-          -  
-          
-          ### Fair warning: ### 
-
-          - 
-          
-          - In addition to design I've done my fair share of development and still write code on the side... I know just enough to be dangerous.
+          -
 
     socialIcons: # optional
         - name: "LinkedIn"
