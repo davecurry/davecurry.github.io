@@ -4,14 +4,11 @@ date = 2024-05-25T17:34:41-07:00
 draft = false
 +++
 
-# 2024 Consumption
+This list is incomplete but I'll do my best to add things as they're remembered. Only adding media worth spending time with.
 
 ***
 
-### Reading
-
-![New People](https://ic.od-cdn.com/resize?type=auto&url=/ImageType-100/1523-1/%257B252047E4-2A22-401C-AE59-67C3010CDAFA%257DImg100.jpg&stripmeta=true&width=300)
-**Currently Reading:** [*New People*](https://www.goodreads.com/book/show/33275357-new-people) by Danzy Senna
+### Reading in 2024
 
 [*Martyr!*](https://www.goodreads.com/book/show/139400713-martyr) by Kaveh Akbar
 
@@ -33,10 +30,13 @@ draft = false
 
 ***
 
-### Watching
+### Watching in 2024
 
-![Shōgun](https://upload.wikimedia.org/wikipedia/en/b/b6/Sh%C5%8Dgun_%282024_miniseries%29_poster.jpg)
-**Currently Watching:** [*Shōgun*](https://en.wikipedia.org/wiki/Sh%C5%8Dgun_(2024_TV_series))
+[*Nikki Glaser: Someday You’ll Die*](https://www.hbo.com/movies/nikki-glaser-someday-youll-die) HBO comedy special (NG killed on the Tom Brady roast too, the only part worth watching)
+
+[*Hacks*](https://www.max.com/shows/hacks-2021/67e940b7-aab2-46ce-a62b-c7308cde9de7) Season Three
+
+[*Shōgun*](https://www.fxnetworks.com/shows/shogun/viewers-guide) Season One (So very good)
 
 [*Three Colors: White*](https://www.criterion.com/films/27732-three-colors-white) directed by Krzysztof Kieślowski
 
@@ -52,7 +52,7 @@ draft = false
 
 [*Ripley*](https://www.netflix.com/title/81678765) Limited Series
 
-[*Three Body Problem*](https://www.netflix.com/browse?jbv=81024821) Season One
+[*Three Body Problem*](https://www.netflix.com/browse?jbv=81024821) Season One (Read and loved the books years ago)
 
 [*Fleabag*](https://www.amazon.com/Fleabag-Season-1/dp/B0875K9Q4P) by Phoebe Waller-Bridge, rewatch of Seasons One and Two
 
@@ -68,6 +68,10 @@ draft = false
 
 ***
 
-### Notes
+### Video Gaming in 2024
 
-The 2024 list is incomplete but I'll do my best to add things as they're remembered.
+[*Stellar Blade*](https://www.playstation.com/en-us/games/stellar-blade/) on PS5 (I love a good perfect parry)
+
+[*Splatoon 3*](https://splatoon.nintendo.com/) on Switch (I'm a regular casual player of the Splatoon francise and the *Side Order* expansion pack was terrific fun)
+
+[*Hogwarts Legacy*](https://www.hogwartslegacy.com/en-us/) on PS5

@@ -70,3 +70,6 @@ params:
         - name: "LinkedIn"
           url: "http://linkedin.com/in/davecurry"
 
+        - name: "Mastodon"
+          url: "https://mastodon.design/@davecurry"  
+
