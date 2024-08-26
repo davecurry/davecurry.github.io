@@ -1,6 +1,6 @@
 +++
 title = 'Media'
-date = 2024-08-26T17:34:41-07:00
+date = 2024-08-26
 draft = false
 +++
 
