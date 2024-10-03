@@ -4,11 +4,17 @@ date = 2024-05-25T17:34:41-07:00
 draft = false
 +++
 
-Should I add everything or just the good stuff? Started this section in May so it's incomplete, maybe I'll add things as they're remembered. 
+Should I add everything or just the good stuff? Just the mostly good stuff I suppose. Started this section in May so it's incomplete, maybe I'll add things as they're remembered. 
+
+*Last updated: Oct 2*
 
 ***
 
 ### Reading in 2024
+
+[*Outline*](https://www.goodreads.com/book/show/21400742-outline) (2014) Rachel Cusk
+
+[*The Demon of Unrest: A Saga of Hubris, Heartbreak, and Heroism at the Dawn of the Civil War*](https://www.goodreads.com/book/show/195608683-the-demon-of-unrest) (2024) Erik Larson
 
 [*North Woods*](https://www.goodreads.com/book/show/71872930-north-woods) (2023) Daniel Mason
 
@@ -40,6 +46,26 @@ Should I add everything or just the good stuff? Started this section in May so i
 
 ### Watching in 2024
 
+[*The Penguin*](https://www.hbo.com/the-penguin) (2024) Season One
+
+[*Uzumaki*](https://www.max.com/shows/uzumaki/f3ba329b-1089-44bc-a844-6177fa69930e) (2024) Season One
+
+[*My Brilliant Friend*](https://www.hbo.com/my-brilliant-friend/season-4) (2024) Season Four
+
+[*Industry*](https://www.hbo.com/industry) (2024) Season Three
+
+[*Only Murders in the Building*](https://www.imdb.com/title/tt11691774/episodes/?season=4) (2024) Season Four – *Not their best*
+
+[*Will & Harper*](https://www.imdb.com/title/tt30321133/) (2024) Josh Greenbaum
+
+[*Marie Antoinette*](https://www.imdb.com/title/tt0422720/) (2006) Sofia Coppola
+
+[*WISE GUY David Chase and The Sopranos*](https://www.hbo.com/wise-guy-david-chase-and-the-sopranos) (2024) Alex Gibney
+
+[*Licorice Pizza*](https://www.imdb.com/title/tt11271038/) (2021) Paul Thomas Anderson
+
+[*Wolf Hall*](https://www.pbs.org/wgbh/masterpiece/shows/wolf-hall/) (2015) Rewatch of Season One
+
 [*Carol*](https://www.imdb.com/title/tt2402927/) (2015) Todd Haynes
 
 [*Punch-Drunk Love*](https://www.criterion.com/films/27916-punch-drunk-love) (1984) Paul Thomas Anderson
@@ -60,7 +86,7 @@ Should I add everything or just the good stuff? Started this section in May so i
 
 [*Three Colors: Red*](https://www.criterion.com/films/27733-three-colors-red) (1994) Krzysztof Kieślowski 
 
-[*Nikki Glaser: Someday You’ll Die*](https://www.hbo.com/movies/nikki-glaser-someday-youll-die) (2024) HBO comedy special
+[*Nikki Glaser: Someday You’ll Die*](https://www.hbo.com/movies/nikki-glaser-someday-youll-die) (2024) HBO Comedy Special
 
 [*Hacks*](https://www.max.com/shows/hacks-2021/67e940b7-aab2-46ce-a62b-c7308cde9de7) (2024) Season Three
 
@@ -86,7 +112,7 @@ Should I add everything or just the good stuff? Started this section in May so i
 
 [*Three Body Problem*](https://www.netflix.com/browse?jbv=81024821) (2024) Season One 
 
-[*Fleabag*](https://www.amazon.com/Fleabag-Season-1/dp/B0875K9Q4P) (2016) Phoebe Waller-Bridge – *Rewatch of Seasons One and Two*
+[*Fleabag*](https://www.amazon.com/Fleabag-Season-1/dp/B0875K9Q4P) (2016) Rewatch of Seasons One and Two – *Holds up!*
 
 [*Showing Up*](https://www.imdb.com/title/tt13923216/) (2022) Kelly Reichardt
 
