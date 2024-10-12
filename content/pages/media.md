@@ -12,6 +12,8 @@ Should I add everything or just the good stuff? Just the mostly good stuff I sup
 
 ### Reading in 2024
 
+[*Citizens: A Chronicle of the French Revolution*](https://www.goodreads.com/book/show/527523.Citizens) (1989) Simon Schama
+
 [*Outline*](https://www.goodreads.com/book/show/21400742-outline) (2014) Rachel Cusk
 
 [*The Demon of Unrest: A Saga of Hubris, Heartbreak, and Heroism at the Dawn of the Civil War*](https://www.goodreads.com/book/show/195608683-the-demon-of-unrest) (2024) Erik Larson
@@ -56,7 +58,7 @@ Should I add everything or just the good stuff? Just the mostly good stuff I sup
 
 [*Industry*](https://www.hbo.com/industry) (2024) Season Three
 
-[*Only Murders in the Building*](https://www.imdb.com/title/tt11691774/episodes/?season=4) (2024) Season Four – *Not their best*
+[*Only Murders in the Building*](https://www.imdb.com/title/tt11691774/episodes/?season=4) (2024) Season Four
 
 [*Will & Harper*](https://www.imdb.com/title/tt30321133/) (2024) Josh Greenbaum
 
