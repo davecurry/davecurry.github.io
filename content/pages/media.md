@@ -6,7 +6,7 @@ draft = false
 
 Should I add everything or just the good stuff? Just the mostly good stuff I suppose. Started this section in May so it's incomplete, maybe I'll add things as they're remembered. 
 
-*Last updated: Oct 2*
+*Last updated: Oct 11*
 
 ***
 
