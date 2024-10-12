@@ -46,6 +46,8 @@ Should I add everything or just the good stuff? Just the mostly good stuff I sup
 
 ### Watching in 2024
 
+[*Kinds of Kindness*](https://www.imdb.com/title/tt22408160/) (2024) Yorgos Lanthimos
+
 [*The Penguin*](https://www.hbo.com/the-penguin) (2024) Season One
 
 [*Uzumaki*](https://www.max.com/shows/uzumaki/f3ba329b-1089-44bc-a844-6177fa69930e) (2024) Season One
