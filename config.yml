@@ -1,7 +1,7 @@
-baseURL: http://evad.lol
+baseURL: http://davecurry.net
 languageCode: en-us
-title: evad.lol
-paginate: 5
+title: davecurry.net
+pagerSize: 5
 theme: PaperMod
 
 enableInlineShortcodes: true

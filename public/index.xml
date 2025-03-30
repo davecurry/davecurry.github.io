@@ -1,10 +1,10 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom" xmlns:content="http://purl.org/rss/1.0/modules/content/">
   <channel>
-    <title>evad.lol</title>
+    <title>davecurry.net</title>
     <link>http://localhost:1313/</link>
-    <description>Recent content on evad.lol</description>
-    <generator>Hugo -- 0.125.4</generator>
+    <description>Recent content on davecurry.net</description>
+    <generator>Hugo -- 0.145.0</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 25 May 2024 17:34:41 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -13,40 +13,45 @@
       <link>http://localhost:1313/pages/media/</link>
       <pubDate>Sat, 25 May 2024 17:34:41 -0700</pubDate>
       <guid>http://localhost:1313/pages/media/</guid>
-      <description>Should I add everything or just the good stuff? Just the mostly good stuff I suppose. Started this section in May so it&amp;rsquo;s incomplete, maybe I&amp;rsquo;ll add things as they&amp;rsquo;re remembered.
-Last updated: Oct 11
-Reading in 2024 Citizens: A Chronicle of the French Revolution (1989) Simon Schama
-Outline (2014) Rachel Cusk
-The Demon of Unrest: A Saga of Hubris, Heartbreak, and Heroism at the Dawn of the Civil War (2024) Erik Larson</description>
+      <description>&lt;p&gt;Should I add everything or just the good stuff? Just the mostly good stuff I suppose. Started this section in May so it&amp;rsquo;s incomplete, maybe I&amp;rsquo;ll add things as they&amp;rsquo;re remembered.&lt;/p&gt;
+&lt;p&gt;&lt;em&gt;Last updated: Oct 11&lt;/em&gt;&lt;/p&gt;
+&lt;hr&gt;
+&lt;h3 id=&#34;reading-in-2024&#34;&gt;Reading in 2024&lt;/h3&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/527523.Citizens&#34;&gt;&lt;em&gt;Citizens: A Chronicle of the French Revolution&lt;/em&gt;&lt;/a&gt; (1989) Simon Schama&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/21400742-outline&#34;&gt;&lt;em&gt;Outline&lt;/em&gt;&lt;/a&gt; (2014) Rachel Cusk&lt;/p&gt;
+&lt;p&gt;&lt;a href=&#34;https://www.goodreads.com/book/show/195608683-the-demon-of-unrest&#34;&gt;&lt;em&gt;The Demon of Unrest: A Saga of Hubris, Heartbreak, and Heroism at the Dawn of the Civil War&lt;/em&gt;&lt;/a&gt; (2024) Erik Larson&lt;/p&gt;</description>
     </item>
     <item>
       <title>Who Me?</title>
       <link>http://localhost:1313/pages/about/</link>
       <pubDate>Fri, 03 May 2024 16:09:07 -0700</pubDate>
       <guid>http://localhost:1313/pages/about/</guid>
-      <description>I&amp;rsquo;ve been designing and developing digital products and entertainment experiences for nearly (omg) three decades.
-What I love is leading teams and collaborating with highly intelligent designers and partners, all of us obsessed with creating an outstanding customer experience.
-Throughout my career, I’ve had the privilege of working on an amazing range of fascinating projects alongside many remarkable collaborators. Looking back, I can see how these diverse and often challenging efforts have profoundly shaped my professional development.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve been designing and developing digital products and entertainment experiences for nearly (omg) three decades.&lt;/p&gt;
+&lt;p&gt;What I love is leading teams and collaborating with highly intelligent designers and partners, all of us obsessed with creating an outstanding customer experience.&lt;/p&gt;
+&lt;p&gt;Throughout my career, I’ve had the privilege of working on an amazing range of fascinating projects alongside many remarkable collaborators. Looking back, I can see how these diverse and often challenging efforts have profoundly shaped my professional development.&lt;/p&gt;</description>
     </item>
     <item>
       <title>The Ear Demands Some Variety</title>
       <link>http://localhost:1313/posts/the-ear-demands-some-variety/</link>
       <pubDate>Sat, 27 Apr 2024 11:57:19 -0700</pubDate>
       <guid>http://localhost:1313/posts/the-ear-demands-some-variety/</guid>
-      <description>I don&amp;rsquo;t recall where I first ran across this sound advice, but I&amp;rsquo;ve referred to it many times over the years.
-Transcribed thanks to GPT-4-Vision. 😉
-“This sentence has five words. Here are five more words. Five-word sentences are fine. But several together are monotonous. Listen to what is happening. The writing is getting boring. The sound of it drones. It’s like a stuck record. The ear demands some variety.</description>
+      <description>&lt;p&gt;I don&amp;rsquo;t recall where I first ran across this &lt;code&gt;sound advice,&lt;/code&gt; but I&amp;rsquo;ve referred to it many times over the years.&lt;/p&gt;
+&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/five-words.png&#34; alt=&#34;Five Words&#34;  /&gt;
+&lt;/p&gt;
+&lt;p&gt;Transcribed thanks to GPT-4-Vision. 😉&lt;/p&gt;
+&lt;blockquote&gt;
+&lt;p&gt;“This sentence has five words. Here are five more words. Five-word sentences are fine. But several together are monotonous. Listen to what is happening. The writing is getting boring. The sound of it drones. It’s like a stuck record. The ear demands some variety.&lt;/p&gt;</description>
     </item>
     <item>
       <title>What&#39;s on My Desk 2024</title>
       <link>http://localhost:1313/posts/whats-on-my-desk/</link>
       <pubDate>Thu, 25 Apr 2024 11:57:19 -0700</pubDate>
       <guid>http://localhost:1313/posts/whats-on-my-desk/</guid>
-      <description>I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.
-Desk
-30” x 60” Javis Powdercoated Standing Desk in black by Fully. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding big, rubbery wheels for rolling on and not destroying our hardwood floors.
-Chair
-A classic Herman Miller Aeron Chair which I’ve had for nearly 20 years.</description>
+      <description>&lt;p&gt;I&amp;rsquo;ve arguably spent way too much time tweaking and futzing my home office setup. Here&amp;rsquo;s where I&amp;rsquo;m at.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Desk&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;30” x 60” Javis Powdercoated Standing Desk in black by &lt;a href=&#34;https://www.fully.com/standing-desks/jarvis.html&#34;&gt;Fully&lt;/a&gt;. I don’t think they make this particular model anymore but it’s perfect for me, especially after adding &lt;a href=&#34;https://www.amazon.com/gp/product/B071JDVJN6/&#34;&gt;big, rubbery wheels&lt;/a&gt; for rolling on and not destroying our hardwood floors.&lt;/p&gt;
+&lt;p&gt;&lt;strong&gt;Chair&lt;/strong&gt;&lt;/p&gt;
+&lt;p&gt;A classic &lt;a href=&#34;https://store.hermanmiller.com/office-chairs-aeron/aeron-chair/2195348.html?lang=en_US&#34;&gt;Herman Miller Aeron Chair&lt;/a&gt; which I’ve had for nearly 20 years. The best chair.&lt;/p&gt;</description>
     </item>
   </channel>
 </rss>
