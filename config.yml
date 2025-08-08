@@ -48,19 +48,17 @@ params:
     - posts
 
     homeInfoParams:
-        Title: >
-          Dave Curry
+        Title: "Dave Curry"
+        Content: |
+          ## Sr. Design Director for [HBO Max/Max](/hbomax.jpg) at Warner Bros. Discovery ##
           
-          ## Sr. Design Director for [HBO Max/Max](hbomax.jpg) at Warner Bros. Discovery ##
-        
-        Content: >
+          - 
+          
           - Previously WarnerMedia, HBO, and #AgencyLife
 
           -
 
           - My exceptional team and I consistently strive to evolve and enhance our global customers' HBO Max user experience. Product design is a never-ending journey of improvement and innovation.
-
-          -
 
     socialIcons: # optional
         - name: "LinkedIn"
