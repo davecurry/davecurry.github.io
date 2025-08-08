@@ -1,0 +1,124 @@
+/*
+
+Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-css-with-themes-assets for more info
+*/
+
+
+.fira-code-evad> {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
+}
+
+
+.arvo-regular {
+  font-family: "Arvo", serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.arvo-bold {
+  font-family: "Arvo", serif;
+  font-weight: 700;
+  font-style: normal;
+}
+
+.arvo-regular-italic {
+  font-family: "Arvo", serif;
+  font-weight: 400;
+  font-style: italic;
+}
+
+.arvo-bold-italic {
+  font-family: "Arvo", serif;
+  font-weight: 700;
+  font-style: italic;
+}
+
+:root {
+  --tag-block-bg: rgb(28, 29, 33);
+  --tag-bg: rgb(245, 245, 245);
+}
+
+body {
+    font-family: "Fira Code", monospace;
+    font-size: 1rem;
+    font-weight: 400;
+    letter-spacing: .01em;
+    line-height: 1.5;
+    margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  font-family: "Arvo", serif;
+  letter-spacing: .02em;
+}
+
+.logo a {
+  font-family: "Arvo", serif;
+  font-size: 1.2rem;
+  font-weight: 400
+}
+
+a,button {
+  color: var(--primary)
+}
+
+body,h1,h2,h3,h4,h5,h6 {
+  color: var(--content)
+}
+
+.post-content code {
+  margin: auto 4px;
+  padding: 4px 6px;
+  font-size: 1em;
+  line-height: 1.5;
+  color: #ee72f1;
+  background: var(--code-bg);
+  border-radius: 2px;
+}
+
+.post-tags a,
+.share-buttons,
+.paginav {
+    border-radius: var(--radius);
+    background: var(--tag-bg);
+    border: 1px solid var(--border);
+}
+
+.post-tags a {
+    display: block;
+    padding: 0 14px;
+    color: var(--secondary);
+    font-size: 14px;
+    line-height: 34px;
+    background: var(--tag-bg);
+}
+
+.dark {
+  /* 
+  browner
+  --theme: #242120;
+  --entry: rgb(48, 46, 45); 
+  --tag-block-bg: rgb(46, 46, 51);
+  --tag-bg: rgb(55, 56, 62);
+  */
+
+  /* bluer */
+
+  --primary: #ee72f1;
+  --secondary: #b3b2b2;
+  --content: #cbcbcb;
+  --theme: #132335;
+  --entry: rgb(20 33 47);
+  --tag-block-bg: rgb(38, 38, 52);
+  --tag-bg: rgb(16 26 38);
+  --code-block-bg: rgb(238, 114, 241, 0.2);
+  --code-bg: rgb(238, 114, 241, 0.2);
+}
