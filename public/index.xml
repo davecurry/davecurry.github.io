@@ -4,7 +4,7 @@
     <title>davecurry.net</title>
     <link>http://localhost:1313/</link>
     <description>Recent content on davecurry.net</description>
-    <generator>Hugo -- 0.145.0</generator>
+    <generator>Hugo -- 0.148.2</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 25 May 2024 17:34:41 -0700</lastBuildDate>
     <atom:link href="http://localhost:1313/index.xml" rel="self" type="application/rss+xml" />
@@ -36,8 +36,7 @@
       <pubDate>Sat, 27 Apr 2024 11:57:19 -0700</pubDate>
       <guid>http://localhost:1313/posts/the-ear-demands-some-variety/</guid>
       <description>&lt;p&gt;I don&amp;rsquo;t recall where I first ran across this &lt;code&gt;sound advice,&lt;/code&gt; but I&amp;rsquo;ve referred to it many times over the years.&lt;/p&gt;
-&lt;p&gt;&lt;img loading=&#34;lazy&#34; src=&#34;http://localhost:1313/five-words.png&#34; alt=&#34;Five Words&#34;  /&gt;
-&lt;/p&gt;
+&lt;p&gt;&lt;img alt=&#34;Five Words&#34; loading=&#34;lazy&#34; src=&#34;http://localhost:1313/five-words.png&#34;&gt;&lt;/p&gt;
 &lt;p&gt;Transcribed thanks to GPT-4-Vision. 😉&lt;/p&gt;
 &lt;blockquote&gt;
 &lt;p&gt;“This sentence has five words. Here are five more words. Five-word sentences are fine. But several together are monotonous. Listen to what is happening. The writing is getting boring. The sound of it drones. It’s like a stuck record. The ear demands some variety.&lt;/p&gt;</description>

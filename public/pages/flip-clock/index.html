@@ -1,0 +1,1852 @@
+<!DOCTYPE html>
+<html lang="en" dir="auto">
+
+<head><script src="/livereload.js?mindelay=10&amp;v=2&amp;port=1313&amp;path=livereload" data-no-instant defer></script><meta charset="utf-8">
+<meta http-equiv="X-UA-Compatible" content="IE=edge">
+<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+<meta name="robots" content="noindex, nofollow">
+<title>davecurry.net</title>
+<meta name="keywords" content="">
+<meta name="description" content="&lt;!DOCTYPE html&gt;
+
+
+    
+    
+    Retro Flip Clock
+    
+    
+    
+    
+
+
+    
+        
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+        
+        :
+        
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+        
+        :
+        
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+            
+                
+                    
+                        0
+                        0
+                    
+                    
+                        0
+                        0
+                    
+                
+            
+        
+        
+            AM
+            PM
+        
+    
+
+    
+
+">
+<meta name="author" content="">
+<link rel="canonical" href="http://localhost:1313/pages/flip-clock/">
+<link crossorigin="anonymous" href="/assets/css/stylesheet.0cb554db0e316cdb0ad0b93a364363944364fcdfd0ccf3339322b940bed65487.css" integrity="sha256-DLVU2w4xbNsK0Lk6NkNjlENk/N/QzPMzkyK5QL7WVIc=" rel="preload stylesheet" as="style">
+<link rel="icon" href="http://localhost:1313/favicon.ico">
+<link rel="icon" type="image/png" sizes="16x16" href="http://localhost:1313/favicon-16x16.png">
+<link rel="icon" type="image/png" sizes="32x32" href="http://localhost:1313/favicon-32x32.png">
+<link rel="apple-touch-icon" href="http://localhost:1313/apple-touch-icon.png">
+<link rel="mask-icon" href="http://localhost:1313/safari-pinned-tab.svg">
+<meta name="theme-color" content="#2e2e33">
+<meta name="msapplication-TileColor" content="#2e2e33">
+<link rel="alternate" hreflang="en" href="http://localhost:1313/pages/flip-clock/">
+<noscript>
+    <style>
+        #theme-toggle,
+        .top-link {
+            display: none;
+        }
+
+    </style>
+    <style>
+        @media (prefers-color-scheme: dark) {
+            :root {
+                --theme: rgb(29, 30, 32);
+                --entry: rgb(46, 46, 51);
+                --primary: rgb(218, 218, 219);
+                --secondary: rgb(155, 156, 157);
+                --tertiary: rgb(65, 66, 68);
+                --content: rgb(196, 196, 197);
+                --code-block-bg: rgb(46, 46, 51);
+                --code-bg: rgb(55, 56, 62);
+                --border: rgb(51, 51, 51);
+            }
+
+            .list {
+                background: var(--theme);
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-track {
+                background: 0 0;
+            }
+
+            .list:not(.dark)::-webkit-scrollbar-thumb {
+                border-color: var(--theme);
+            }
+        }
+
+    </style>
+</noscript>
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-E1BD6QPGYB"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-E1BD6QPGYB');
+</script>
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:ital,wght@0,400;0,700;1,400;1,700&family=Fira+Code:wght@300..700&display=swap" rel="stylesheet">
+</head>
+
+<body class="" id="top">
+<script>
+    if (localStorage.getItem("pref-theme") === "dark") {
+        document.body.classList.add('dark');
+    } else if (localStorage.getItem("pref-theme") === "light") {
+        document.body.classList.remove('dark')
+    } else if (window.matchMedia('(prefers-color-scheme: dark)').matches) {
+        document.body.classList.add('dark');
+    }
+
+</script>
+
+<header class="header">
+    <nav class="nav">
+        <div class="logo">
+            <a href="http://localhost:1313/" accesskey="h" title="davecurry.net (Alt + H)">davecurry.net</a>
+            <div class="logo-switches">
+                <button id="theme-toggle" accesskey="t" title="(Alt + T)" aria-label="Toggle theme">
+                    <svg id="moon" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"></path>
+                    </svg>
+                    <svg id="sun" xmlns="http://www.w3.org/2000/svg" width="24" height="18" viewBox="0 0 24 24"
+                        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+                        stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="5"></circle>
+                        <line x1="12" y1="1" x2="12" y2="3"></line>
+                        <line x1="12" y1="21" x2="12" y2="23"></line>
+                        <line x1="4.22" y1="4.22" x2="5.64" y2="5.64"></line>
+                        <line x1="18.36" y1="18.36" x2="19.78" y2="19.78"></line>
+                        <line x1="1" y1="12" x2="3" y2="12"></line>
+                        <line x1="21" y1="12" x2="23" y2="12"></line>
+                        <line x1="4.22" y1="19.78" x2="5.64" y2="18.36"></line>
+                        <line x1="18.36" y1="5.64" x2="19.78" y2="4.22"></line>
+                    </svg>
+                </button>
+            </div>
+        </div>
+        <ul id="menu">
+            <li>
+                <a href="http://localhost:1313/pages/about" title="Who Me?">
+                    <span>Who Me?</span>
+                </a>
+            </li>
+        </ul>
+    </nav>
+</header>
+<main class="main">
+
+<article class="post-single">
+  <header class="post-header">
+    <div class="breadcrumbs"><a href="http://localhost:1313/">Home</a>&nbsp;»&nbsp;<a href="http://localhost:1313/pages/">Pages</a></div>
+    <h1 class="post-title entry-hint-parent">
+      
+    </h1>
+    <div class="post-meta">1 min
+
+</div>
+  </header> 
+  <div class="post-content"><!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Retro Flip Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@900&family=Montserrat:wght@100&family=Fascinate&family=Spicy+Rice&family=Gothic+A1:wght@100;900&family=Press+Start+2P&family=Bungee&family=Bungee+Outline&family=Limelight&family=VT323&family=Caveat:wght@700&family=Bangers&family=Rubik+Iso&family=Gloria+Hallelujah&family=Rubik+Burned&family=Shadows+Into+Light&family=Special+Elite&family=Permanent+Marker&family=Creepster&family=Courier+Prime&family=Titan+One&family=Raleway:wght@100&family=Syncopate:wght@700&family=Londrina+Outline:wght@400&family=Inconsolata:wght@700&family=Dancing+Script:wght@700&family=Nosifer&family=Pacifico&family=Ranchers&family=Monoton&family=Josefin+Slab:wght@400;700&family=Alumni+Sans+Pinstripe:ital,wght@0,400;1,400&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background: linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0f0f0f 100%);
+            font-family: 'Orbitron', monospace;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 0;
+            margin: 0;
+            perspective: 1000px;
+            perspective-origin: center center;
+        }
+
+        .clock-container {
+            display: flex;
+            gap: 23px;
+            flex-wrap: wrap;
+            justify-content: center;
+            align-items: center;
+            background: rgba(0, 0, 0, 0.4);
+            backdrop-filter: blur(10px);
+            width: 90%;
+            padding: 38px 25px;
+            border-radius: 20px;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            box-sizing: border-box;
+            margin: 0 auto;
+            transition: transform 0.1s ease-out;
+            will-change: transform;
+            transform-style: preserve-3d;
+            transform-origin: center center;
+        }
+
+        .digit-group {
+            display: flex;
+            gap: 11px;
+        }
+
+        .separator {
+            font-size: 6.75rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            align-items: center;
+            font-weight: 100;
+            font-family: 'Gothic A1', sans-serif;
+            margin: 0 11px;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+        }
+
+        .ampm-indicator {
+            font-size: 3rem;
+            color: rgba(255, 255, 255, 0.9);
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            font-weight: 700;
+            align-self: center;
+            text-shadow: 0 3px 15px rgba(0, 0, 0, 0.3);
+            gap: 8px;
+        }
+
+        .ampm-indicator span {
+            padding: 8px 18px;
+            border-radius: 9px;
+            background: rgba(255, 255, 255, 0.3);
+            backdrop-filter: blur(5px);
+            transition: all 0.3s ease;
+            color: #ffffff;
+            box-shadow: 0 0 15px rgba(255, 255, 255, 0.3);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            line-height: 1;
+        }
+
+        .ampm-indicator span.hidden {
+            display: none;
+        }
+
+        .digit-container {
+            position: relative;
+            width: 135px;
+            height: 195px;
+            perspective: 1000px;
+            background: linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%);
+            border: 2px solid rgba(255, 255, 255, 0.1);
+            border-radius: 15px;
+            box-shadow: 
+                0 9px 18px rgba(0, 0, 0, 0.4),
+                inset 0 2px 4px rgba(255, 255, 255, 0.1),
+                inset 0 -2px 4px rgba(0, 0, 0, 0.5);
+            overflow: hidden;
+        }
+
+        .digit-card {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        .digit-half {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            overflow: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .digit-top {
+            top: 0;
+            border-bottom: 2px solid rgba(0, 0, 0, 0.5);
+            z-index: 3;
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+            overflow: hidden;
+            box-shadow: inset 0 -2px 3px rgba(0, 0, 0, 0.8);
+            transform-style: preserve-3d;
+            transform-origin: bottom;
+            transition: transform 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .digit-top.flip {
+            transform: rotateX(-180deg);
+        }
+
+        .digit-bottom {
+            bottom: 0;
+            border-top: 2px solid rgba(255, 255, 255, 0.05);
+            z-index: 2;
+            background: linear-gradient(to top, #1a1a1a 0%, #0f0f0f 100%);
+            overflow: hidden;
+            box-shadow: inset 0 2px 3px rgba(255, 255, 255, 0.1);
+        }
+
+        .digit-top-front,
+        .digit-top-back {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            backface-visibility: hidden;
+            text-shadow: 0 0 23px rgba(255, 255, 255, 0.3), 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .digit-top-front {
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+        }
+
+        .digit-top-back {
+            background: linear-gradient(to bottom, #1a1a1a 0%, #0f0f0f 100%);
+            transform: rotateX(180deg);
+        }
+
+        .digit-bottom-front,
+        .digit-bottom-back {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 200%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 8.25rem;
+            font-weight: 700;
+            color: #ffffff;
+            line-height: 1;
+            text-shadow: 0 0 23px rgba(255, 255, 255, 0.3), 0 2px 5px rgba(0, 0, 0, 0.5);
+        }
+
+        .digit-bottom-front {
+            opacity: 1;
+            transition: opacity 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .digit-bottom-front.fade-out {
+            opacity: 0.1;
+        }
+
+        .digit-bottom-back {
+            opacity: 1;
+            clip-path: polygon(0 100%, 100% 100%, 100% 100%, 0 100%);
+            transition: clip-path 0.25s cubic-bezier(0.4, 0, 0.2, 1);
+            overflow: hidden;
+        }
+
+        .digit-bottom-back.reveal {
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+        }
+
+        /* Default font set */
+        .digit-0 { font-family: 'Bungee', cursive; }
+        .digit-1 { font-family: 'Gothic A1', sans-serif; font-weight: 100; }
+        .digit-2 { font-family: 'Bungee Outline', cursive; }
+        .digit-3 { font-family: 'Limelight', cursive; }
+        .digit-4 { font-family: 'VT323', monospace; }
+        .digit-5 { font-family: 'Caveat', cursive; }
+        .digit-6 { font-family: 'Bangers', cursive; }
+        .digit-7 { font-family: 'Rubik Iso', cursive; }
+        .digit-8 { font-family: 'Gloria Hallelujah', cursive; }
+        .digit-9 { font-family: 'Rubik Burned', cursive; }
+
+        /* Alternative font set */
+        .font-set-alt .digit-0 { font-family: 'Orbitron', sans-serif; font-weight: 900; }
+        .font-set-alt .digit-1 { font-family: 'Courier Prime', monospace; }
+        .font-set-alt .digit-2 { font-family: 'Fascinate', cursive; }
+        .font-set-alt .digit-3 { font-family: 'Spicy Rice', cursive; }
+        .font-set-alt .digit-4 { font-family: 'Press Start 2P', cursive; }
+        .font-set-alt .digit-5 { font-family: 'Montserrat', sans-serif; font-weight: 100; }
+        .font-set-alt .digit-6 { font-family: 'Creepster', cursive; }
+        .font-set-alt .digit-7 { font-family: 'Shadows Into Light', cursive; }
+        .font-set-alt .digit-8 { font-family: 'Special Elite', cursive; }
+        .font-set-alt .digit-9 { font-family: 'Permanent Marker', cursive; }
+
+        /* Third font set */
+        .font-set-third .digit-0 { font-family: 'Titan One', cursive; }
+        .font-set-third .digit-1 { font-family: 'Monoton', cursive; }
+        .font-set-third .digit-2 { font-family: 'Syncopate', sans-serif; font-weight: 700; }
+        .font-set-third .digit-3 { font-family: 'Londrina Outline', sans-serif; font-weight: 400; }
+        .font-set-third .digit-4 { font-family: 'Inconsolata', monospace; font-weight: 700; }
+        .font-set-third .digit-5 { font-family: 'Dancing Script', cursive; font-weight: 700; }
+        .font-set-third .digit-6 { font-family: 'Nosifer', cursive; }
+        .font-set-third .digit-7 { font-family: 'Pacifico', cursive; }
+        .font-set-third .digit-8 { font-family: 'Ranchers', cursive; }
+        .font-set-third .digit-9 { font-family: 'Raleway', sans-serif; font-weight: 100; }
+
+        /* AM/PM indicator fonts for each font set */
+        .ampm-indicator {
+            font-family: 'Alumni Sans Pinstripe', sans-serif; /* Default font set */
+            font-weight: 400;
+        }
+        
+        .font-set-alt .ampm-indicator {
+            font-family: 'Orbitron', sans-serif;
+            font-weight: 700;
+        }
+        
+        .font-set-third .ampm-indicator {
+            font-family: 'Josefin Slab', serif;
+            font-weight: 700;
+        }
+        
+        .font-set-third .ampm-indicator span {
+            text-transform: lowercase;
+        }
+
+        @media (max-width: 768px) {
+            .digit-container {
+                width: 105px;
+                height: 150px;
+            }
+
+            .digit-top-front,
+            .digit-top-back,
+            .digit-bottom-front,
+            .digit-bottom-back {
+                font-size: 6rem;
+            }
+
+            .separator {
+                font-size: 5.25rem;
+            }
+
+            .ampm-indicator {
+                font-size: 2.25rem;
+                align-self: center;
+            }
+
+            .clock-container {
+                gap: 15px;
+                padding: 30px 25px;
+            }
+
+            .digit-group {
+                gap: 8px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .digit-container {
+                width: 83px;
+                height: 120px;
+            }
+
+            .digit-top-front,
+            .digit-top-back,
+            .digit-bottom-front,
+            .digit-bottom-back {
+                font-size: 4.5rem;
+            }
+
+            .separator {
+                font-size: 3.75rem;
+            }
+
+            .ampm-indicator {
+                font-size: 1.9rem;
+                align-self: center;
+            }
+
+            .ampm-indicator span {
+                padding: 6px 12px;
+            }
+
+            .clock-container {
+                gap: 11px;
+                padding: 23px 25px;
+            }
+
+            .digit-group {
+                gap: 8px;
+            }
+        }
+
+        .controls-toggle-control {
+            position: fixed;
+            bottom: 40px;
+            right: 60px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .controls-toggle-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .controls-toggle-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .parallax-toggle-control {
+            position: fixed;
+            bottom: 40px;
+            right: 480px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .parallax-toggle-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .parallax-toggle-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+            color: #ffffff;
+        }
+
+        .color-control {
+            position: fixed;
+            bottom: 40px;
+            right: 420px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .color-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .color-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .font-set-control {
+            position: fixed;
+            bottom: 40px;
+            right: 360px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .font-set-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .font-set-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .colon-control {
+            position: fixed;
+            bottom: 40px;
+            right: 180px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .colon-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .colon-control .colon-text {
+            font-size: 24px;
+            font-weight: 700;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .fullscreen-control {
+            position: fixed;
+            bottom: 40px;
+            right: 120px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .fullscreen-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .fullscreen-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .time-format-control {
+            position: fixed;
+            bottom: 40px;
+            right: 240px;
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            z-index: 1000;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .time-format-control:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .time-format-control svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .time-format-control .format-text {
+            font-size: 18px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.9);
+            font-family: 'Gothic A1', sans-serif;
+        }
+
+        .font-size-control {
+            position: fixed;
+            bottom: 40px;
+            right: 300px;
+            display: flex;
+            z-index: 1000;
+        }
+
+        .font-size-btn {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(10px);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 16px rgba(0, 0, 0, 0.3);
+        }
+
+        .font-size-btn:hover {
+            background: rgba(255, 255, 255, 0.15);
+            transform: scale(1.1);
+        }
+
+        .font-size-btn svg {
+            width: 24px;
+            height: 24px;
+            fill: rgba(255, 255, 255, 0.9);
+        }
+
+        .font-size-btn:disabled {
+            opacity: 0.4;
+            cursor: not-allowed;
+        }
+
+        .font-size-btn:disabled:hover {
+            transform: none;
+            background: rgba(255, 255, 255, 0.1);
+        }
+
+        /* Tooltip styles */
+        [data-tooltip] {
+            overflow: visible !important;
+        }
+
+        .parallax-toggle-control[data-tooltip]:hover::before,
+        .color-control[data-tooltip]:hover::before,
+        .font-set-control[data-tooltip]:hover::before,
+        .font-size-control[data-tooltip]:hover::before,
+        .time-format-control[data-tooltip]:hover::before,
+        .colon-control[data-tooltip]:hover::before,
+        .fullscreen-control[data-tooltip]:hover::before,
+        .controls-toggle-control[data-tooltip]:hover::before {
+            content: attr(data-tooltip) !important;
+            display: block !important;
+            position: absolute !important;
+            bottom: calc(100% + 10px) !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            background: rgba(0, 0, 0, 0.95) !important;
+            color: #ffffff !important;
+            padding: 8px 12px !important;
+            border-radius: 6px !important;
+            font-size: 14px !important;
+            font-family: 'Gothic A1', sans-serif !important;
+            white-space: nowrap !important;
+            pointer-events: none !important;
+            z-index: 99999 !important;
+            opacity: 1 !important;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.4) !important;
+            width: auto !important;
+            height: auto !important;
+        }
+
+        .parallax-toggle-control[data-tooltip]:hover::after,
+        .color-control[data-tooltip]:hover::after,
+        .font-set-control[data-tooltip]:hover::after,
+        .font-size-control[data-tooltip]:hover::after,
+        .time-format-control[data-tooltip]:hover::after,
+        .colon-control[data-tooltip]:hover::after,
+        .fullscreen-control[data-tooltip]:hover::after,
+        .controls-toggle-control[data-tooltip]:hover::after {
+            content: '' !important;
+            display: block !important;
+            position: absolute !important;
+            bottom: calc(100% + 4px) !important;
+            left: 50% !important;
+            transform: translateX(-50%) !important;
+            border: 6px solid transparent !important;
+            border-top-color: rgba(0, 0, 0, 0.95) !important;
+            pointer-events: none !important;
+            z-index: 99999 !important;
+            opacity: 1 !important;
+            width: 0 !important;
+            height: 0 !important;
+        }
+
+        @keyframes tooltipFadeInArrow {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+
+        @keyframes tooltipFadeIn {
+            from {
+                opacity: 0;
+                transform: translateX(-50%) translateY(-5px);
+            }
+            to {
+                opacity: 1;
+                transform: translateX(-50%) translateY(0);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="clock-container">
+        <div class="digit-group">
+            <div class="digit-container">
+                <div class="digit-card" id="hour1">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="digit-container">
+                <div class="digit-card" id="hour2">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator">:</div>
+        <div class="digit-group">
+            <div class="digit-container">
+                <div class="digit-card" id="min1">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="digit-container">
+                <div class="digit-card" id="min2">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="separator" id="seconds-separator">:</div>
+        <div class="digit-group" id="seconds-group">
+            <div class="digit-container">
+                <div class="digit-card" id="sec1">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+            <div class="digit-container">
+                <div class="digit-card" id="sec2">
+                    <div class="digit-half digit-bottom">
+                        <div class="digit-bottom-front">0</div>
+                        <div class="digit-bottom-back">0</div>
+                    </div>
+                    <div class="digit-half digit-top">
+                        <div class="digit-top-front">0</div>
+                        <div class="digit-top-back">0</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="ampm-indicator">
+            <span id="am">AM</span>
+            <span id="pm" class="hidden">PM</span>
+        </div>
+    </div>
+
+    <script>
+        let timeFormat24 = false; // Default to 12-hour format
+        let showSeconds = true; // Default to showing seconds
+
+        function updateClock() {
+            const now = new Date();
+            let hours24 = now.getHours();
+            const isPM = hours24 >= 12;
+            const hours12 = hours24 % 12 || 12;
+            
+            // Use 24-hour or 12-hour format based on setting
+            const hours = timeFormat24 ? 
+                String(hours24).padStart(2, '0') : 
+                String(hours12).padStart(2, '0');
+            const minutes = String(now.getMinutes()).padStart(2, '0');
+            const seconds = String(now.getSeconds()).padStart(2, '0');
+            
+            const amElement = document.getElementById('am');
+            const pmElement = document.getElementById('pm');
+            const ampmIndicator = document.querySelector('.ampm-indicator');
+            
+            // Show/hide AM/PM indicator based on format
+            if (timeFormat24) {
+                ampmIndicator.style.display = 'none';
+            } else {
+                ampmIndicator.style.display = 'flex';
+                if (isPM) {
+                    amElement.classList.add('hidden');
+                    pmElement.classList.remove('hidden');
+                } else {
+                    amElement.classList.remove('hidden');
+                    pmElement.classList.add('hidden');
+                }
+            }
+            
+            const time = showSeconds ? hours + minutes + seconds : hours + minutes;
+            const digits = showSeconds ? ['hour1', 'hour2', 'min1', 'min2', 'sec1', 'sec2'] : ['hour1', 'hour2', 'min1', 'min2'];
+            
+            function applyFontClass(element, digit) {
+                element.className = element.className.replace(/digit-\d/g, '');
+                element.classList.add(`digit-${digit}`);
+            }
+
+            digits.forEach((digitId, index) => {
+                const digitCard = document.getElementById(digitId);
+                const topHalf = digitCard.querySelector('.digit-top');
+                const topFront = digitCard.querySelector('.digit-top-front');
+                const topBack = digitCard.querySelector('.digit-top-back');
+                const bottomFront = digitCard.querySelector('.digit-bottom-front');
+                const bottomBack = digitCard.querySelector('.digit-bottom-back');
+                
+                const currentValue = topFront.textContent;
+                const newValue = time[index];
+                
+                if (currentValue !== newValue) {
+                    // Fade out the current number on the bottom half to 10% opacity
+                    bottomFront.classList.add('fade-out');
+                    
+                    // Set the new number on the back face
+                    topBack.textContent = newValue;
+                    bottomBack.textContent = newValue;
+                    
+                    applyFontClass(topBack, newValue);
+                    applyFontClass(bottomBack, newValue);
+                    
+                    topHalf.classList.add('flip');
+                    
+                    // Start revealing the bottom half of the next number from top to bottom
+                    bottomBack.classList.add('reveal');
+                    
+                    // After reveal completes, update front face and reset
+                    setTimeout(() => {
+                        bottomFront.textContent = newValue;
+                        applyFontClass(bottomFront, newValue);
+                        bottomFront.classList.remove('fade-out');
+                        bottomBack.classList.remove('reveal');
+                    }, 250);
+                    
+                    setTimeout(() => {
+                        topFront.textContent = newValue;
+                        applyFontClass(topFront, newValue);
+                        topHalf.classList.remove('flip');
+                    }, 250);
+                } else {
+                    applyFontClass(topFront, newValue);
+                    applyFontClass(bottomFront, newValue);
+                }
+            });
+        }
+
+        updateClock();
+        setInterval(updateClock, 1000);
+
+        // Color scheme functionality
+        const colorSchemes = [
+            {
+                name: 'Dark Grey',
+                bodyBg: 'linear-gradient(135deg, #2a2a2a 0%, #1a1a1a 50%, #0f0f0f 100%)',
+                containerBg: 'rgba(0, 0, 0, 0.4)',
+                digitBg: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.1)',
+                textColor: '#ffffff',
+                separatorColor: 'rgba(255, 255, 255, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: 'rgba(255, 255, 255, 0.9)',
+                baseColor: '#1a1a1a'
+            },
+            {
+                name: 'Blue',
+                bodyBg: 'linear-gradient(135deg, #1a237e 0%, #0d47a1 50%, #0277bd 100%)',
+                containerBg: 'rgba(13, 71, 161, 0.4)',
+                digitBg: 'linear-gradient(135deg, #0d47a1 0%, #0277bd 50%, #01579b 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.2)',
+                textColor: '#ffffff',
+                separatorColor: 'rgba(255, 255, 255, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: 'rgba(255, 255, 255, 0.9)',
+                baseColor: '#0d47a1'
+            },
+            {
+                name: 'Purple',
+                bodyBg: 'linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%)',
+                containerBg: 'rgba(106, 27, 154, 0.4)',
+                digitBg: 'linear-gradient(135deg, #6a1b9a 0%, #7b1fa2 50%, #8e24aa 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.2)',
+                textColor: '#39ff14',
+                separatorColor: 'rgba(57, 255, 20, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: '#39ff14',
+                baseColor: '#6a1b9a'
+            },
+            {
+                name: 'Green',
+                bodyBg: 'linear-gradient(135deg, #1b5e20 0%, #2e7d32 50%, #388e3c 100%)',
+                containerBg: 'rgba(46, 125, 50, 0.4)',
+                digitBg: 'linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #43a047 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.2)',
+                textColor: '#8B0000',
+                separatorColor: 'rgba(139, 0, 0, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: '#ffff00',
+                baseColor: '#2e7d32'
+            },
+            {
+                name: 'Orange',
+                bodyBg: 'linear-gradient(135deg, #e65100 0%, #ef6c00 50%, #f57c00 100%)',
+                containerBg: 'rgba(239, 108, 0, 0.4)',
+                digitBg: 'linear-gradient(135deg, #ef6c00 0%, #f57c00 50%, #fb8c00 100%)',
+                digitBorder: 'rgba(0, 0, 0, 0.2)',
+                textColor: '#000000',
+                separatorColor: 'rgba(0, 0, 0, 0.9)',
+                ampmBg: 'rgba(0, 0, 0, 0.3)',
+                ampmColor: '#ffffff',
+                baseColor: '#ef6c00'
+            },
+            {
+                name: 'Red',
+                bodyBg: 'linear-gradient(135deg, #b71c1c 0%, #c62828 50%, #d32f2f 100%)',
+                containerBg: 'rgba(198, 40, 40, 0.4)',
+                digitBg: 'linear-gradient(135deg, #c62828 0%, #d32f2f 50%, #e53935 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.2)',
+                textColor: '#ffffff',
+                separatorColor: 'rgba(255, 255, 255, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: 'rgba(255, 255, 255, 0.9)',
+                baseColor: '#c62828'
+            },
+            {
+                name: 'Teal',
+                bodyBg: 'linear-gradient(135deg, #004d40 0%, #00695c 50%, #00796b 100%)',
+                containerBg: 'rgba(0, 105, 92, 0.4)',
+                digitBg: 'linear-gradient(135deg, #00695c 0%, #00796b 50%, #00897b 100%)',
+                digitBorder: 'rgba(255, 255, 255, 0.2)',
+                textColor: '#ff1493',
+                separatorColor: 'rgba(255, 20, 147, 0.9)',
+                ampmBg: 'rgba(255, 255, 255, 0.3)',
+                ampmColor: '#00d9ff',
+                baseColor: '#00695c'
+            },
+            {
+                name: 'Gold',
+                bodyBg: 'linear-gradient(135deg, #f57f17 0%, #fbc02d 50%, #fdd835 100%)',
+                containerBg: 'rgba(251, 192, 45, 0.4)',
+                digitBg: 'linear-gradient(135deg, #fbc02d 0%, #fdd835 50%, #ffeb3b 100%)',
+                digitBorder: 'rgba(0, 0, 0, 0.2)',
+                textColor: '#000000',
+                separatorColor: 'rgba(0, 0, 0, 0.9)',
+                ampmBg: 'rgba(0, 0, 0, 0.3)',
+                ampmColor: '#000000',
+                baseColor: '#fbc02d'
+            }
+        ];
+
+        let currentSchemeIndex = 0;
+
+        function applyColorScheme(index) {
+            const scheme = colorSchemes[index];
+            document.documentElement.style.setProperty('--body-bg', scheme.bodyBg);
+            document.documentElement.style.setProperty('--container-bg', scheme.containerBg);
+            document.documentElement.style.setProperty('--digit-bg', scheme.digitBg);
+            document.documentElement.style.setProperty('--digit-border', scheme.digitBorder);
+            document.documentElement.style.setProperty('--text-color', scheme.textColor);
+            document.documentElement.style.setProperty('--separator-color', scheme.separatorColor);
+            document.documentElement.style.setProperty('--ampm-bg', scheme.ampmBg);
+            
+            // Apply to elements
+            document.body.style.background = scheme.bodyBg;
+            document.querySelector('.clock-container').style.background = scheme.containerBg;
+            
+            const digitContainers = document.querySelectorAll('.digit-container');
+            digitContainers.forEach(container => {
+                container.style.background = scheme.digitBg;
+                container.style.borderColor = scheme.digitBorder;
+            });
+            
+            const digitTexts = document.querySelectorAll('.digit-top-front, .digit-top-back, .digit-bottom-front, .digit-bottom-back');
+            digitTexts.forEach(text => {
+                text.style.color = scheme.textColor;
+            });
+            
+            const separators = document.querySelectorAll('.separator');
+            separators.forEach(sep => {
+                sep.style.color = scheme.separatorColor;
+            });
+            
+            const ampmSpans = document.querySelectorAll('.ampm-indicator span');
+            ampmSpans.forEach(span => {
+                span.style.background = scheme.ampmBg;
+                if (scheme.ampmColor) {
+                    span.style.color = scheme.ampmColor;
+                }
+            });
+            
+            const ampmIndicator = document.querySelector('.ampm-indicator');
+            if (ampmIndicator && scheme.ampmColor) {
+                ampmIndicator.style.color = scheme.ampmColor;
+            }
+            
+            // Update digit half backgrounds
+            const digitHalves = document.querySelectorAll('.digit-top, .digit-bottom');
+            digitHalves.forEach(half => {
+                const isTop = half.classList.contains('digit-top');
+                const lighter = isTop ? 
+                    `linear-gradient(to bottom, ${scheme.baseColor}dd 0%, ${scheme.baseColor}aa 100%)` :
+                    `linear-gradient(to top, ${scheme.baseColor}dd 0%, ${scheme.baseColor}aa 100%)`;
+                half.style.background = lighter;
+            });
+            
+            const digitFronts = document.querySelectorAll('.digit-top-front, .digit-top-back, .digit-bottom-front, .digit-bottom-back');
+            digitFronts.forEach(front => {
+                const isTop = front.classList.contains('digit-top-front') || front.classList.contains('digit-top-back');
+                const gradient = isTop ?
+                    `linear-gradient(to bottom, ${scheme.baseColor}dd 0%, ${scheme.baseColor}aa 100%)` :
+                    `linear-gradient(to top, ${scheme.baseColor}dd 0%, ${scheme.baseColor}aa 100%)`;
+                front.style.background = gradient;
+            });
+        }
+
+        function cycleColorScheme() {
+            currentSchemeIndex = (currentSchemeIndex + 1) % colorSchemes.length;
+            applyColorScheme(currentSchemeIndex);
+        }
+
+        // Initialize with random color scheme
+        const randomColorSchemeIndex = Math.floor(Math.random() * colorSchemes.length);
+        currentSchemeIndex = randomColorSchemeIndex;
+        applyColorScheme(randomColorSchemeIndex);
+
+
+        // Add color control button
+        const colorControl = document.createElement('div');
+        colorControl.className = 'color-control';
+        colorControl.setAttribute('data-tooltip', 'Change color scheme');
+        colorControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M12 3c-4.97 0-9 4.03-9 9s4.03 9 9 9c.83 0 1.5-.67 1.5-1.5 0-.39-.15-.74-.39-1.01-.23-.26-.38-.61-.38-.99 0-.83.67-1.5 1.5-1.5H16c2.76 0 5-2.24 5-5 0-4.42-4.03-8-9-8zm-5.5 9c-.83 0-1.5-.67-1.5-1.5S5.67 9 6.5 9 8 9.67 8 10.5 7.33 12 6.5 12zm3-4C8.67 8 8 7.33 8 6.5S8.67 5 9.5 5s1.5.67 1.5 1.5S10.33 8 9.5 8zm5 0c-.83 0-1.5-.67-1.5-1.5S13.67 5 14.5 5s1.5.67 1.5 1.5S15.33 8 14.5 8zm3 4c-.83 0-1.5-.67-1.5-1.5S16.67 9 17.5 9s1.5.67 1.5 1.5-.67 1.5-1.5 1.5z"/>
+            </svg>
+        `;
+        colorControl.addEventListener('click', cycleColorScheme);
+        document.body.appendChild(colorControl);
+
+        // Fullscreen toggle functionality
+        function toggleFullscreen() {
+            if (!document.fullscreenElement && !document.webkitFullscreenElement && 
+                !document.mozFullScreenElement && !document.msFullscreenElement) {
+                // Enter fullscreen
+                if (document.documentElement.requestFullscreen) {
+                    document.documentElement.requestFullscreen();
+                } else if (document.documentElement.webkitRequestFullscreen) {
+                    document.documentElement.webkitRequestFullscreen();
+                } else if (document.documentElement.mozRequestFullScreen) {
+                    document.documentElement.mozRequestFullScreen();
+                } else if (document.documentElement.msRequestFullscreen) {
+                    document.documentElement.msRequestFullscreen();
+                }
+            } else {
+                // Exit fullscreen
+                if (document.exitFullscreen) {
+                    document.exitFullscreen();
+                } else if (document.webkitExitFullscreen) {
+                    document.webkitExitFullscreen();
+                } else if (document.mozCancelFullScreen) {
+                    document.mozCancelFullScreen();
+                } else if (document.msExitFullscreen) {
+                    document.msExitFullscreen();
+                }
+            }
+        }
+
+        function updateFullscreenIcon() {
+            const isFullscreen = !!(document.fullscreenElement || document.webkitFullscreenElement || 
+                                  document.mozFullScreenElement || document.msFullscreenElement);
+            const icon = fullscreenControl.querySelector('svg path');
+            if (isFullscreen) {
+                // Exit fullscreen icon
+                icon.setAttribute('d', 'M5 16h3v3h2v-5H5v2zm3-8H5v2h5V5H8v3zm6 11h2v-3h3v-2h-5v5zm2-11V5h-2v5h5V8h-3z');
+                fullscreenControl.setAttribute('data-tooltip', 'Exit fullscreen');
+            } else {
+                // Enter fullscreen icon
+                icon.setAttribute('d', 'M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z');
+                fullscreenControl.setAttribute('data-tooltip', 'Enter fullscreen');
+            }
+        }
+
+        // Add fullscreen control button
+        const fullscreenControl = document.createElement('div');
+        fullscreenControl.className = 'fullscreen-control';
+        fullscreenControl.setAttribute('data-tooltip', 'Enter fullscreen');
+        fullscreenControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M7 14H5v5h5v-2H7v-3zm-2-4h2V7h3V5H5v5zm12 7h-3v2h5v-5h-2v3zM14 5v2h3v3h2V5h-5z"/>
+            </svg>
+        `;
+        fullscreenControl.addEventListener('click', toggleFullscreen);
+        document.body.appendChild(fullscreenControl);
+
+        // Update icon when fullscreen state changes
+        document.addEventListener('fullscreenchange', updateFullscreenIcon);
+        document.addEventListener('webkitfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('mozfullscreenchange', updateFullscreenIcon);
+        document.addEventListener('MSFullscreenChange', updateFullscreenIcon);
+
+        // Controls visibility toggle functionality
+        let controlsVisible = true; // Default to showing all controls
+
+        function toggleControlsVisibility() {
+            controlsVisible = !controlsVisible;
+            const allControls = document.querySelectorAll('.parallax-toggle-control, .color-control, .font-set-control, .font-size-control, .time-format-control, .colon-control, .fullscreen-control');
+            
+            allControls.forEach(control => {
+                control.style.display = controlsVisible ? 'flex' : 'none';
+            });
+            
+            updateControlsToggleIcon();
+        }
+
+        function updateControlsToggleIcon() {
+            const icon = controlsToggleControl.querySelector('svg path');
+            if (controlsVisible) {
+                // Show right arrow (to hide controls)
+                icon.setAttribute('d', 'M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z');
+                controlsToggleControl.setAttribute('data-tooltip', 'Hide controls');
+            } else {
+                // Show left arrow (to show controls)
+                icon.setAttribute('d', 'M15.41 16.59L10.83 12l4.58-4.59L14 6l-6 6 6 6 1.41-1.41z');
+                controlsToggleControl.setAttribute('data-tooltip', 'Show controls');
+            }
+        }
+
+        // Create controls toggle control button
+        const controlsToggleControl = document.createElement('div');
+        controlsToggleControl.className = 'controls-toggle-control';
+        controlsToggleControl.setAttribute('data-tooltip', 'Hide controls');
+        controlsToggleControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M8.59 16.59L13.17 12 8.59 7.41 10 6l6 6-6 6-1.41-1.41z"/>
+            </svg>
+        `;
+        controlsToggleControl.addEventListener('click', toggleControlsVisibility);
+        document.body.appendChild(controlsToggleControl);
+
+        // Initialize icon
+        updateControlsToggleIcon();
+
+        // Seconds toggle functionality
+        function toggleSeconds() {
+            showSeconds = !showSeconds;
+            const secondsSeparator = document.getElementById('seconds-separator');
+            const secondsGroup = document.getElementById('seconds-group');
+            
+            if (showSeconds) {
+                secondsSeparator.style.display = 'flex';
+                secondsGroup.style.display = 'flex';
+                colonControl.style.opacity = '1';
+            } else {
+                secondsSeparator.style.display = 'none';
+                secondsGroup.style.display = 'none';
+                colonControl.style.opacity = '0.5';
+            }
+            
+            // Update the clock to refresh display
+            updateClock();
+        }
+
+        // Create colon control button
+        const colonControl = document.createElement('div');
+        colonControl.className = 'colon-control';
+        colonControl.setAttribute('data-tooltip', 'Toggle seconds display');
+        colonControl.innerHTML = '<span class="colon-text">:</span>';
+        colonControl.addEventListener('click', toggleSeconds);
+        document.body.appendChild(colonControl);
+
+        // Time format toggle functionality
+        function toggleTimeFormat() {
+            timeFormat24 = !timeFormat24;
+            updateClock(); // Immediately update the clock display
+            updateTimeFormatIcon();
+        }
+
+        function updateTimeFormatIcon() {
+            if (timeFormat24) {
+                // 24-hour format - display "24" text
+                timeFormatControl.innerHTML = '<span class="format-text">24</span>';
+                timeFormatControl.setAttribute('data-tooltip', '24-hour format');
+            } else {
+                // 12-hour format icon (analog clock)
+                timeFormatControl.innerHTML = `
+                    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                        <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+                    </svg>
+                `;
+                timeFormatControl.setAttribute('data-tooltip', '12-hour format');
+            }
+        }
+
+        // Add time format control button
+        const timeFormatControl = document.createElement('div');
+        timeFormatControl.className = 'time-format-control';
+        timeFormatControl.setAttribute('data-tooltip', '12-hour format');
+        timeFormatControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M11.99 2C6.47 2 2 6.48 2 12s4.47 10 9.99 10C17.52 22 22 17.52 22 12S17.52 2 11.99 2zM12 20c-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8-3.58 8-8 8zm.5-13H11v6l5.25 3.15.75-1.23-4.5-2.67z"/>
+            </svg>
+        `;
+        timeFormatControl.addEventListener('click', toggleTimeFormat);
+        document.body.appendChild(timeFormatControl);
+        
+        // Initialize icon
+        updateTimeFormatIcon();
+
+        // Font set toggle functionality
+        // Initialize with random font set
+        let currentFontSet = Math.floor(Math.random() * 3); // 0 = default, 1 = alt, 2 = third
+        
+        // Apply random font set on load
+        const clockContainer = document.querySelector('.clock-container');
+        if (currentFontSet === 1) {
+            clockContainer.classList.add('font-set-alt');
+        } else if (currentFontSet === 2) {
+            clockContainer.classList.add('font-set-third');
+        }
+        // currentFontSet === 0 means default (no class needed)
+
+        function toggleFontSet() {
+            const clockContainer = document.querySelector('.clock-container');
+            
+            // Remove all font set classes
+            clockContainer.classList.remove('font-set-alt', 'font-set-third');
+            
+            // Cycle through font sets: 0 -> 1 -> 2 -> 0
+            currentFontSet = (currentFontSet + 1) % 3;
+            
+            // Apply the appropriate class
+            if (currentFontSet === 1) {
+                clockContainer.classList.add('font-set-alt');
+            } else if (currentFontSet === 2) {
+                clockContainer.classList.add('font-set-third');
+            }
+            // currentFontSet === 0 means default (no class needed)
+            
+            // Update the clock to refresh with new fonts
+            updateClock();
+        }
+
+        // Create font set control button
+        const fontSetControl = document.createElement('div');
+        fontSetControl.className = 'font-set-control';
+        fontSetControl.setAttribute('data-tooltip', 'Change font set');
+        fontSetControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <path d="M9.93 13.5h4.14L12 7.98zM20 2H4c-1.1 0-2 .9-2 2v16c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V4c0-1.1-.9-2-2-2zm-4.05 16.5l-1.14-3H9.17l-1.14 3H5.96l5.11-13h1.86l5.11 13h-2.05z"/>
+            </svg>
+        `;
+        fontSetControl.addEventListener('click', toggleFontSet);
+        document.body.appendChild(fontSetControl);
+
+        // Font size control functionality
+        let fontSizeStep = 0; // 0-4 up, then 4-0 down
+        let fontSizeDirection = 'up'; // 'up' or 'down'
+        const baseFontSize = 8.25; // Base font size in rem
+        const baseCardWidth = 135; // Base card width in px
+        const baseCardHeight = 195; // Base card height in px
+        const fontSizeMultipliers = [1.0, 1.15, 1.3, 1.45, 1.6]; // Multipliers for each step (4 steps)
+
+        function updateFontSize() {
+            const multiplier = fontSizeMultipliers[fontSizeStep];
+            const newFontSize = baseFontSize * multiplier;
+            const newCardWidth = baseCardWidth * multiplier;
+            const newCardHeight = baseCardHeight * multiplier;
+            
+            // Apply to all digit elements
+            const digitTexts = document.querySelectorAll('.digit-top-front, .digit-top-back, .digit-bottom-front, .digit-bottom-back');
+            digitTexts.forEach(text => {
+                text.style.fontSize = `${newFontSize}rem`;
+            });
+            
+            // Also update separators proportionally
+            const separators = document.querySelectorAll('.separator');
+            separators.forEach(sep => {
+                sep.style.fontSize = `${newFontSize * 0.85}rem`; // Separators slightly smaller
+            });
+            
+            // Scale card dimensions proportionally
+            const digitContainers = document.querySelectorAll('.digit-container');
+            digitContainers.forEach(container => {
+                container.style.width = `${newCardWidth}px`;
+                container.style.height = `${newCardHeight}px`;
+            });
+            
+            // Update button icon
+            updateFontSizeButtonIcon();
+        }
+
+        function toggleFontSize() {
+            if (fontSizeDirection === 'up') {
+                if (fontSizeStep < 4) {
+                    fontSizeStep++;
+                    if (fontSizeStep === 4) {
+                        fontSizeDirection = 'down';
+                    }
+                }
+            } else {
+                // Going down
+                if (fontSizeStep > 0) {
+                    fontSizeStep--;
+                    if (fontSizeStep === 0) {
+                        fontSizeDirection = 'up';
+                    }
+                }
+            }
+            updateFontSize();
+        }
+
+        function updateFontSizeButtonIcon() {
+            const btn = document.getElementById('font-size-toggle-btn');
+            const svg = btn.querySelector('svg path');
+            
+            if (fontSizeDirection === 'up') {
+                // Show plus icon when going up
+                svg.setAttribute('d', 'M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z');
+                btn.setAttribute('aria-label', 'Increase font size');
+                fontSizeControl.setAttribute('data-tooltip', 'Increase font size');
+            } else {
+                // Show minus icon when going down
+                svg.setAttribute('d', 'M19 13H5v-2h14v2z');
+                btn.setAttribute('aria-label', 'Decrease font size');
+                fontSizeControl.setAttribute('data-tooltip', 'Decrease font size');
+            }
+        }
+
+        // Create font size control
+        const fontSizeControl = document.createElement('div');
+        fontSizeControl.className = 'font-size-control';
+        fontSizeControl.setAttribute('data-tooltip', 'Increase font size');
+        fontSizeControl.innerHTML = `
+            <button id="font-size-toggle-btn" class="font-size-btn" aria-label="Increase font size">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                    <path d="M19 13h-6v6h-2v-6H5v-2h6V5h2v6h6v2z"/>
+                </svg>
+            </button>
+        `;
+        document.body.appendChild(fontSizeControl);
+
+        // Add event listener
+        document.getElementById('font-size-toggle-btn').addEventListener('click', toggleFontSize);
+
+        // Initialize button icon
+        updateFontSizeButtonIcon();
+
+        // Parallax effect based on mouse position
+        let parallaxEnabled = false; // Parallax is disabled by default
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let rafId = null;
+        const parallaxIntensity = 0.05; // Base intensity for container
+        const rotationIntensity = 15; // Rotation intensity in degrees
+        const yAxisReduction = 0.65; // Reduce Y-axis effects to prevent flipping (0.65 = 65% intensity)
+
+        function updateParallax() {
+            if (!parallaxEnabled) {
+                // Reset transform when parallax is disabled
+                const clockContainer = document.querySelector('.clock-container');
+                if (clockContainer) {
+                    clockContainer.style.transform = '';
+                }
+                return;
+            }
+            const clockContainer = document.querySelector('.clock-container');
+            if (!clockContainer) return;
+            
+            const containerRect = clockContainer.getBoundingClientRect();
+            const containerCenterX = containerRect.left + containerRect.width / 2;
+            const containerCenterY = containerRect.top + containerRect.height / 2;
+            
+            // Calculate distance from mouse to container center
+            const distanceX = (mouseX - containerCenterX) / window.innerWidth;
+            const distanceY = (mouseY - containerCenterY) / window.innerHeight;
+            
+            // Calculate rotation for depth effect based on mouse position relative to container center
+            // Normalize mouse position to -1 to 1 range relative to container
+            const containerWidth = containerRect.width;
+            const containerHeight = containerRect.height;
+            const relativeX = (mouseX - containerCenterX) / (containerWidth / 2);
+            const relativeY = (mouseY - containerCenterY) / (containerHeight / 2);
+            
+            // Apply rotation - mouse to the right rotates Y positive, mouse below rotates X positive
+            // Reduce Y-axis rotation to prevent flipping over
+            const rotationX = -relativeY * rotationIntensity * yAxisReduction;
+            const rotationY = relativeX * rotationIntensity;
+            
+            // Apply transform to container with z-space effects
+            // Transform order: translate, rotate - this ensures rotation happens around the element's center
+            const containerTransformX = distanceX * parallaxIntensity * 100;
+            const containerTransformY = distanceY * parallaxIntensity * 100 * yAxisReduction; // Reduce Y translation as well
+            clockContainer.style.transform = `translate(${containerTransformX}px, ${containerTransformY}px) rotateX(${rotationX}deg) rotateY(${rotationY}deg)`;
+            
+            rafId = null;
+        }
+
+        function handleMouseMove(e) {
+            if (!parallaxEnabled) return; // Don't update if parallax is disabled
+            
+            mouseX = e.clientX;
+            mouseY = e.clientY;
+            
+            // Use requestAnimationFrame for smooth updates
+            if (!rafId) {
+                rafId = requestAnimationFrame(updateParallax);
+            }
+        }
+
+        // Add mouse move event listener
+        document.addEventListener('mousemove', handleMouseMove);
+        
+        // Initialize parallax on page load
+        updateParallax();
+
+        // Parallax toggle functionality
+        function toggleParallax() {
+            parallaxEnabled = !parallaxEnabled;
+            updateParallaxIcon();
+            if (!parallaxEnabled) {
+                // Reset transform immediately when disabled
+                const clockContainer = document.querySelector('.clock-container');
+                if (clockContainer) {
+                    clockContainer.style.transform = '';
+                }
+            } else {
+                // Re-enable parallax by updating it
+                updateParallax();
+            }
+        }
+
+        function updateParallaxIcon() {
+            const svg = parallaxToggleControl.querySelector('svg');
+            // Proper isometric cube with correct proportions (150% size, centered)
+            svg.innerHTML = `
+                <!-- Front face (square) -->
+                <rect x="5.25" y="9.75" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Top face (isometric square) -->
+                <path d="M5.25 9.75 L9.75 5.25 L18.75 5.25 L14.25 9.75 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Right face (isometric square) -->
+                <path d="M14.25 9.75 L18.75 5.25 L18.75 14.25 L14.25 18.75 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            `;
+            // Update tooltip based on state
+            if (parallaxEnabled) {
+                parallaxToggleControl.setAttribute('data-tooltip', 'Disable 3D parallax');
+            } else {
+                parallaxToggleControl.setAttribute('data-tooltip', 'Enable 3D parallax');
+            }
+        }
+
+        // Create parallax toggle control button
+        const parallaxToggleControl = document.createElement('div');
+        parallaxToggleControl.className = 'parallax-toggle-control';
+        parallaxToggleControl.setAttribute('data-tooltip', 'Enable 3D parallax');
+        parallaxToggleControl.innerHTML = `
+            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24">
+                <!-- Proper isometric cube with correct proportions (150% size, centered) -->
+                <!-- Front face (square) -->
+                <rect x="5.25" y="9.75" width="9" height="9" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Top face (isometric square) -->
+                <path d="M5.25 9.75 L9.75 5.25 L18.75 5.25 L14.25 9.75 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+                <!-- Right face (isometric square) -->
+                <path d="M14.25 9.75 L18.75 5.25 L18.75 14.25 L14.25 18.75 Z" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linejoin="round"/>
+            </svg>
+        `;
+        parallaxToggleControl.addEventListener('click', toggleParallax);
+        document.body.appendChild(parallaxToggleControl);
+
+        // Initialize icon
+        updateParallaxIcon();
+    </script>
+</body>
+</html>
+
+
+  </div>
+
+  <footer class="post-footer">
+    <ul class="post-tags">
+    </ul>
+  </footer>
+</article>
+    </main>
+    
+<footer class="footer">
+        <span>&copy; 2025 <a href="http://localhost:1313/">davecurry.net</a></span> · 
+
+    <span>
+        Powered by
+        <a href="https://gohugo.io/" rel="noopener noreferrer" target="_blank">Hugo</a> &
+        <a href="https://github.com/adityatelange/hugo-PaperMod/" rel="noopener" target="_blank">PaperMod</a>
+    </span>
+</footer>
+<a href="#top" aria-label="go to top" title="Go to Top (Alt + G)" class="top-link" id="top-link" accesskey="g">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 12 6" fill="currentColor">
+        <path d="M12 6H0l6-6z" />
+    </svg>
+</a>
+
+<script>
+    let menu = document.getElementById('menu')
+    if (menu) {
+        menu.scrollLeft = localStorage.getItem("menu-scroll-position");
+        menu.onscroll = function () {
+            localStorage.setItem("menu-scroll-position", menu.scrollLeft);
+        }
+    }
+
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        anchor.addEventListener("click", function (e) {
+            e.preventDefault();
+            var id = this.getAttribute("href").substr(1);
+            if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView({
+                    behavior: "smooth"
+                });
+            } else {
+                document.querySelector(`[id='${decodeURIComponent(id)}']`).scrollIntoView();
+            }
+            if (id === "top") {
+                history.replaceState(null, null, " ");
+            } else {
+                history.pushState(null, null, `#${id}`);
+            }
+        });
+    });
+
+</script>
+<script>
+    var mybutton = document.getElementById("top-link");
+    window.onscroll = function () {
+        if (document.body.scrollTop > 800 || document.documentElement.scrollTop > 800) {
+            mybutton.style.visibility = "visible";
+            mybutton.style.opacity = "1";
+        } else {
+            mybutton.style.visibility = "hidden";
+            mybutton.style.opacity = "0";
+        }
+    };
+
+</script>
+<script>
+    document.getElementById("theme-toggle").addEventListener("click", () => {
+        if (document.body.className.includes("dark")) {
+            document.body.classList.remove('dark');
+            localStorage.setItem("pref-theme", 'light');
+        } else {
+            document.body.classList.add('dark');
+            localStorage.setItem("pref-theme", 'dark');
+        }
+    })
+
+</script>
+<script>
+    document.querySelectorAll('pre > code').forEach((codeblock) => {
+        const container = codeblock.parentNode.parentNode;
+
+        const copybutton = document.createElement('button');
+        copybutton.classList.add('copy-code');
+        copybutton.innerHTML = 'copy';
+
+        function copyingDone() {
+            copybutton.innerHTML = 'copied!';
+            setTimeout(() => {
+                copybutton.innerHTML = 'copy';
+            }, 2000);
+        }
+
+        copybutton.addEventListener('click', (cb) => {
+            if ('clipboard' in navigator) {
+                navigator.clipboard.writeText(codeblock.textContent);
+                copyingDone();
+                return;
+            }
+
+            const range = document.createRange();
+            range.selectNodeContents(codeblock);
+            const selection = window.getSelection();
+            selection.removeAllRanges();
+            selection.addRange(range);
+            try {
+                document.execCommand('copy');
+                copyingDone();
+            } catch (e) { };
+            selection.removeRange(range);
+        });
+
+        if (container.classList.contains("highlight")) {
+            container.appendChild(copybutton);
+        } else if (container.parentNode.firstChild == container) {
+            
+        } else if (codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.nodeName == "TABLE") {
+            
+            codeblock.parentNode.parentNode.parentNode.parentNode.parentNode.appendChild(copybutton);
+        } else {
+            
+            codeblock.parentNode.appendChild(copybutton);
+        }
+    });
+</script>
+</body>
+
+</html>
