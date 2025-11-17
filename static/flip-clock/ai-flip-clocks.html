@@ -1,0 +1,1495 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Flip Clocks</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <!-- Fira Code for titles -->
+    <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@400;600&display=swap" rel="stylesheet">
+    <!-- Fonts for Claude Sonnet 4.5 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400&family=Orbitron:wght@700&family=Raleway:wght@300&family=Oswald:wght@500;700&family=Montserrat:wght@700;800&family=Playfair+Display:wght@600;700;900&family=Ubuntu:wght@500&family=Russo+One&family=Lobster&family=Bebas+Neue&display=swap" rel="stylesheet">
+    <!-- Additional fonts for Composer -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto+Mono:wght@300;500&family=Source+Code+Pro:wght@600;900&family=Dancing+Script:wght@700&family=Merriweather:wght@700;900&family=Anton&family=Pacifico&display=swap" rel="stylesheet">
+    <!-- Additional fonts for GPT-5.1 Codex -->
+    <link href="https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Courgette&family=Space+Mono:wght@700&display=swap" rel="stylesheet">
+    <!-- Fonts for GPT-4.1 -->
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@900&family=PT+Sans+Narrow:wght@700&family=Share+Tech+Mono&family=Luckiest+Guy&family=Orbitron:wght@900&family=Bungee+Inline&family=Alfa+Slab+One&family=Press+Start+2P&family=Black+Ops+One&family=Montserrat:wght@900&display=swap" rel="stylesheet">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #e8e8e8;
+            min-height: 100vh;
+            padding: 40px 20px;
+        }
+
+        .main-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 30px;
+            text-shadow: none;
+            font-family: 'Fira Code', monospace;
+            font-weight: 600;
+        }
+
+        .attribution {
+            text-align: center;
+            color: #666;
+            font-size: 1em;
+            margin-bottom: 20px;
+        }
+
+        .attribution a {
+            color: #4a90e2;
+            text-decoration: none;
+            transition: color 0.3s ease;
+        }
+
+        .attribution a:hover {
+            color: #2e5f8e;
+            text-decoration: underline;
+        }
+
+        .prompt-block {
+            color: #333;
+            margin-bottom: 50px;
+            font-family: 'Courier New', monospace;
+            font-size: 0.9em;
+            line-height: 1.6;
+            white-space: pre-wrap;
+            width: 50%;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .clock-section {
+            background: white;
+            border-radius: 20px;
+            padding: 40px 20px;
+            margin-bottom: 40px;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+        }
+
+        .clock-title {
+            text-align: center;
+            color: #333;
+            font-size: 1.5em;
+            margin-bottom: 30px;
+            font-weight: 600;
+            font-family: 'Fira Code', monospace;
+        }
+
+        .clock-wrapper {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 200px;
+        }
+
+        /* ============================================
+           CLAUDE SONNET 4.5 STYLES
+           ============================================ */
+        #claude-clock {
+            background: linear-gradient(135deg, #f5f7fa 0%, #c3cfe2 100%);
+        }
+
+        #claude-clock .clock-container {
+            display: flex;
+            gap: 8px;
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            max-width: 100%;
+        }
+
+        #claude-clock .time-segment {
+            display: flex;
+            gap: 6px;
+        }
+
+        #claude-clock .separator {
+            font-size: clamp(40px, 8vw, 80px);
+            font-weight: bold;
+            color: #2c3e50;
+            display: flex;
+            align-items: center;
+            padding: 0 8px;
+        }
+
+        #claude-clock .flip-card {
+            position: relative;
+            width: clamp(50px, 10vw, 100px);
+            height: clamp(70px, 14vw, 140px);
+            perspective: 1000px;
+        }
+
+        #claude-clock .flip-card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transition: transform 0.6s;
+            transform-style: preserve-3d;
+        }
+
+        #claude-clock .flip-card.flip .flip-card-inner {
+            transform: rotateX(180deg);
+        }
+
+        #claude-clock .flip-card-front,
+        #claude-clock .flip-card-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1),
+                        inset 0 1px 0 rgba(255, 255, 255, 0.6);
+            font-size: clamp(35px, 7vw, 70px);
+            font-weight: bold;
+            color: #2c3e50;
+            overflow: hidden;
+        }
+
+        #claude-clock .flip-card-front::before,
+        #claude-clock .flip-card-back::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: linear-gradient(to right, transparent, rgba(0,0,0,0.1), transparent);
+        }
+
+        #claude-clock .flip-card-back {
+            transform: rotateX(180deg);
+        }
+
+        #claude-clock .digit-0 { font-family: 'Roboto', sans-serif; font-weight: 400; }
+        #claude-clock .digit-1 { font-family: 'Orbitron', sans-serif; font-weight: 700; }
+        #claude-clock .digit-2 { font-family: 'Raleway', sans-serif; font-weight: 300; }
+        #claude-clock .digit-3 { font-family: 'Oswald', sans-serif; font-weight: 500; }
+        #claude-clock .digit-4 { font-family: 'Montserrat', sans-serif; font-weight: 800; }
+        #claude-clock .digit-5 { font-family: 'Playfair Display', serif; font-weight: 600; }
+        #claude-clock .digit-6 { font-family: 'Ubuntu', sans-serif; font-weight: 500; }
+        #claude-clock .digit-7 { font-family: 'Russo One', sans-serif; }
+        #claude-clock .digit-8 { font-family: 'Lobster', cursive; }
+        #claude-clock .digit-9 { font-family: 'Bebas Neue', sans-serif; }
+
+        #claude-clock .ampm {
+            display: flex;
+            flex-direction: column;
+            gap: 4px;
+            margin-left: 8px;
+        }
+
+        #claude-clock .ampm-indicator {
+            background: linear-gradient(145deg, #ffffff, #e6e6e6);
+            border-radius: 6px;
+            padding: clamp(6px, 1.5vw, 12px) clamp(10px, 2vw, 20px);
+            font-size: clamp(14px, 2.5vw, 24px);
+            font-weight: bold;
+            color: #2c3e50;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+            transition: all 0.3s ease;
+        }
+
+        #claude-clock .ampm-indicator.active {
+            background: linear-gradient(145deg, #3498db, #2980b9);
+            color: white;
+            transform: scale(1.05);
+        }
+
+        /* ============================================
+           COMPOSER STYLES
+           ============================================ */
+        #composer-clock {
+            background-color: #fafafa;
+        }
+
+        #composer-clock .clock-container {
+            display: flex;
+            gap: clamp(8px, 1.5vw, 20px);
+            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        #composer-clock .time-group {
+            display: flex;
+            gap: clamp(4px, 0.75vw, 10px);
+        }
+
+        #composer-clock .flip-card {
+            position: relative;
+            width: clamp(50px, 7vw, 100px);
+            height: clamp(75px, 10.5vw, 150px);
+            perspective: 1000px;
+        }
+
+        #composer-clock .card-inner {
+            position: relative;
+            width: 100%;
+            height: 100%;
+            transform-style: preserve-3d;
+        }
+
+        #composer-clock .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+            border-radius: 12px;
+            box-shadow: 0 4px 8px rgba(0,0,0,0.1), inset 0 1px 0 rgba(255,255,255,0.8);
+            backface-visibility: hidden;
+            font-size: clamp(40px, 7vw, 90px);
+            font-weight: bold;
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        #composer-clock .card-top {
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+            border-radius: 12px 12px 0 0;
+        }
+
+        #composer-clock .card-bottom {
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+            border-radius: 0 0 12px 12px;
+            align-items: flex-end;
+        }
+
+        #composer-clock .flipper {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            left: 0;
+            transform-style: preserve-3d;
+            transform-origin: bottom;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+        }
+
+        #composer-clock .flip-card.flipped .flipper {
+            transform: rotateX(-180deg);
+        }
+
+        #composer-clock .flipper-front,
+        #composer-clock .flipper-back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            background: linear-gradient(180deg, #ffffff 0%, #f8f8f8 100%);
+            border-radius: 12px 12px 0 0;
+            backface-visibility: hidden;
+            font-size: clamp(40px, 7vw, 90px);
+            font-weight: bold;
+            color: #1a1a1a;
+            overflow: hidden;
+        }
+
+        #composer-clock .flipper-back {
+            transform: rotateX(180deg);
+            align-items: flex-end;
+            border-radius: 0 0 12px 12px;
+        }
+
+        #composer-clock .font-0 { font-family: 'Roboto Mono', monospace; font-weight: 300; letter-spacing: -2px; }
+        #composer-clock .font-1 { font-family: 'Playfair Display', serif; font-weight: 900; font-style: italic; }
+        #composer-clock .font-2 { font-family: 'Lobster', cursive; font-weight: 400; }
+        #composer-clock .font-3 { font-family: 'Oswald', sans-serif; font-weight: 700; letter-spacing: 2px; }
+        #composer-clock .font-4 { font-family: 'Source Code Pro', monospace; font-weight: 900; letter-spacing: -1px; }
+        #composer-clock .font-5 { font-family: 'Dancing Script', cursive; font-weight: 700; }
+        #composer-clock .font-6 { font-family: 'Montserrat', sans-serif; font-weight: 100; letter-spacing: 3px; }
+        #composer-clock .font-7 { font-family: 'Merriweather', serif; font-weight: 700; }
+        #composer-clock .font-8 { font-family: 'Anton', sans-serif; font-weight: 400; letter-spacing: 1px; }
+        #composer-clock .font-9 { font-family: 'Pacifico', cursive; font-weight: 400; }
+        #composer-clock .font-ampm { font-family: 'Bebas Neue', sans-serif; font-weight: 400; letter-spacing: 2px; font-size: clamp(30px, 5vw, 70px); }
+
+        #composer-clock .separator {
+            font-size: clamp(30px, 5vw, 60px);
+            color: #666;
+            font-weight: 300;
+            margin: 0 clamp(4px, 0.5vw, 8px);
+        }
+
+        /* ============================================
+           GEMINI PRO STYLES
+           ============================================ */
+        #gemini-clock {
+            background-color: #f0f0f0;
+        }
+
+        #gemini-clock .clock-container {
+            display: flex;
+            gap: 1.5vw;
+            align-items: center;
+            perspective: 1000px;
+        }
+
+        #gemini-clock .time-group {
+            display: flex;
+            gap: calc(1.5vw / 2);
+        }
+
+        #gemini-clock .flip-card {
+            position: relative;
+            width: 6vw;
+            height: 9vw;
+            max-width: 80px;
+            max-height: 120px;
+            min-width: 40px;
+            min-height: 60px;
+            font-size: 7vw;
+            line-height: 9vw;
+        }
+
+        @media (min-width: 1250px) {
+            #gemini-clock .flip-card {
+                line-height: 120px;
+                font-size: 90px;
+            }
+        }
+
+        @media (max-width: 667px) {
+            #gemini-clock .flip-card {
+                line-height: 60px;
+                font-size: 45px;
+            }
+        }
+
+        #gemini-clock .card-face {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+        }
+
+        #gemini-clock .top {
+            clip-path: polygon(0 0, 100% 0, 100% 50%, 0 50%);
+            align-items: flex-start;
+        }
+
+        #gemini-clock .bottom {
+            clip-path: polygon(0 50%, 100% 50%, 100% 100%, 0 100%);
+            align-items: flex-end;
+        }
+
+        #gemini-clock .flipper {
+            position: absolute;
+            width: 100%;
+            height: 50%;
+            top: 0;
+            left: 0;
+            transform-origin: bottom;
+            transition: transform 0.6s cubic-bezier(0.4, 0.0, 0.2, 1);
+            transform-style: preserve-3d;
+        }
+
+        #gemini-clock .flip-card.flipped .flipper {
+            transform: rotateX(-180deg);
+        }
+
+        #gemini-clock .flipper .front,
+        #gemini-clock .flipper .back {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            backface-visibility: hidden;
+            -webkit-backface-visibility: hidden;
+            display: flex;
+            justify-content: center;
+            align-items: flex-start;
+            overflow: hidden;
+            background-color: #fff;
+            border-radius: 8px 8px 0 0;
+        }
+
+        #gemini-clock .flipper .back {
+            transform: rotateX(180deg);
+            align-items: flex-end;
+            border-radius: 0 0 8px 8px;
+        }
+
+        #gemini-clock .font-0 { font-family: 'Roboto Mono', monospace; }
+        #gemini-clock .font-1 { font-family: 'Playfair Display', serif; }
+        #gemini-clock .font-2 { font-family: 'Lobster', cursive; }
+        #gemini-clock .font-3 { font-family: 'Oswald', sans-serif; }
+        #gemini-clock .font-4 { font-family: 'Source Code Pro', monospace; }
+        #gemini-clock .font-5 { font-family: 'Dancing Script', cursive; }
+        #gemini-clock .font-6 { font-family: 'Montserrat', sans-serif; }
+        #gemini-clock .font-7 { font-family: 'Merriweather', serif; }
+        #gemini-clock .font-8 { font-family: 'Anton', sans-serif; }
+        #gemini-clock .font-9 { font-family: 'Pacifico', cursive; }
+        #gemini-clock .font-ampm { font-family: 'Bebas Neue', cursive; }
+
+        /* ============================================
+           GPT-5.1 CODEX STYLES
+           ============================================ */
+        #gpt-clock {
+            background: radial-gradient(circle at top, #fdfcfb, #e9effd 65%);
+        }
+
+        #gpt-clock .gpt-flip-clock {
+            width: 100%;
+            display: grid;
+            grid-template-columns: repeat(6, minmax(70px, 1fr));
+            gap: clamp(0.6rem, 1.8vw, 1rem);
+            justify-items: center;
+        }
+
+        @media (max-width: 720px) {
+            #gpt-clock .gpt-flip-clock {
+                grid-template-columns: repeat(3, minmax(70px, 1fr));
+            }
+        }
+
+        #gpt-clock .time-block {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.75rem;
+        }
+
+        #gpt-clock .block-label {
+            font-size: 0.9rem;
+            letter-spacing: 0.1em;
+            text-transform: uppercase;
+            color: rgba(17, 22, 36, 0.6);
+        }
+
+        #gpt-clock .flip-card {
+            position: relative;
+            width: min(18vw, 140px);
+            height: calc(min(18vw, 140px) * 1.2);
+            perspective: 1400px;
+            filter: drop-shadow(0 18px 45px rgba(52, 73, 94, 0.15));
+        }
+
+        #gpt-clock .card-face {
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: clamp(2.5rem, 5vw, 4.4rem);
+            background: #fff;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: #364152;
+            letter-spacing: 0.1rem;
+            backface-visibility: hidden;
+            overflow: hidden;
+        }
+
+        #gpt-clock .top {
+            top: 0;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            transform-origin: center bottom;
+        }
+
+        #gpt-clock .bottom {
+            bottom: 0;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transform-origin: center top;
+        }
+
+        #gpt-clock .back-top,
+        #gpt-clock .back-bottom {
+            background: #fff;
+            position: absolute;
+            left: 0;
+            width: 100%;
+            height: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            color: #364152;
+            overflow: hidden;
+            backface-visibility: hidden;
+        }
+
+        #gpt-clock .back-top {
+            top: 0;
+            border-top-left-radius: 16px;
+            border-top-right-radius: 16px;
+            transform-origin: center bottom;
+            transform: rotateX(180deg);
+        }
+
+        #gpt-clock .back-bottom {
+            bottom: 0;
+            border-bottom-left-radius: 16px;
+            border-bottom-right-radius: 16px;
+            transform-origin: center top;
+            transform: rotateX(0deg);
+        }
+
+        #gpt-clock .flip-card.play .top {
+            animation: flipTop 0.7s ease-in forwards;
+        }
+
+        #gpt-clock .flip-card.play .back-top {
+            animation: flipBack 0.7s ease-in forwards;
+        }
+
+        @keyframes flipTop {
+            0% {
+                transform: rotateX(0deg);
+            }
+            100% {
+                transform: rotateX(-180deg);
+            }
+        }
+
+        @keyframes flipBack {
+            0% {
+                transform: rotateX(180deg);
+            }
+            100% {
+                transform: rotateX(0deg);
+            }
+        }
+
+        #gpt-clock .ampm-card {
+            width: min(40vw, 200px);
+            padding: 1.2rem 1.6rem;
+            border-radius: 999px;
+            background: rgba(255, 255, 255, 0.9);
+            border: 1px solid rgba(0, 0, 0, 0.05);
+            box-shadow: 0 18px 45px rgba(52, 73, 94, 0.15);
+            font-size: clamp(1.2rem, 2.5vw, 1.6rem);
+            letter-spacing: 0.3rem;
+            text-transform: uppercase;
+            text-align: center;
+            color: #182033;
+        }
+
+        #gpt-clock .digit-face {
+            transition: color 0.3s ease;
+        }
+
+        #gpt-clock .flip-card[data-digit="0"] .digit-face { font-family: 'Oswald', sans-serif; font-weight: 500; }
+        #gpt-clock .flip-card[data-digit="1"] .digit-face { font-family: 'Lobster', cursive; }
+        #gpt-clock .flip-card[data-digit="2"] .digit-face { font-family: 'Space Mono', monospace; font-weight: 700; }
+        #gpt-clock .flip-card[data-digit="3"] .digit-face { font-family: 'Playfair Display', serif; font-weight: 600; }
+        #gpt-clock .flip-card[data-digit="4"] .digit-face { font-family: 'Montserrat', sans-serif; font-weight: 600; }
+        #gpt-clock .flip-card[data-digit="5"] .digit-face { font-family: 'Fira Code', monospace; }
+        #gpt-clock .flip-card[data-digit="6"] .digit-face { font-family: 'Bebas Neue', sans-serif; letter-spacing: 0.07em; }
+        #gpt-clock .flip-card[data-digit="7"] .digit-face { font-family: 'Pacifico', cursive; }
+        #gpt-clock .flip-card[data-digit="8"] .digit-face { font-family: 'Abril Fatface', serif; }
+        #gpt-clock .flip-card[data-digit="9"] .digit-face { font-family: 'Courgette', cursive; }
+
+        /* ============================================
+           GPT-4.1 STYLES
+           ============================================ */
+        #gpt41-clock {
+            background: #f1f5fa;
+        }
+
+        #gpt41-clock .gpt41-flip-clock {
+            display: flex;
+            gap: 2vw;
+            background: #fff;
+            border-radius: 2vw;
+            box-shadow: 0 8px 32px rgba(47,65,134,0.09);
+            padding: 2vw 3vw 2vw 3vw;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 95vw;
+            margin: 0 auto;
+        }
+
+        #gpt41-clock .clock-section {
+            display: flex;
+            gap: 0.4vw;
+            align-items: center;
+        }
+
+        #gpt41-clock .colon {
+            font-size: 7vw;
+            margin: 0 0.5vw;
+            color: #a2aebf;
+            font-weight: bold;
+            vertical-align: middle;
+            user-select: none;
+        }
+
+        #gpt41-clock .card {
+            width: 7vw;
+            height: 9vw;
+            min-width: 40px;
+            min-height: 55px;
+            background: #f5f8fc;
+            border-radius: 1vw;
+            margin: 0 0.1vw;
+            box-shadow: 0 2px 14px rgba(80,110,180,0.15);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+            transition: box-shadow 0.3s;
+            position: relative;
+        }
+
+        #gpt41-clock .digit {
+            font-size: 6vw;
+            line-height: 1;
+            color: #2d3856;
+            transition: color 0.3s;
+            user-select: none;
+            margin-top: 3px;
+        }
+
+        #gpt41-clock .digit.d0 { font-family: 'Roboto', sans-serif; }
+        #gpt41-clock .digit.d1 { font-family: 'PT Sans Narrow', sans-serif; }
+        #gpt41-clock .digit.d2 { font-family: 'Share Tech Mono', monospace; }
+        #gpt41-clock .digit.d3 { font-family: 'Luckiest Guy', cursive; }
+        #gpt41-clock .digit.d4 { font-family: 'Orbitron', sans-serif; }
+        #gpt41-clock .digit.d5 { font-family: 'Bungee Inline', cursive; }
+        #gpt41-clock .digit.d6 { font-family: 'Alfa Slab One', serif; }
+        #gpt41-clock .digit.d7 { font-family: 'Press Start 2P', monospace; }
+        #gpt41-clock .digit.d8 { font-family: 'Black Ops One', sans-serif; }
+        #gpt41-clock .digit.d9 { font-family: 'Montserrat', sans-serif; }
+
+        #gpt41-clock .ampm {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            justify-content: center;
+            margin-left: 2vw;
+        }
+
+        #gpt41-clock .ampm span {
+            font-size: 2vw;
+            color: #4c6070;
+            background: #e6eef5;
+            padding: 0.4vw 1vw;
+            border-radius: 0.8vw;
+            font-weight: bold;
+            letter-spacing: 0.1em;
+            box-shadow: 0 1px 4px rgba(80,100,160,0.10);
+        }
+
+        @media (max-width: 600px) {
+            #gpt41-clock .gpt41-flip-clock { padding: 2vw; gap: 1vw; }
+            #gpt41-clock .colon, #gpt41-clock .digit { font-size: 9vw !important; }
+            #gpt41-clock .card { width: 11vw; height: 13vw; min-width: 34px; min-height: 46px; }
+            #gpt41-clock .ampm span { font-size: 4vw; padding: 1vw 2vw; }
+        }
+    </style>
+</head>
+<body>
+    <div class="main-container">
+        <h1>AI Flip Clocks</h1>
+
+        <div class="attribution">Inspired by <a href="https://clocks.brianmoore.com/" target="_blank" rel="noopener noreferrer">https://clocks.brianmoore.com/</a></div>
+
+        <div class="prompt-block">Create HTML/CSS for a flip clock that updates once per second to display the current time in hours, minutes, and seconds along with an am/pm indicator.
+
+Each number (0-9) displayed in the flip clock should have it's own card and use a unique font. Make sure each font is visually distinctive in weight and style.
+
+Make it responsive and use a light background. Return ONLY the HTML/CSS code with no markdown formatting.</div>
+
+        <!-- CLAUDE SONNET 4.5 CLOCK -->
+        <div class="clock-section" id="claude-clock">
+            <h2 class="clock-title">Claude Sonnet 4.5</h2>
+            <div class="clock-wrapper">
+                <div class="clock-container">
+                    <div class="time-segment" id="claude-hours">
+                        <div class="flip-card" data-position="0">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-position="1">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-segment" id="claude-minutes">
+                        <div class="flip-card" data-position="0">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-position="1">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="separator">:</div>
+                    <div class="time-segment" id="claude-seconds">
+                        <div class="flip-card" data-position="0">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                        <div class="flip-card" data-position="1">
+                            <div class="flip-card-inner">
+                                <div class="flip-card-front"><span class="digit">0</span></div>
+                                <div class="flip-card-back"><span class="digit">0</span></div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="ampm">
+                        <div class="ampm-indicator" id="claude-am">AM</div>
+                        <div class="ampm-indicator" id="claude-pm">PM</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- COMPOSER CLOCK -->
+        <div class="clock-section" id="composer-clock">
+            <h2 class="clock-title">Composer</h2>
+            <div class="clock-wrapper">
+                <div class="clock-container">
+                    <div class="time-group" id="composer-hours">
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-group" id="composer-minutes">
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <span class="separator">:</span>
+                    <div class="time-group" id="composer-seconds">
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="time-group" id="composer-ampm">
+                        <div class="flip-card">
+                            <div class="card-inner">
+                                <div class="card-face card-top"></div>
+                                <div class="card-face card-bottom"></div>
+                                <div class="flipper">
+                                    <div class="flipper-front"></div>
+                                    <div class="flipper-back"></div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GEMINI PRO CLOCK -->
+        <div class="clock-section" id="gemini-clock">
+            <h2 class="clock-title">Gemini Pro</h2>
+            <div class="clock-wrapper">
+                <div class="clock-container">
+                    <div class="time-group" id="gemini-hours">
+                        <div class="flip-card"><div class="card-content"></div></div>
+                        <div class="flip-card"><div class="card-content"></div></div>
+                    </div>
+                    <div class="time-group" id="gemini-minutes">
+                        <div class="flip-card"><div class="card-content"></div></div>
+                        <div class="flip-card"><div class="card-content"></div></div>
+                    </div>
+                    <div class="time-group" id="gemini-seconds">
+                        <div class="flip-card"><div class="card-content"></div></div>
+                        <div class="flip-card"><div class="card-content"></div></div>
+                    </div>
+                    <div class="time-group" id="gemini-ampm">
+                        <div class="flip-card"><div class="card-content"></div></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-5.1 CODEX CLOCK -->
+        <div class="clock-section" id="gpt-clock">
+            <h2 class="clock-title">GPT-5.1 Codex</h2>
+            <div class="clock-wrapper">
+                <div class="gpt-flip-clock">
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="h-tens" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                        <div class="block-label">Hours</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="h-ones" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                    </div>
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="m-tens" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                        <div class="block-label">Minutes</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="m-ones" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                    </div>
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="s-tens" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                        <div class="block-label">Seconds</div>
+                    </div>
+                    <div class="time-block">
+                        <div class="flip-card" data-slot="s-ones" data-digit="0">
+                            <span class="card-face top digit-face">0</span>
+                            <span class="card-face bottom digit-face">0</span>
+                            <span class="card-face back-top digit-face">0</span>
+                            <span class="card-face back-bottom digit-face">0</span>
+                        </div>
+                    </div>
+                </div>
+                <div style="display: flex; justify-content: center; margin-top: 2rem;">
+                    <div class="ampm-card">AM</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- GPT-4.1 CLOCK -->
+        <div class="clock-section" id="gpt41-clock">
+            <h2 class="clock-title">GPT-4.1</h2>
+            <div class="clock-wrapper">
+                <div class="gpt41-flip-clock">
+                    <div class="clock-section" aria-label="hours">
+                        <div class="card"><span class="digit d0">0</span></div>
+                        <div class="card"><span class="digit d0">0</span></div>
+                    </div>
+                    <span class="colon">:</span>
+                    <div class="clock-section" aria-label="minutes">
+                        <div class="card"><span class="digit d0">0</span></div>
+                        <div class="card"><span class="digit d0">0</span></div>
+                    </div>
+                    <span class="colon">:</span>
+                    <div class="clock-section" aria-label="seconds">
+                        <div class="card"><span class="digit d0">0</span></div>
+                        <div class="card"><span class="digit d0">0</span></div>
+                    </div>
+                    <div class="ampm"><span id="gpt41-ampm">AM</span></div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        // ============================================
+        // CLAUDE SONNET 4.5 CLOCK LOGIC
+        // ============================================
+        (function() {
+            function updateClaudeClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const isAM = hours < 12;
+
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+
+                const timeString = {
+                    hours: String(hours).padStart(2, '0'),
+                    minutes: String(minutes).padStart(2, '0'),
+                    seconds: String(seconds).padStart(2, '0')
+                };
+
+                updateClaudeSegment('claude-hours', timeString.hours);
+                updateClaudeSegment('claude-minutes', timeString.minutes);
+                updateClaudeSegment('claude-seconds', timeString.seconds);
+
+                document.getElementById('claude-am').classList.toggle('active', isAM);
+                document.getElementById('claude-pm').classList.toggle('active', !isAM);
+            }
+
+            function updateClaudeSegment(segmentId, value) {
+                const segment = document.getElementById(segmentId);
+                const cards = segment.querySelectorAll('.flip-card');
+
+                for (let i = 0; i < value.length; i++) {
+                    const card = cards[i];
+                    const digit = value[i];
+                    updateClaudeCard(card, digit);
+                }
+            }
+
+            function updateClaudeCard(card, newDigit) {
+                const front = card.querySelector('.flip-card-front .digit');
+                const back = card.querySelector('.flip-card-back .digit');
+                const currentDigit = front.textContent;
+
+                if (currentDigit !== newDigit) {
+                    back.textContent = newDigit;
+                    back.className = `digit digit-${newDigit}`;
+
+                    card.classList.add('flip');
+
+                    setTimeout(() => {
+                        front.textContent = newDigit;
+                        front.className = `digit digit-${newDigit}`;
+                        card.classList.remove('flip');
+                    }, 600);
+                }
+            }
+
+            function initClaudeClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const isAM = hours < 12;
+
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+
+                const timeString = {
+                    hours: String(hours).padStart(2, '0'),
+                    minutes: String(minutes).padStart(2, '0'),
+                    seconds: String(seconds).padStart(2, '0')
+                };
+
+                initClaudeSegment('claude-hours', timeString.hours);
+                initClaudeSegment('claude-minutes', timeString.minutes);
+                initClaudeSegment('claude-seconds', timeString.seconds);
+
+                document.getElementById('claude-am').classList.toggle('active', isAM);
+                document.getElementById('claude-pm').classList.toggle('active', !isAM);
+            }
+
+            function initClaudeSegment(segmentId, value) {
+                const segment = document.getElementById(segmentId);
+                const cards = segment.querySelectorAll('.flip-card');
+
+                for (let i = 0; i < value.length; i++) {
+                    const card = cards[i];
+                    const digit = value[i];
+                    const front = card.querySelector('.flip-card-front .digit');
+                    const back = card.querySelector('.flip-card-back .digit');
+
+                    front.textContent = digit;
+                    front.className = `digit digit-${digit}`;
+                    back.textContent = digit;
+                    back.className = `digit digit-${digit}`;
+                }
+            }
+
+            initClaudeClock();
+            setInterval(updateClaudeClock, 1000);
+        })();
+
+        // ============================================
+        // COMPOSER CLOCK LOGIC
+        // ============================================
+        (function() {
+            const hoursGroup = document.getElementById('composer-hours');
+            const minutesGroup = document.getElementById('composer-minutes');
+            const secondsGroup = document.getElementById('composer-seconds');
+            const ampmGroup = document.getElementById('composer-ampm');
+
+            let previousTime = { h: '', m: '', s: '', ampm: '' };
+
+            function getFontClass(digit) {
+                return `font-${digit}`;
+            }
+
+            function updateComposerCard(card, newValue, isAmPm) {
+                const top = card.querySelector('.card-top');
+                const bottom = card.querySelector('.card-bottom');
+                const flipperFront = card.querySelector('.flipper-front');
+                const flipperBack = card.querySelector('.flipper-back');
+
+                const currentValue = top.textContent || '';
+
+                if (currentValue === newValue) {
+                    return;
+                }
+
+                const fontClass = isAmPm ? 'font-ampm' : getFontClass(newValue);
+                const oldFontClass = isAmPm ? 'font-ampm' : (currentValue ? getFontClass(currentValue) : '');
+
+                [top, bottom, flipperBack].forEach(el => {
+                    el.textContent = newValue;
+                    if (oldFontClass) el.classList.remove(oldFontClass);
+                    el.classList.add(fontClass);
+                });
+
+                flipperFront.textContent = currentValue || newValue;
+                if (oldFontClass) flipperFront.classList.remove(oldFontClass);
+                flipperFront.classList.add(fontClass);
+
+                card.classList.add('flipped');
+                setTimeout(() => {
+                    card.classList.remove('flipped');
+                    flipperFront.textContent = newValue;
+                }, 600);
+            }
+
+            function updateComposerClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                
+                hours = hours % 12;
+                hours = hours || 12;
+
+                const time = {
+                    h: String(hours).padStart(2, '0'),
+                    m: String(minutes).padStart(2, '0'),
+                    s: String(seconds).padStart(2, '0'),
+                    ampm: ampm
+                };
+
+                if (time.h !== previousTime.h) {
+                    updateComposerCard(hoursGroup.children[0], time.h[0]);
+                    updateComposerCard(hoursGroup.children[1], time.h[1]);
+                }
+                if (time.m !== previousTime.m) {
+                    updateComposerCard(minutesGroup.children[0], time.m[0]);
+                    updateComposerCard(minutesGroup.children[1], time.m[1]);
+                }
+                if (time.s !== previousTime.s) {
+                    updateComposerCard(secondsGroup.children[0], time.s[0]);
+                    updateComposerCard(secondsGroup.children[1], time.s[1]);
+                }
+                if (time.ampm !== previousTime.ampm) {
+                    updateComposerCard(ampmGroup.children[0], time.ampm, true);
+                }
+
+                previousTime = time;
+            }
+
+            function initializeComposerClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                
+                hours = hours % 12;
+                hours = hours || 12;
+
+                const time = {
+                    h: String(hours).padStart(2, '0'),
+                    m: String(minutes).padStart(2, '0'),
+                    s: String(seconds).padStart(2, '0'),
+                    ampm: ampm
+                };
+
+                [hoursGroup.children[0], hoursGroup.children[1]].forEach((card, idx) => {
+                    const digit = time.h[idx];
+                    const fontClass = getFontClass(digit);
+                    card.querySelector('.card-top').textContent = digit;
+                    card.querySelector('.card-top').classList.add(fontClass);
+                    card.querySelector('.card-bottom').textContent = digit;
+                    card.querySelector('.card-bottom').classList.add(fontClass);
+                    card.querySelector('.flipper-front').textContent = digit;
+                    card.querySelector('.flipper-front').classList.add(fontClass);
+                    card.querySelector('.flipper-back').textContent = digit;
+                    card.querySelector('.flipper-back').classList.add(fontClass);
+                });
+
+                [minutesGroup.children[0], minutesGroup.children[1]].forEach((card, idx) => {
+                    const digit = time.m[idx];
+                    const fontClass = getFontClass(digit);
+                    card.querySelector('.card-top').textContent = digit;
+                    card.querySelector('.card-top').classList.add(fontClass);
+                    card.querySelector('.card-bottom').textContent = digit;
+                    card.querySelector('.card-bottom').classList.add(fontClass);
+                    card.querySelector('.flipper-front').textContent = digit;
+                    card.querySelector('.flipper-front').classList.add(fontClass);
+                    card.querySelector('.flipper-back').textContent = digit;
+                    card.querySelector('.flipper-back').classList.add(fontClass);
+                });
+
+                [secondsGroup.children[0], secondsGroup.children[1]].forEach((card, idx) => {
+                    const digit = time.s[idx];
+                    const fontClass = getFontClass(digit);
+                    card.querySelector('.card-top').textContent = digit;
+                    card.querySelector('.card-top').classList.add(fontClass);
+                    card.querySelector('.card-bottom').textContent = digit;
+                    card.querySelector('.card-bottom').classList.add(fontClass);
+                    card.querySelector('.flipper-front').textContent = digit;
+                    card.querySelector('.flipper-front').classList.add(fontClass);
+                    card.querySelector('.flipper-back').textContent = digit;
+                    card.querySelector('.flipper-back').classList.add(fontClass);
+                });
+
+                const ampmCard = ampmGroup.children[0];
+                ampmCard.querySelector('.card-top').textContent = time.ampm;
+                ampmCard.querySelector('.card-top').classList.add('font-ampm');
+                ampmCard.querySelector('.card-bottom').textContent = time.ampm;
+                ampmCard.querySelector('.card-bottom').classList.add('font-ampm');
+                ampmCard.querySelector('.flipper-front').textContent = time.ampm;
+                ampmCard.querySelector('.flipper-front').classList.add('font-ampm');
+                ampmCard.querySelector('.flipper-back').textContent = time.ampm;
+                ampmCard.querySelector('.flipper-back').classList.add('font-ampm');
+
+                previousTime = time;
+            }
+
+            initializeComposerClock();
+            setInterval(updateComposerClock, 1000);
+        })();
+
+        // ============================================
+        // GEMINI PRO CLOCK LOGIC
+        // ============================================
+        (function() {
+            const hoursContainer = document.querySelector('#gemini-hours');
+            const minutesContainer = document.querySelector('#gemini-minutes');
+            const secondsContainer = document.querySelector('#gemini-seconds');
+            const ampmContainer = document.querySelector('#gemini-ampm');
+
+            let lastTime = {};
+
+            function createGeminiFlipCard(value, isAmPm = false) {
+                const card = document.createElement('div');
+                card.classList.add('flip-card');
+
+                const fontClass = isAmPm ? 'font-ampm' : `font-${value}`;
+
+                const top = document.createElement('div');
+                top.classList.add('card-face', 'top', fontClass);
+                top.textContent = value;
+
+                const bottom = document.createElement('div');
+                bottom.classList.add('card-face', 'bottom', fontClass);
+                bottom.textContent = value;
+                
+                const flipper = document.createElement('div');
+                flipper.classList.add('flipper');
+
+                const front = document.createElement('div');
+                front.classList.add('front', fontClass);
+
+                const back = document.createElement('div');
+                back.classList.add('back', fontClass);
+
+                flipper.appendChild(front);
+                flipper.appendChild(back);
+                card.appendChild(top);
+                card.appendChild(bottom);
+                card.appendChild(flipper);
+
+                return card;
+            }
+
+            function updateGeminiCard(card, newValue, isAmPm = false) {
+                const top = card.querySelector('.top');
+                const bottom = card.querySelector('.bottom');
+                const flipper = card.querySelector('.flipper');
+                const front = flipper.querySelector('.front');
+                const back = flipper.querySelector('.back');
+                
+                const currentValue = top.textContent;
+                
+                if (currentValue === newValue) {
+                    return;
+                }
+
+                const fontClass = isAmPm ? 'font-ampm' : `font-${newValue}`;
+                const oldFontClass = isAmPm ? 'font-ampm' : `font-${currentValue}`;
+
+                top.textContent = newValue;
+                bottom.textContent = newValue;
+                back.textContent = newValue;
+                front.textContent = currentValue;
+
+                top.classList.remove(oldFontClass);
+                bottom.classList.remove(oldFontClass);
+                back.classList.remove(oldFontClass);
+                top.classList.add(fontClass);
+                bottom.classList.add(fontClass);
+                back.classList.add(fontClass);
+
+                card.classList.add('flipped');
+                setTimeout(() => {
+                    card.classList.remove('flipped');
+                    front.textContent = newValue;
+                    front.classList.remove(oldFontClass);
+                    front.classList.add(fontClass);
+                }, 600);
+            }
+
+            function setupGeminiInitialCards() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12;
+                hours = hours ? hours : 12;
+
+                const time = {
+                    h: String(hours).padStart(2, '0'),
+                    m: String(minutes).padStart(2, '0'),
+                    s: String(seconds).padStart(2, '0'),
+                    ampm: ampm
+                };
+                lastTime = time;
+
+                hoursContainer.innerHTML = '';
+                minutesContainer.innerHTML = '';
+                secondsContainer.innerHTML = '';
+                ampmContainer.innerHTML = '';
+                
+                hoursContainer.appendChild(createGeminiFlipCard(time.h[0]));
+                hoursContainer.appendChild(createGeminiFlipCard(time.h[1]));
+                minutesContainer.appendChild(createGeminiFlipCard(time.m[0]));
+                minutesContainer.appendChild(createGeminiFlipCard(time.m[1]));
+                secondsContainer.appendChild(createGeminiFlipCard(time.s[0]));
+                secondsContainer.appendChild(createGeminiFlipCard(time.s[1]));
+                ampmContainer.appendChild(createGeminiFlipCard(time.ampm, true));
+            }
+
+            function updateGeminiClock() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                
+                hours = hours % 12;
+                hours = hours ? hours : 12; 
+
+                const currentTime = {
+                    h: String(hours).padStart(2, '0'),
+                    m: String(minutes).padStart(2, '0'),
+                    s: String(seconds).padStart(2, '0'),
+                    ampm: ampm
+                };
+
+                updateGeminiCard(hoursContainer.children[0], currentTime.h[0]);
+                updateGeminiCard(hoursContainer.children[1], currentTime.h[1]);
+                updateGeminiCard(minutesContainer.children[0], currentTime.m[0]);
+                updateGeminiCard(minutesContainer.children[1], currentTime.m[1]);
+                updateGeminiCard(secondsContainer.children[0], currentTime.s[0]);
+                updateGeminiCard(secondsContainer.children[1], currentTime.s[1]);
+                updateGeminiCard(ampmContainer.children[0], currentTime.ampm, true);
+
+                lastTime = currentTime;
+            }
+
+            setupGeminiInitialCards();
+            setInterval(updateGeminiClock, 1000);
+        })();
+
+        // ============================================
+        // GPT-5.1 CODEX CLOCK LOGIC
+        // ============================================
+        (function() {
+            const digitOrder = ['h-tens', 'h-ones', 'm-tens', 'm-ones', 's-tens', 's-ones'];
+            const cards = digitOrder.map(slot => document.querySelector(`#gpt-clock .flip-card[data-slot="${slot}"]`));
+            const ampmEl = document.querySelector('#gpt-clock .ampm-card');
+
+            function flipCard(card, newDigit) {
+                if (!card || card.dataset.digit === newDigit) return;
+                const top = card.querySelector('.top');
+                const bottom = card.querySelector('.bottom');
+                const backTop = card.querySelector('.back-top');
+                const backBottom = card.querySelector('.back-bottom');
+
+                backTop.textContent = newDigit;
+                backBottom.textContent = newDigit;
+                card.classList.remove('play');
+                void card.offsetWidth;
+                card.classList.add('play');
+
+                setTimeout(() => {
+                    top.textContent = newDigit;
+                    bottom.textContent = newDigit;
+                    card.dataset.digit = newDigit;
+                }, 350);
+
+                setTimeout(() => {
+                    card.classList.remove('play');
+                }, 700);
+            }
+
+            function getTimeParts() {
+                const now = new Date();
+                let hours = now.getHours();
+                const minutes = now.getMinutes();
+                const seconds = now.getSeconds();
+                const ampm = hours >= 12 ? 'PM' : 'AM';
+                hours = hours % 12 || 12;
+
+                const h = String(hours).padStart(2, '0');
+                const m = String(minutes).padStart(2, '0');
+                const s = String(seconds).padStart(2, '0');
+
+                return { digits: [...h, ...m, ...s], ampm };
+            }
+
+            function refreshGptClock() {
+                const { digits, ampm } = getTimeParts();
+                digits.forEach((digit, index) => flipCard(cards[index], digit));
+                ampmEl.textContent = ampm;
+            }
+
+            refreshGptClock();
+            setInterval(refreshGptClock, 1000);
+
+            document.addEventListener('visibilitychange', () => {
+                if (!document.hidden) {
+                    refreshGptClock();
+                }
+            });
+        })();
+
+        // ============================================
+        // GPT-4.1 CLOCK LOGIC
+        // ============================================
+        (function() {
+            const digitFontClass = [
+                'd0', 'd1', 'd2', 'd3', 'd4', 'd5', 'd6', 'd7', 'd8', 'd9'
+            ];
+
+            function setGpt41ClockDigits() {
+                const now = new Date();
+                let hour = now.getHours();
+                const minute = now.getMinutes();
+                const second = now.getSeconds();
+                const ampm = hour >= 12 ? 'PM' : 'AM';
+                
+                let hour12 = hour % 12;
+                if (hour12 === 0) hour12 = 12;
+
+                const digits = [
+                    Math.floor(hour12 / 10), hour12 % 10,
+                    Math.floor(minute / 10), minute % 10,
+                    Math.floor(second / 10), second % 10
+                ];
+
+                const sections = document.querySelectorAll("#gpt41-clock .clock-section[aria-label]");
+                digits.forEach((num, idx) => {
+                    const sectionIdx = Math.floor(idx / 2);
+                    const digitIdx = idx % 2;
+                    const card = sections[sectionIdx].children[digitIdx];
+                    const span = card.querySelector(".digit");
+                    // Update font class
+                    span.className = 'digit ' + digitFontClass[num];
+                    span.textContent = num;
+                });
+                document.getElementById('gpt41-ampm').textContent = ampm;
+            }
+            setGpt41ClockDigits();
+            setInterval(setGpt41ClockDigits, 1000);
+        })();
+    </script>
+</body>
+</html>
+
