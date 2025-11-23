@@ -872,11 +872,11 @@
                 containerBg: 'rgba(0, 0, 0, 0.4)',
                 digitBg: 'linear-gradient(135deg, #1a1a1a 0%, #0f0f0f 50%, #0a0a0a 100%)',
                 digitBorder: 'rgba(255, 255, 255, 0.1)',
-                textColor: '#ffffff',
-                separatorColor: 'rgba(255, 255, 255, 0.9)',
+                textColor: '#E2E2E2',
+                separatorColor: 'rgba(226, 226, 226, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: 'rgba(255, 255, 255, 0.9)',
-                baseColor: '#1a1a1a'
+                ampmColor: '#E2E2E2',
+                baseColor: '#030101'
             },
             {
                 name: 'Blue',
@@ -884,23 +884,23 @@
                 containerBg: 'rgba(13, 71, 161, 0.4)',
                 digitBg: 'linear-gradient(135deg, #0d47a1 0%, #0277bd 50%, #01579b 100%)',
                 digitBorder: 'rgba(255, 255, 255, 0.2)',
-                textColor: '#ffffff',
-                separatorColor: 'rgba(255, 255, 255, 0.9)',
+                textColor: '#CF928F',
+                separatorColor: 'rgba(207, 146, 143, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: 'rgba(255, 255, 255, 0.9)',
+                ampmColor: '#CF928F',
                 baseColor: '#0d47a1'
             },
             {
                 name: 'Purple',
                 bodyBg: 'linear-gradient(135deg, #4a148c 0%, #6a1b9a 50%, #7b1fa2 100%)',
                 containerBg: 'rgba(106, 27, 154, 0.4)',
-                digitBg: 'linear-gradient(135deg, #6a1b9a 0%, #7b1fa2 50%, #8e24aa 100%)',
+                digitBg: 'linear-gradient(135deg, #63228B 0%, #6a1b9a 50%, #7b1fa2 100%)',
                 digitBorder: 'rgba(255, 255, 255, 0.2)',
-                textColor: '#39ff14',
-                separatorColor: 'rgba(57, 255, 20, 0.9)',
+                textColor: '#96BD76',
+                separatorColor: 'rgba(150, 189, 118, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: '#39ff14',
-                baseColor: '#6a1b9a'
+                ampmColor: '#96BD76',
+                baseColor: '#63228B'
             },
             {
                 name: 'Green',
@@ -908,10 +908,10 @@
                 containerBg: 'rgba(46, 125, 50, 0.4)',
                 digitBg: 'linear-gradient(135deg, #2e7d32 0%, #388e3c 50%, #43a047 100%)',
                 digitBorder: 'rgba(255, 255, 255, 0.2)',
-                textColor: '#8B0000',
-                separatorColor: 'rgba(139, 0, 0, 0.9)',
+                textColor: '#38B390',
+                separatorColor: 'rgba(56, 179, 144, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: '#ffff00',
+                ampmColor: '#38B390',
                 baseColor: '#2e7d32'
             },
             {
@@ -920,10 +920,10 @@
                 containerBg: 'rgba(239, 108, 0, 0.4)',
                 digitBg: 'linear-gradient(135deg, #ef6c00 0%, #f57c00 50%, #fb8c00 100%)',
                 digitBorder: 'rgba(0, 0, 0, 0.2)',
-                textColor: '#000000',
-                separatorColor: 'rgba(0, 0, 0, 0.9)',
+                textColor: '#9D481D',
+                separatorColor: 'rgba(157, 72, 29, 0.9)',
                 ampmBg: 'rgba(0, 0, 0, 0.3)',
-                ampmColor: '#ffffff',
+                ampmColor: '#9D481D',
                 baseColor: '#ef6c00'
             },
             {
@@ -935,7 +935,7 @@
                 textColor: '#ffffff',
                 separatorColor: 'rgba(255, 255, 255, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: 'rgba(255, 255, 255, 0.9)',
+                ampmColor: '#ffffff',
                 baseColor: '#c62828'
             },
             {
@@ -944,10 +944,10 @@
                 containerBg: 'rgba(0, 105, 92, 0.4)',
                 digitBg: 'linear-gradient(135deg, #00695c 0%, #00796b 50%, #00897b 100%)',
                 digitBorder: 'rgba(255, 255, 255, 0.2)',
-                textColor: '#ff1493',
-                separatorColor: 'rgba(255, 20, 147, 0.9)',
+                textColor: '#E49595',
+                separatorColor: 'rgba(228, 149, 149, 0.9)',
                 ampmBg: 'rgba(255, 255, 255, 0.3)',
-                ampmColor: '#00d9ff',
+                ampmColor: '#E49595',
                 baseColor: '#00695c'
             },
             {
@@ -1034,10 +1034,9 @@
             applyColorScheme(currentSchemeIndex);
         }
 
-        // Initialize with random color scheme
-        const randomColorSchemeIndex = Math.floor(Math.random() * colorSchemes.length);
-        currentSchemeIndex = randomColorSchemeIndex;
-        applyColorScheme(randomColorSchemeIndex);
+        // Initialize with dark color scheme (index 0)
+        currentSchemeIndex = 0;
+        applyColorScheme(0);
 
 
         // Add color control button
@@ -1222,16 +1221,11 @@
         updateTimeFormatIcon();
 
         // Font set toggle functionality
-        // Initialize with random font set
-        let currentFontSet = Math.floor(Math.random() * 3); // 0 = default, 1 = alt, 2 = third
+        // Initialize with first font set (default, index 0)
+        let currentFontSet = 0; // 0 = default, 1 = alt, 2 = third
         
-        // Apply random font set on load
+        // Apply default font set on load (no class needed for default)
         const clockContainer = document.querySelector('.clock-container');
-        if (currentFontSet === 1) {
-            clockContainer.classList.add('font-set-alt');
-        } else if (currentFontSet === 2) {
-            clockContainer.classList.add('font-set-third');
-        }
         // currentFontSet === 0 means default (no class needed)
 
         function toggleFontSet() {
