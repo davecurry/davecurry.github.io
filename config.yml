@@ -4,6 +4,7 @@ title: davecurry.net
 pagerSize: 5
 theme: PaperMod
 
+relativeURLs: true
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -29,8 +30,6 @@ menu:
           weight: 1
 
 params:
-    author:
-        name: "Dave Curry"
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
