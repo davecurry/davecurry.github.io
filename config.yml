@@ -1,4 +1,4 @@
-baseURL: http://davecurry.net
+baseURL: https://davecurry.net
 languageCode: en-us
 title: davecurry.net
 pagerSize: 5
@@ -29,6 +29,8 @@ menu:
           weight: 1
 
 params:
+    author:
+        name: "Dave Curry"
     defaultTheme: auto
     # disableThemeToggle: true
     ShowShareButtons: false
@@ -50,7 +52,7 @@ params:
     homeInfoParams:
         Title: "Dave Curry"
         Content: |
-          ## Sr. Design Director for [HBO Max/Max](/hbomax.jpg) at Warner Bros. Discovery ##
+          ## Sr. Design Director for [HBO Max](/hbomax.jpg) at Warner Bros. Discovery ##
           
           - 
           
