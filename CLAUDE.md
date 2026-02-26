@@ -45,7 +45,7 @@ The site uses PaperMod's "Home-Info Mode" with:
 ### Deployment
 - **Platform**: GitHub Pages via GitHub Actions
 - **Workflow**: `.github/workflows/hugo.yml`
-- **Hugo Version**: 0.125.4 (specified in workflow)
+- **Hugo Version**: 0.148.2 (specified in workflow)
 - **Build**: Automatic on pushes to `main` branch
 
 ### Content Patterns

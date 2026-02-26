@@ -4,14 +4,6 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 */
 
 
-.fira-code-evad> {
-  font-family: "Fira Code", monospace;
-  font-optical-sizing: auto;
-  font-weight: 300;
-  font-style: normal;
-}
-
-
 .arvo-regular {
   font-family: "Arvo", serif;
   font-weight: 400;
