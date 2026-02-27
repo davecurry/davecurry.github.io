@@ -114,3 +114,8 @@ body,h1,h2,h3,h4,h5,h6 {
   --code-block-bg: rgb(238, 114, 241, 0.2);
   --code-bg: rgb(238, 114, 241, 0.2);
 }
+
+/* Remove vertical scrollbar from code blocks */
+.post-content pre code {
+  overflow-y: hidden;
+}
