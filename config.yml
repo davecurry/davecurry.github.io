@@ -28,6 +28,9 @@ menu:
         - name: Who Me?
           url: pages/about
           weight: 1
+        - name: Currently Reading
+          url: pages/reading
+          weight: 2
 
 params:
     defaultTheme: auto
