@@ -30,11 +30,11 @@ markup:
 
 menu:
     main:
-        - name: Who Me?
-          url: pages/about
-          weight: 1
         - name: Currently Reading
           url: pages/reading
+          weight: 1
+        - name: Who Me?
+          url: pages/about
           weight: 2
 
 params:
