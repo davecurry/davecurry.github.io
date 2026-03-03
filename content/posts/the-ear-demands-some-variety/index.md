@@ -7,7 +7,7 @@ draft = false
 
 I don't recall where I first ran across this `sound advice,` but I've referred to it many times over the years.
 
-![Five Words](/five-words.png)
+![Five Words](five-words.png)
 
 Transcribed thanks to GPT-4-Vision. 😉
 

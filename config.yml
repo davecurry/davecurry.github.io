@@ -52,6 +52,9 @@ params:
     favicon: "/favicon.ico"
     comments: false
     # images: ["papermod-cover.png"]
+    cover:
+        hiddenInList: false     # show cover in list/preview views
+        hiddenInSingle: true   # show cover on the post page itself
 
     mainSections:
     - posts

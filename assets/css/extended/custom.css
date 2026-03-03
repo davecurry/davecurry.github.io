@@ -76,6 +76,32 @@ body,h1,h2,h3,h4,h5,h6 {
   border-radius: 2px;
 }
 
+.post-entry:has(.entry-cover) {
+  display: grid;
+  grid-template-columns: 100px 1fr;
+  grid-template-rows: auto;
+  align-items: start;
+}
+
+.post-entry:has(.entry-cover) .entry-cover {
+  grid-column: 1;
+  grid-row: 1 / 4;    /* span all rows */
+  margin-right: 1rem;
+  margin-bottom: 0;
+}
+
+.post-entry:has(.entry-cover) .entry-header {
+  grid-column: 2;
+}
+
+.post-entry:has(.entry-cover) .entry-content {
+  grid-column: 2;
+}
+
+.post-entry:has(.entry-cover) .entry-footer {
+  grid-column: 2;
+}
+
 .post-tags a,
 .share-buttons,
 .paginav {
