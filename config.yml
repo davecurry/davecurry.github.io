@@ -1,10 +1,10 @@
-baseURL: https://davecurry.net
+baseURL: "https://davecurry.net/"
 languageCode: en-us
 title: davecurry.net
 pagerSize: 5
 theme: PaperMod
 
-relativeURLs: true
+# relativeURLs: true
 enableInlineShortcodes: true
 enableRobotsTXT: true
 buildDrafts: false
@@ -52,7 +52,7 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: false
-    favicon: "favicons/favicon.ico"
+    favicon: "favicon.ico"
     comments: false
     # images: ["papermod-cover.png"]
     cover:
