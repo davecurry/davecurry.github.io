@@ -29,7 +29,7 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 }
 
 :root {
-  --tag-block-bg: rgb(28, 29, 33);
+  --tag-block-bg: rgb(33, 28, 31);
   --tag-bg: rgb(245, 245, 245);
 }
 
@@ -119,14 +119,8 @@ body,h1,h2,h3,h4,h5,h6 {
     background: var(--tag-bg);
 }
 
-.dark {
-  /* 
-  browner
-  --theme: #242120;
-  --entry: rgb(48, 46, 45); 
-  --tag-block-bg: rgb(46, 46, 51);
-  --tag-bg: rgb(55, 56, 62);
-  */
+:root[data-theme="dark"] {
+
 
   /* bluer */
 

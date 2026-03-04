@@ -12,7 +12,10 @@ buildFuture: false
 buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
-googleAnalytics: G-E1BD6QPGYB
+
+service:
+    googleAnalytics: 
+        ID: G-E1BD6QPGYB
 
 minify:
     disableXML: true
@@ -49,7 +52,7 @@ params:
     ShowCodeCopyButtons: true
     ShowRssButtonInSectionTermList: true
     ShowToc: false
-    favicon: "/favicon.ico"
+    favicon: "favicons/favicon.ico"
     comments: false
     # images: ["papermod-cover.png"]
     cover:
