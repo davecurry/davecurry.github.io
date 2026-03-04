@@ -1,1 +1,5 @@
-<img src="{{ .Destination | absURL }}" alt="{{ .Text }}" {{ with .Title }} title="{{ . }}" {{ end }} />
+{{ if not (or (hasPrefix .Destination "http://") (hasPrefix .Destination "https://")) }}
+  <img src="{{ .Page.RelPermalink }}{{ .Destination }}" alt="{{ .Text }}" />
+{{ else }}
+  <img src="{{ .Destination | safeURL }}" alt="{{ .Text }}" />
+{{ end }}

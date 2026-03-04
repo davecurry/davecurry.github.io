@@ -10,4 +10,4 @@ draft: false
 
 Seattle vibes.
 
-<img src="peopley.jpg" alt="Centered image" style="display: block; margin: 0 auto;">
+<img src="peopley.jpg" alt="Peopley" style="display: block; margin: 0 auto;">
