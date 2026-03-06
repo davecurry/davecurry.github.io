@@ -35,9 +35,10 @@ markup:
 
 menu:
     main:
-        - name: Currently Reading
+        - name: Reading
           url: pages/reading
           weight: 1
+          pre: '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-0.15em;margin-right:0.25em;">book</span>'
         - name: Who Me?
           url: pages/about
           weight: 2
