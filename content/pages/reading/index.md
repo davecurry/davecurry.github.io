@@ -5,21 +5,21 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: March 1, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: March 12, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/57001971-the-dungeon-anarchist-s-cookbook">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1612814290i/57001971.jpg"
-         alt="The Dungeon Anarchist's Cookbook by Matt Dinniman"
+  <a href="https://www.goodreads.com/book/show/222683896-the-school-of-night">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1747797782i/222683896.jpg"
+         alt="The School of Night by Karl Ove Knausgård"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-***The Dungeon Anarchist's Cookbook*** — Dungeon Crawler Carl, #3
+[***The School of Night*** — The Morning Star, #4](https://www.goodreads.com/book/show/222683896-the-school-of-night)
 
-(2021) Matt Dinniman
+(2025) Karl Ove Knausgård
 </div>
 
 ***
@@ -27,6 +27,13 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1612814290l/57001971._SY75_.jpg" alt="The Dungeon Anarchist's Cookbook" style="float: left; margin-right: 16px;">
+
+[*The Dungeon Anarchist's Cookbook* — Dungeon Crawler Carl #3](https://www.goodreads.com/book/show/57001971-the-dungeon-anarchist-s-cookbook) (2021) Matt Dinniman
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1612814290l/57001971._SY75_.jpg" alt="Carl's Doomsday Scenario" style="float: left; margin-right: 16px;"> 
