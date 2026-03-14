@@ -5,7 +5,7 @@ cover:
   image: "slide-clock-thumb.png"
   relative: true
 tags: ['design', 'ai']
-draft: true
+draft: false
 ---
 
 [![slide clock](slide-clock.png)](../../projects/slide-clock/)
