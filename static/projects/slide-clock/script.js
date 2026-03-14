@@ -331,8 +331,8 @@ function initializeControls(clock) {
     ];
 
     let currentSchemeIndex = 0;
-    let showSeconds = true;
-    let controlsVisible = true;
+    let showSeconds = false;
+    let controlsVisible = false;
 
     // Apply color scheme
     function applyColorScheme(index) {
@@ -532,6 +532,19 @@ function initializeControls(clock) {
     });
     document.body.appendChild(controlsToggleControl);
 
+    // Apply initial seconds state (off by default)
+    const secondsGroupsInit = [
+        document.getElementById('seconds-tens'),
+        document.getElementById('seconds-ones')
+    ];
+    const minutesOnesInit = document.getElementById('minutes-ones');
+    secondsGroupsInit.forEach(group => { if (group) group.style.display = 'none'; });
+    if (minutesOnesInit) minutesOnesInit.style.borderRadius = '0 20px 20px 0';
+    secondsControl.style.opacity = '0.5';
+
+    // Apply initial controls state (hidden by default)
+    const allControlsInit = document.querySelectorAll('.color-control, .font-set-control, .seconds-control, .fullscreen-control');
+    allControlsInit.forEach(control => { control.style.display = 'none'; });
     updateControlsToggleIcon();
 
     // Initialize with first color scheme and first font
