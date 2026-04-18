@@ -13,7 +13,9 @@ So I set up [OpenClaw](https://openclaw.ai), a local AI assistant (Snippy ✂️
 
 **What Snippy handles now**
 
-Drafting may be a big one. I can describe a post idea and get back something shockingly close to publishable. I still edit everything, but starting from a blank page can be the daunting part, and I can bypass it now.
+<s>Drafting may be a big one. I can describe a post idea and get back something shockingly close to publishable. I still edit everything, but starting from a blank page can be the daunting part, and I can bypass it now.</s>
+
+Update: Turns out, not a big one. A nothing one.
 
 Snippy also keeps an eye on the repo itself. After we made some structural fixes (removed `public/` from git, cleaned up the config, fixed a few things that had been quietly broken), it's vastly easier to stay on top of small maintenance tasks. I don't have to remember what we changed or why.
 
@@ -23,7 +25,7 @@ Everything that matters. The ideas are mine. The final edit is mine. I get to do
 
 **The workflow**
 
-I'll think of something. I ask for an update. I review it. I work through changes. I ask for a draft. I read it. I edit it. I tell Snippy to push. That's about it.
+I'll think of something. I ask for an update. I review it. I work through changes. <s>I ask for a draft. I read it. I edit it.</s> I tell Snippy to push. That's about it.
 
 It's not magic, but it removes enough friction that maybe I'll post more regularly, which is the whole point.
 
