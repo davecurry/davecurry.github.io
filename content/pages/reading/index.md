@@ -29,9 +29,9 @@ hidemeta = true
 <div style="display: flex; flex-direction: column; gap: 8px;">
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
-<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1619824560l/57905101._SY75_.jpg" alt="The Gate of the Feral Gods" style="float: left; margin-right: 16px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1747797782l/222683896._SY75_.jpg" alt="The School of Night" style="float: left; margin-right: 16px;">
 
-[*The Gate of the Feral Gods* — Dungeon Crawler Carl #4](https://www.goodreads.com/book/show/57905101-the-gate-of-the-feral-gods) (2021) Matt Dinniman
+[*The School of Night* — The Morning Star, #4](https://www.goodreads.com/book/show/222683896-the-school-of-night) (2025) Karl Ove Knausgård
 
 </div>
 
