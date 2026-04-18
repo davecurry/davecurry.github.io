@@ -5,21 +5,21 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: March 12, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: April 18, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/222683896-the-school-of-night">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1747797782i/222683896.jpg"
-         alt="The School of Night by Karl Ove Knausgård"
+  <a href="https://www.goodreads.com/book/show/57905101-the-gate-of-the-feral-gods">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1619824560i/57905101.jpg"
+         alt="The Gate of the Feral Gods by Matt Dinniman"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-[***The School of Night*** — The Morning Star, #4](https://www.goodreads.com/book/show/222683896-the-school-of-night)
+[***The Gate of the Feral Gods*** — Dungeon Crawler Carl, #4](https://www.goodreads.com/book/show/57905101-the-gate-of-the-feral-gods)
 
-(2025) Karl Ove Knausgård
+(2021) Matt Dinniman
 </div>
 
 ***
@@ -27,6 +27,13 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1619824560l/57905101._SY75_.jpg" alt="The Gate of the Feral Gods" style="float: left; margin-right: 16px;">
+
+[*The Gate of the Feral Gods* — Dungeon Crawler Carl #4](https://www.goodreads.com/book/show/57905101-the-gate-of-the-feral-gods) (2021) Matt Dinniman
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1612814290l/57001971._SY75_.jpg" alt="The Dungeon Anarchist's Cookbook" style="float: left; margin-right: 16px;">
