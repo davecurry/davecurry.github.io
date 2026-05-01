@@ -17,7 +17,7 @@ pygmentsUseClasses: true
 
 service:
     googleAnalytics: 
-        ID: G-E1BD6QPGYB
+        ID: G-3FR0CGG38M
 
 minify:
     disableXML: true
