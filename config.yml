@@ -16,8 +16,7 @@ enableEmoji: true
 pygmentsUseClasses: true
 
 service:
-    googleAnalytics: 
-        ID: G-3FR0CGG38M
+    googleAnalytics: G-E1BD6QPGYB
 
 minify:
     disableXML: true
