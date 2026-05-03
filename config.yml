@@ -15,8 +15,9 @@ buildExpired: false
 enableEmoji: true
 pygmentsUseClasses: true
 
-service:
-    googleAnalytics: G-E1BD6QPGYB
+services:
+  googleAnalytics:
+    ID: G-E1BD6QPGYB
 
 minify:
     disableXML: true
