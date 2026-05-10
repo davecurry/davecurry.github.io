@@ -43,21 +43,21 @@ hidemeta = true
 </div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
-<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1612814290l/57001971._SY75_.jpg" alt="The Dungeon Anarchist's Cookbook" style="float: left; margin-right: 16px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1719949594i/211721809._SY75_.jpg" alt="The Dungeon Anarchist's Cookbook" style="float: left; margin-right: 16px;">
 
 [*The Dungeon Anarchist's Cookbook* — Dungeon Crawler Carl #3](https://www.goodreads.com/book/show/57001971-the-dungeon-anarchist-s-cookbook) (2021) Matt Dinniman
 
 </div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
-<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1612814290l/57001971._SY75_.jpg" alt="Carl's Doomsday Scenario" style="float: left; margin-right: 16px;"> 
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1719949673i/212393364._SY75_.jpg" alt="Carl's Doomsday Scenario" style="float: left; margin-right: 16px;"> 
 
 [*Carl's Doomsday Scenario* — Dungeon Crawler Carl #2](https://www.goodreads.com/book/show/56377548-carl-s-doomsday-scenario) (2021) Matt Dinniman
 
 </div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
-<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734203042l/56791389._SY75_.jpg" alt="Dungeon Crawler Carl" style="float: left; margin-right: 16px;">  
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1715780755i/211721806._SY75_.jpg" alt="Dungeon Crawler Carl" style="float: left; margin-right: 16px;">  
 
 [*Dungeon Crawler Carl* — Dungeon Crawler Carl #1](https://www.goodreads.com/book/show/56791389-dungeon-crawler-carl) (2020) Matt Dinniman
 
