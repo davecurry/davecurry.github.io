@@ -5,7 +5,7 @@ cover:
   image: "good-design-thumb.png"
   relative: true
 tags: ['design']
-draft: true
+draft: false
 ---
 
 I love that I can have an idea, and because of agentic tools, shortly thereafter have a result.
