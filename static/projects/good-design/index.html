@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Good Design</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Space+Mono:wght@400&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --bg:     #f0f0f0;
+  --cell:   #e8e8e8;
+  --fg:     #111111;
+  --mute:   #aaaaaa;
+  --dot-off:#cccccc;
+  --dot-on: #111111;
+}
+
+[data-dark] {
+  --bg:     #111111;
+  --cell:   #1d1d1d;
+  --fg:     #f0f0f0;
+  --mute:   #555555;
+  --dot-off:#333333;
+  --dot-on: #f0f0f0;
+}
+
+body {
+  font-family: 'Space Mono', 'Courier New', monospace;
+  font-weight: 400;
+  background: var(--bg);
+  color: var(--fg);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 24px;
+  cursor: pointer;
+  user-select: none;
+  transition: background .4s, color .4s;
+}
+
+/* ── Display ─────────────────────────────────────────────── */
+
+.display-wrap {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+}
+
+.display {
+  display: flex;
+  gap: 2px;
+  font-size: clamp(12px, 1.9vw, 28px);
+}
+
+/* Second row hidden by default; shown at small breakpoint */
+#display2 { display: none; }
+
+@media (max-width: 540px) {
+  #display2 { display: flex; }
+  .display  { font-size: clamp(13px, 3.8vw, 24px); }
+}
+
+.cell {
+  position: relative;
+  width: calc(1ch + 4px);
+  height: 1.55em;
+  background: var(--cell);
+  border-radius: 3px;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background .4s;
+  flex-shrink: 0;
+}
+
+.cell.sp { background: transparent; }
+
+.glyph {
+  display: block;
+  will-change: transform;
+  transform-origin: center center;
+  line-height: 1;
+}
+
+/* ── Progress dots ───────────────────────────────────────── */
+
+.dots {
+  display: flex;
+  gap: 9px;
+  align-items: center;
+}
+
+.dot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--dot-off);
+  transition: background .3s;
+  flex-shrink: 0;
+}
+
+.dot.on { background: var(--dot-on); }
+
+/* ── Theme toggle ────────────────────────────────────────── */
+
+.tog {
+  position: fixed;
+  top: 22px;
+  right: 22px;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  border: 1px solid var(--mute);
+  background: transparent;
+  color: var(--fg);
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  padding: 0;
+  transition: border-color .3s, color .4s;
+  line-height: 0;
+}
+
+.tog-filled,
+.tog-hollow { display: none; line-height: 0; }
+
+/* Light mode: hollow */
+.tog .tog-hollow             { display: block; }
+
+/* Dark mode: hollow, stroke matches fg */
+[data-dark] .tog .tog-hollow        { display: block; }
+
+/* ── Credit ──────────────────────────────────────────────── */
+
+.credit {
+  position: fixed;
+  bottom: 22px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 11px;
+  color: var(--mute);
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+  transition: color .4s;
+}
+</style>
+</head>
+<body>
+
+<div class="display-wrap">
+  <div class="display" id="display1" role="region" aria-live="polite" aria-label="Design principle"></div>
+  <div class="display" id="display2"></div>
+</div>
+<div class="dots" id="dots"></div>
+<button class="tog" id="tog" aria-label="Toggle dark mode">
+  <span class="tog-filled"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="currentColor"/></svg></span>
+  <span class="tog-hollow"><svg width="14" height="14" viewBox="0 0 14 14"><circle cx="7" cy="7" r="6" fill="none" stroke="currentColor" stroke-width="1.5"/></svg></span>
+</button>
+<p class="credit">Ten Principles of Good Design — Dieter Rams</p>
+
+<script>
+'use strict';
+
+const SLIDES = [
+  "Good design is innovative",
+  "Good design makes a product useful",
+  "Good design is aesthetic",
+  "Good design makes a product understandable",
+  "Good design is unobtrusive",
+  "Good design is honest",
+  "Good design is long-lasting",
+  "Good design is thorough down to the last detail",
+  "Good design is environmentally friendly",
+  "Good design is as little design as possible",
+];
+
+const POOL = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
+const rnd  = () => POOL[Math.random() * POOL.length | 0];
+
+// ── Text layout ──────────────────────────────────────────────
+
+function centerPad(str, len) {
+  const total = len - str.length;
+  const left  = Math.floor(total / 2);
+  const right = total - left;
+  return ' '.repeat(left) + str + ' '.repeat(right);
+}
+
+// Split at the space closest to the midpoint
+function splitMid(str) {
+  const mid = str.length / 2;
+  let best = -1, bestDist = Infinity;
+  for (let i = 0; i < str.length; i++) {
+    if (str[i] === ' ') {
+      const d = Math.abs(i - mid);
+      if (d < bestDist) { bestDist = d; best = i; }
+    }
+  }
+  return best === -1 ? [str, ''] : [str.slice(0, best), str.slice(best + 1)];
+}
+
+// Single-row layout
+const MAX   = Math.max(...SLIDES.map(s => s.length));
+const texts = SLIDES.map(s => centerPad(s, MAX));
+
+// Two-row layout
+const splits = SLIDES.map(s => splitMid(s));
+const MAX1   = Math.max(...splits.map(([a]) => a.length));
+const MAX2   = Math.max(...splits.map(([, b]) => b.length));
+const texts1 = splits.map(([a]) => centerPad(a, MAX1));
+const texts2 = splits.map(([, b]) => centerPad(b, MAX2));
+
+// ── State ────────────────────────────────────────────────────
+
+let idx  = 0;
+let busy = false;
+
+const d1El  = document.getElementById('display1');
+const d2El  = document.getElementById('display2');
+const dotsEl = document.getElementById('dots');
+const togEl  = document.getElementById('tog');
+const BP     = matchMedia('(max-width: 540px)');
+
+// ── Theme ────────────────────────────────────────────────────
+
+const sysDark = matchMedia('(prefers-color-scheme: dark)');
+let override  = true;
+
+const isDark = () => override;
+
+function applyTheme() {
+  isDark()
+    ? document.documentElement.setAttribute('data-dark', '')
+    : document.documentElement.removeAttribute('data-dark');
+}
+
+togEl.addEventListener('click', e => {
+  e.stopPropagation();
+  override = !isDark();
+  applyTheme();
+});
+
+// ── Build DOM ────────────────────────────────────────────────
+
+function buildDisplay(el, text) {
+  el.innerHTML = '';
+  for (let i = 0; i < text.length; i++) {
+    const ch = text[i];
+    const sp = ch === ' ';
+
+    const cell = document.createElement('div');
+    cell.className = 'cell' + (sp ? ' sp' : '');
+    cell.dataset.c = ch;
+
+    const glyph = document.createElement('span');
+    glyph.className  = 'glyph';
+    glyph.textContent = sp ? ' ' : ch;
+
+    cell.appendChild(glyph);
+    el.appendChild(cell);
+  }
+}
+
+function buildDots() {
+  dotsEl.innerHTML = '';
+  SLIDES.forEach((_, i) => {
+    const d = document.createElement('div');
+    d.className = 'dot' + (i === 0 ? ' on' : '');
+    dotsEl.appendChild(d);
+  });
+}
+
+function syncDots() {
+  dotsEl.querySelectorAll('.dot')
+    .forEach((d, i) => d.classList.toggle('on', i === idx));
+}
+
+function rebuild() {
+  if (BP.matches) {
+    buildDisplay(d1El, texts1[idx]);
+    buildDisplay(d2El, texts2[idx]);
+  } else {
+    buildDisplay(d1El, texts[idx]);
+  }
+}
+
+BP.addEventListener('change', () => { busy = false; rebuild(); });
+
+// ── Flip animation ───────────────────────────────────────────
+
+const HALF   = 26;
+const PAUSE  = 10;
+const STEP   = HALF * 2 + PAUSE;
+const LAG    = 20;
+const JITTER = 12;
+
+function flipCell(cell, toChar, delay) {
+  const g    = cell.querySelector('.glyph');
+  const from = cell.dataset.c;
+  if (from === toChar) return;
+
+  const steps = 5 + (Math.random() * 7 | 0);
+  let s = 0;
+
+  function doStep() {
+    const last = s === steps - 1;
+    const ch   = last ? toChar : rnd();
+    const sp   = ch === ' ';
+
+    g.style.transition = `transform ${HALF}ms ease-in`;
+    g.style.transform  = 'perspective(100px) rotateX(-90deg)';
+
+    setTimeout(() => {
+      g.textContent      = sp ? ' ' : ch;
+      g.style.transition = 'none';
+      g.style.transform  = 'perspective(100px) rotateX(90deg)';
+      g.getBoundingClientRect();
+
+      g.style.transition = `transform ${HALF}ms ease-out`;
+      g.style.transform  = 'perspective(100px) rotateX(0deg)';
+
+      if (!last) { s++; setTimeout(doStep, PAUSE); }
+      else {
+        cell.dataset.c = toChar;
+        cell.className = 'cell' + (sp ? ' sp' : '');
+      }
+    }, HALF);
+  }
+
+  setTimeout(doStep, delay);
+}
+
+function animateRow(el, text) {
+  const cells = el.querySelectorAll('.cell');
+  let maxDelay = 0;
+  cells.forEach((cell, i) => {
+    const d = i * LAG + Math.random() * JITTER;
+    if (d > maxDelay) maxDelay = d;
+    flipCell(cell, text[i], d);
+  });
+  return maxDelay;
+}
+
+// ── Advance ──────────────────────────────────────────────────
+
+function advance() {
+  if (busy) return;
+  busy = true;
+
+  const next = (idx + 1) % SLIDES.length;
+  let maxDelay;
+
+  if (BP.matches) {
+    maxDelay = Math.max(
+      animateRow(d1El, texts1[next]),
+      animateRow(d2El, texts2[next])
+    );
+  } else {
+    maxDelay = animateRow(d1El, texts[next]);
+  }
+
+  idx = next;
+  syncDots();
+  setTimeout(() => { busy = false; }, maxDelay + 12 * STEP + 100);
+}
+
+// ── Init ─────────────────────────────────────────────────────
+
+applyTheme();
+buildDots();
+rebuild();
+
+// ── Controls ─────────────────────────────────────────────────
+
+document.body.addEventListener('click', advance);
+
+document.addEventListener('keydown', e => {
+  if ([' ', 'ArrowRight', 'ArrowDown', 'Enter'].includes(e.key)) {
+    e.preventDefault();
+    advance();
+  }
+});
+</script>
+</body>
+</html>
