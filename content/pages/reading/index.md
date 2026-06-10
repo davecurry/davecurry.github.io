@@ -5,21 +5,21 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: May 10, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: June 9, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/220772913-the-butcher-s-masquerade">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1734098643i/220772913.jpg"
-         alt="The Butcher's Masquerade by Matt Dinniman"
+  <a href="https://www.goodreads.com/book/show/14265.Under_the_Glacier">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924487i/14265.jpg"
+         alt="Under the Glacier by Halldór Laxness"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-[***The Butcher's Masquerade*** — Dungeon Crawler Carl, #5](https://www.goodreads.com/book/show/220772913-the-butcher-s-masquerade)
+[***Under the Glacier***](https://www.goodreads.com/book/show/14265.Under_the_Glacier)
 
-(2022) Matt Dinniman
+(1968) Halldór Laxness
 </div>
 
 ***
@@ -27,6 +27,13 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734098643l/220772913._SY75_.jpg" alt="The Butcher's Masquerade" style="float: left; margin-right: 16px;">
+
+[*The Butcher's Masquerade* — Dungeon Crawler Carl, #5](https://www.goodreads.com/book/show/220772913-the-butcher-s-masquerade) (2022) Matt Dinniman
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734098514l/220772908._SY75_.jpg" alt="The Gate of the Feral Gods" style="float: left; margin-right: 16px;">
