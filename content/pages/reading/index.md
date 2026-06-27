@@ -5,21 +5,21 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: June 9, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: June 27, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/14265.Under_the_Glacier">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1386924487i/14265.jpg"
-         alt="Under the Glacier by Halldór Laxness"
+  <a href="https://www.goodreads.com/book/show/220772912-the-eye-of-the-bedlam-bride">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1734098749i/220772912.jpg"
+         alt="The Eye of the Bedlam Bride by Matt Dinniman"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-[***Under the Glacier***](https://www.goodreads.com/book/show/14265.Under_the_Glacier)
+[***The Eye of the Bedlam Bride***](https://www.goodreads.com/book/show/220772912-the-eye-of-the-bedlam-bride)
 
-(1968) Halldór Laxness
+(2023) Matt Dinniman
 </div>
 
 ***
@@ -27,6 +27,27 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1758044201l/240019874._SY75_.jpg" alt="Platform Decay" style="float: left; margin-right: 16px;">
+
+[*Platform Decay* — The Murderbot Diaries #8](https://www.goodreads.com/book/show/240019874-platform-decay) (2026) Martha Wells
+
+</div>
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1751316945l/237633725._SY75_.jpg" alt="Rapport" style="float: left; margin-right: 16px;">
+
+[*Rapport* — The Murderbot Diaries #2.5](https://www.goodreads.com/book/show/237633725-rapport) (2025) Martha Wells
+
+</div>
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1386924487l/14265._SY75_.jpg" alt="Under the Glacier" style="float: left; margin-right: 16px;">
+
+[*Under the Glacier*](https://www.goodreads.com/book/show/14265.Under_the_Glacier) (1968) Halldór Laxness
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734098643l/220772913._SY75_.jpg" alt="The Butcher's Masquerade" style="float: left; margin-right: 16px;">
