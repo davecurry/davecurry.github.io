@@ -1,10 +1,10 @@
 ---
-title: 'Good Design'
+title: 'Ten Principles of Good Design'
 date: 2026-05-19T07:00:00-0700
 cover:
   image: "good-design-thumb.png"
   relative: true
-tags: ['design']
+tags: ['design', 'projects']
 draft: false
 ---
 

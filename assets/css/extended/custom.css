@@ -76,6 +76,11 @@ body,h1,h2,h3,h4,h5,h6 {
   border-radius: 2px;
 }
 
+/* PaperMod hides covers on tag pages (.tag-entry); show them there too */
+.post-entry.tag-entry .entry-cover {
+  display: block;
+}
+
 .post-entry:has(.entry-cover) {
   display: grid;
   grid-template-columns: 100px 1fr;

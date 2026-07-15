@@ -4,7 +4,7 @@ date: 2026-03-14T00:00:00-08:00
 cover:
   image: "slide-clock-thumb.png"
   relative: true
-tags: ['design', 'ai']
+tags: ['design', 'projects']
 draft: false
 ---
 
