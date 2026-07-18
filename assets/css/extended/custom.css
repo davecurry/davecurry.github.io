@@ -76,6 +76,20 @@ body,h1,h2,h3,h4,h5,h6 {
   border-radius: 2px;
 }
 
+/* Pagination (Next/Prev): inactive pill like the projects-demo picker,
+   pink only on hover */
+.pagination a {
+  background: rgba(10, 18, 28, 0.85);
+  border: 1px solid var(--border);
+  color: var(--secondary);
+}
+
+.pagination a:hover {
+  background: var(--primary);
+  border-color: var(--primary);
+  color: #10131c;
+}
+
 /* PaperMod hides covers on tag pages (.tag-entry); show them there too */
 .post-entry.tag-entry .entry-cover {
   display: block;
@@ -143,4 +157,73 @@ body,h1,h2,h3,h4,h5,h6 {
 /* Remove vertical scrollbar from code blocks */
 .post-content pre code {
   overflow-y: hidden;
+}
+
+/* ── Aurora ambient background (dark mode only) ──────────────
+   Three blurred blobs on elliptical orbits: an outer element
+   sweeps x, the inner blob bobs y a quarter-period out of phase
+   (two sinusoids = smooth ellipse). A middle "jitter" layer
+   wobbles at durations that don't divide into the orbit periods,
+   so the path never visibly repeats.
+   All delays offset by --aur-t0 (seconds since a fixed epoch,
+   set in extend_footer.html) so the animation phase carries
+   across page navigations instead of resetting. */
+#aurora {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  display: none;
+}
+
+[data-theme="dark"] #aurora { display: block; }
+
+.aur-orb { position: absolute; }
+.aur-jit { position: relative; }
+.aur-blob {
+  position: relative;
+  border-radius: 50%;
+  filter: blur(90px);
+  opacity: .17;
+}
+
+.aur-o1 { top: -20%; left: -15%; animation: aur-ox1 21s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
+.aur-blob1 { width: 55vw; height: 55vw; background: #ee72f1; animation: aur-oy1 21s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 10.5s); }
+@keyframes aur-ox1 { from { transform: translateX(0); } to { transform: translateX(60vw); } }
+@keyframes aur-oy1 { from { transform: translateY(-10vh) scale(1); } to { transform: translateY(10vh) scale(1.15); } }
+
+.aur-o2 { bottom: -25%; right: -10%; animation: aur-ox2 17s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
+.aur-blob2 { width: 45vw; height: 45vw; background: #4f7cff; animation: aur-oy2 17s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 8.5s); }
+@keyframes aur-ox2 { from { transform: translateX(0); } to { transform: translateX(-55vw); } }
+@keyframes aur-oy2 { from { transform: translateY(9vh) scale(1); } to { transform: translateY(-9vh) scale(0.9); } }
+
+.aur-o3 { top: 40%; left: 55%; animation: aur-ox3 14s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
+.aur-blob3 { width: 35vw; height: 35vw; background: #22d3ee; opacity: .10; animation: aur-oy3 14s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 7s); }
+@keyframes aur-ox3 { from { transform: translateX(0); } to { transform: translateX(-70vw); } }
+@keyframes aur-oy3 { from { transform: translateY(12vh) scale(1); } to { transform: translateY(-12vh) scale(1.2); } }
+
+.aur-jit1 { animation: aur-jit1 13.7s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
+.aur-jit2 { animation: aur-jit2 11.3s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 4.1s); }
+.aur-jit3 { animation: aur-jit3 9.1s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 2.3s); }
+@keyframes aur-jit1 {
+  0%   { transform: translate(0, 0); }
+  37%  { transform: translate(-4vw, 3vh); }
+  71%  { transform: translate(3vw, -2vh); }
+  100% { transform: translate(-2vw, -3vh); }
+}
+@keyframes aur-jit2 {
+  0%   { transform: translate(0, 0); }
+  43%  { transform: translate(3.5vw, -3vh); }
+  100% { transform: translate(-3vw, 2.5vh); }
+}
+@keyframes aur-jit3 {
+  0%   { transform: translate(0, 0); }
+  31%  { transform: translate(-3vw, -3.5vh); }
+  67%  { transform: translate(4vw, 2vh); }
+  100% { transform: translate(2vw, 3.5vh); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  #aurora * { animation: none !important; }
 }

@@ -5,7 +5,7 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: June 27, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: July 18, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
   <a href="https://www.goodreads.com/book/show/220772912-the-eye-of-the-bedlam-bride">
@@ -27,6 +27,13 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1459703743l/23492653._SY75_.jpg" alt="The Path" style="float: left; margin-right: 16px;">
+
+[*The Path: What Chinese Philosophers Can Teach Us About the Good Life*](https://www.goodreads.com/book/show/23492653-the-path) (2016) Michael Puett, Christine Gross-Loh
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1758044201l/240019874._SY75_.jpg" alt="Platform Decay" style="float: left; margin-right: 16px;">

@@ -1,0 +1,34 @@
+{{- /* Aurora ambient background (dark mode). Styles in assets/css/extended/custom.css.
+       The script pins every animation's phase to wall-clock time (seconds since a
+       fixed epoch as a negative animation-delay), so navigating between pages
+       doesn't reset the background — it behaves like one animation that has been
+       running continuously. */}}
+<div id="aurora" aria-hidden="true">
+  <div class="aur-orb aur-o1"><div class="aur-jit aur-jit1"><div class="aur-blob aur-blob1"></div></div></div>
+  <div class="aur-orb aur-o2"><div class="aur-jit aur-jit2"><div class="aur-blob aur-blob2"></div></div></div>
+  <div class="aur-orb aur-o3"><div class="aur-jit aur-jit3"><div class="aur-blob aur-blob3"></div></div></div>
+</div>
+<script>
+  (function () {
+    var epoch = 1767225600000; // 2026-01-01T00:00:00Z
+    var e = (Date.now() - epoch) / 1000;
+    // [selector, full period (2x duration, alternate), phase offset]
+    // Delay is reduced mod the period so it stays small: huge negative
+    // delays overflow the compositor's float precision and freeze the
+    // animation entirely.
+    [
+      ['.aur-o1',    42,   0   ],
+      ['.aur-blob1', 42,   10.5],
+      ['.aur-o2',    34,   0   ],
+      ['.aur-blob2', 34,   8.5 ],
+      ['.aur-o3',    28,   0   ],
+      ['.aur-blob3', 28,   7   ],
+      ['.aur-jit1',  27.4, 0   ],
+      ['.aur-jit2',  22.6, 4.1 ],
+      ['.aur-jit3',  18.2, 2.3 ]
+    ].forEach(function (row) {
+      var el = document.querySelector(row[0]);
+      if (el) el.style.animationDelay = (-(((e % row[1]) + row[2]) % row[1])).toFixed(3) + 's';
+    });
+  })();
+</script>

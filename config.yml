@@ -3,7 +3,8 @@
 baseURL: "https://davecurry.net/"
 languageCode: en-us
 title: davecurry.net
-pagerSize: 5
+pagination:
+    pagerSize: 10
 theme: PaperMod
 
 # relativeURLs: true
@@ -35,17 +36,23 @@ markup:
 
 menu:
     main:
+        - name: Projects
+          identifier: pages/projects
+          url: pages/projects
+          weight: 1
+          pre: '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-0.15em;margin-right:0.25em;">auto_awesome</span>'
         - name: Reading
           url: pages/reading
-          weight: 1
+          weight: 2
           pre: '<span class="material-symbols-outlined" style="font-size:1rem;vertical-align:-0.15em;margin-right:0.25em;">book</span>'
         - name: Who Me?
           url: pages/about
-          weight: 2
+          weight: 3
 
 params:
-    defaultTheme: auto
-    # disableThemeToggle: true
+    defaultTheme: dark
+    disableThemeToggle: true
+    disableScrollToTop: true
     ShowShareButtons: false
     ShowReadingTime: true
     # disableSpecial1stPost: true

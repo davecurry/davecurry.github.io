@@ -1,0 +1,269 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Ambient background options — dark mode</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme: #132335;
+  --entry: rgb(20, 33, 47);
+  --primary: #ee72f1;
+  --secondary: #b3b2b2;
+  --content: #cbcbcb;
+  --border: #2a3a4f;
+}
+* { margin: 0; box-sizing: border-box; }
+html, body { height: 100%; }
+body {
+  font-family: "Fira Code", monospace;
+  background: var(--theme);
+  color: var(--content);
+  overflow-x: hidden;
+}
+
+/* ── background layer ─────────────────────────────── */
+#bg {
+  position: fixed;
+  inset: 0;
+  z-index: 0;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* ── mock site content ────────────────────────────── */
+.site {
+  position: relative;
+  z-index: 1;
+  max-width: 720px;
+  margin: 0 auto;
+  padding: 20px 24px;
+}
+.nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 64px; }
+.logo { font-family: "Arvo", serif; font-size: 1.2rem; color: var(--primary); }
+.nav a { color: var(--content); text-decoration: none; font-size: .95rem; margin-left: 20px; }
+h1 { font-family: "Arvo", serif; font-size: 2.4rem; color: #cbcbcb; margin-bottom: .4rem; }
+h2 { font-family: "Arvo", serif; font-size: 1.4rem; margin-bottom: 1.4rem; }
+h2 .hl { color: var(--primary); }
+.site p { font-size: .95rem; line-height: 1.6; color: var(--secondary); margin-bottom: 1rem; }
+.card {
+  background: var(--entry);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+  margin-top: 28px;
+}
+.card h3 { font-family: "Arvo", serif; margin-bottom: .5rem; }
+.card p { font-size: .85rem; margin: 0; }
+.meta { font-size: .75rem; color: var(--secondary); margin-top: .8rem; }
+
+/* ── picker ───────────────────────────────────────── */
+.picker {
+  position: fixed;
+  bottom: 18px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 10;
+  display: flex;
+  gap: 6px;
+  background: rgba(10, 18, 28, 0.85);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px;
+  backdrop-filter: blur(8px);
+}
+.picker button {
+  font-family: "Fira Code", monospace;
+  font-size: .75rem;
+  color: var(--secondary);
+  background: transparent;
+  border: none;
+  border-radius: 999px;
+  padding: 7px 14px;
+  cursor: pointer;
+}
+.picker button.on { background: var(--primary); color: #10131c; font-weight: 500; }
+
+/* ══ 1. AURORA — drifting blurred gradient blobs ═══ */
+.blob { position: absolute; border-radius: 50%; filter: blur(90px); opacity: .17; }
+/* Elliptical orbits via two-axis sinusoids: outer element sweeps x,
+   inner blob bobs y with a quarter-period phase offset (-delay).
+   ease-in-out alternate ≈ cosine, so the path is a smooth ellipse
+   with no waypoints to pause at. */
+.orb { position: absolute; }
+.blob { position: relative; }
+
+.o1 { top: -20%; left: -15%; animation: ox1 21s ease-in-out infinite alternate; }
+.blob1 { width: 55vw; height: 55vw; background: #ee72f1; animation: oy1 21s ease-in-out infinite alternate; animation-delay: -10.5s; }
+@keyframes ox1 { from { transform: translateX(0); } to { transform: translateX(60vw); } }
+@keyframes oy1 { from { transform: translateY(-10vh) scale(1); } to { transform: translateY(10vh) scale(1.15); } }
+
+.o2 { bottom: -25%; right: -10%; animation: ox2 17s ease-in-out infinite alternate; }
+.blob2 { width: 45vw; height: 45vw; background: #4f7cff; animation: oy2 17s ease-in-out infinite alternate; animation-delay: -8.5s; }
+@keyframes ox2 { from { transform: translateX(0); } to { transform: translateX(-55vw); } }
+@keyframes oy2 { from { transform: translateY(9vh) scale(1); } to { transform: translateY(-9vh) scale(0.9); } }
+
+.o3 { top: 40%; left: 55%; animation: ox3 14s ease-in-out infinite alternate; }
+.blob3 { width: 35vw; height: 35vw; background: #22d3ee; opacity: .10; animation: oy3 14s ease-in-out infinite alternate; animation-delay: -7s; }
+@keyframes ox3 { from { transform: translateX(0); } to { transform: translateX(-70vw); } }
+@keyframes oy3 { from { transform: translateY(12vh) scale(1); } to { transform: translateY(-12vh) scale(1.2); } }
+
+/* Wobble layer: small drift at durations that don't divide evenly into
+   the orbit periods, so the combined path never visibly repeats. */
+.jit { position: relative; }
+.jit1 { animation: jit1 13.7s ease-in-out infinite alternate; }
+.jit2 { animation: jit2 11.3s ease-in-out infinite alternate; animation-delay: -4.1s; }
+.jit3 { animation: jit3 9.1s ease-in-out infinite alternate; animation-delay: -2.3s; }
+@keyframes jit1 {
+  0%   { transform: translate(0, 0); }
+  37%  { transform: translate(-4vw, 3vh); }
+  71%  { transform: translate(3vw, -2vh); }
+  100% { transform: translate(-2vw, -3vh); }
+}
+@keyframes jit2 {
+  0%   { transform: translate(0, 0); }
+  43%  { transform: translate(3.5vw, -3vh); }
+  100% { transform: translate(-3vw, 2.5vh); }
+}
+@keyframes jit3 {
+  0%   { transform: translate(0, 0); }
+  31%  { transform: translate(-3vw, -3.5vh); }
+  67%  { transform: translate(4vw, 2vh); }
+  100% { transform: translate(2vw, 3.5vh); }
+}
+
+/* ══ 2. STARFIELD — slow drifting specks ═══════════ */
+.stars { position: absolute; inset: -100vh 0 0 0; }
+.stars .layer { position: absolute; inset: 0; background-repeat: repeat; }
+.l1 { background-image: radial-gradient(1px 1px at 20px 30px, #8ea4c8 50%, transparent 51%),
+                        radial-gradient(1px 1px at 140px 80px, #8ea4c8 50%, transparent 51%),
+                        radial-gradient(1px 1px at 60px 160px, #6f86ab 50%, transparent 51%),
+                        radial-gradient(1px 1px at 200px 210px, #8ea4c8 50%, transparent 51%);
+      background-size: 240px 240px; opacity: .5; animation: rise 210s linear infinite; }
+.l2 { background-image: radial-gradient(1.5px 1.5px at 90px 40px, #b9c8e2 50%, transparent 51%),
+                        radial-gradient(1.5px 1.5px at 30px 120px, #b9c8e2 50%, transparent 51%),
+                        radial-gradient(1.5px 1.5px at 170px 190px, #a5b6d4 50%, transparent 51%);
+      background-size: 220px 220px; opacity: .6; animation: rise 130s linear infinite; }
+.l3 { background-image: radial-gradient(2px 2px at 60px 60px, #ee72f1 50%, transparent 51%),
+                        radial-gradient(2px 2px at 180px 150px, #d9e4f5 50%, transparent 51%);
+      background-size: 300px 300px; opacity: .55; animation: rise 90s linear infinite; }
+@keyframes rise { to { transform: translateY(100vh); } }
+
+/* ══ 3. GRID — faint blueprint + roaming glow ══════ */
+.grid {
+  position: absolute; inset: 0;
+  background-image: linear-gradient(rgba(142, 164, 200, .07) 1px, transparent 1px),
+                    linear-gradient(90deg, rgba(142, 164, 200, .07) 1px, transparent 1px);
+  background-size: 44px 44px;
+  mask-image: radial-gradient(38% 38% at var(--gx, 30%) var(--gy, 30%), black 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.12) 100%);
+  -webkit-mask-image: radial-gradient(38% 38% at var(--gx, 30%) var(--gy, 30%), black 0%, rgba(0,0,0,.25) 60%, rgba(0,0,0,.12) 100%);
+  animation: roam 47s ease-in-out infinite alternate;
+}
+.grid-glow {
+  position: absolute; inset: 0;
+  background: radial-gradient(26% 26% at var(--gx, 30%) var(--gy, 30%), rgba(238, 114, 241, .08), transparent 70%);
+  animation: roam 47s ease-in-out infinite alternate;
+}
+@keyframes roam {
+  0%   { --gx: 25%; --gy: 25%; }
+  33%  { --gx: 75%; --gy: 35%; }
+  66%  { --gx: 60%; --gy: 80%; }
+  100% { --gx: 20%; --gy: 65%; }
+}
+@property --gx { syntax: "<percentage>"; inherits: false; initial-value: 30%; }
+@property --gy { syntax: "<percentage>"; inherits: false; initial-value: 30%; }
+
+/* ══ 4. TWINKLE — fixed constellation, breathing ═══ */
+.twinkle span {
+  position: absolute;
+  width: 2px; height: 2px;
+  border-radius: 50%;
+  background: #b9c8e2;
+  animation: tw 6s ease-in-out infinite;
+}
+.twinkle span:nth-child(4n)   { background: #ee72f1; }
+.twinkle span:nth-child(3n)   { width: 1px; height: 1px; }
+@keyframes tw {
+  0%, 100% { opacity: .12; }
+  50%      { opacity: .75; }
+}
+
+/* ══ 5. GRADIENT DRIFT — whole-canvas slow shift ═══ */
+.drift {
+  position: absolute; inset: 0;
+  background: linear-gradient(215deg, #1b2440, #132335 45%, #0e2531 80%, #251b38);
+  background-size: 300% 300%;
+  animation: driftbg 60s ease-in-out infinite alternate;
+}
+@keyframes driftbg {
+  0%   { background-position: 0% 0%; }
+  100% { background-position: 100% 100%; }
+}
+</style>
+</head>
+<body>
+
+<div id="bg"></div>
+
+<div class="site">
+  <div class="nav">
+    <span class="logo">davecurry.net</span>
+    <span><a href="#">Reading</a><a href="#">Who Me?</a></span>
+  </div>
+  <h1>Dave Curry</h1>
+  <h2>Design Leader for <span class="hl">HBO Max</span> at Warner Bros. Discovery</h2>
+  <p>Previously WarnerMedia, HBO, and #AgencyLife</p>
+  <p>My exceptional team and I consistently strive to evolve and enhance the HBO Max user experience for our global customers. Product design is a never-ending journey of improvement, experimentation, and innovation.</p>
+  <div class="card">
+    <h3>Ten Principles of Good Design</h3>
+    <p>I love that I can have an idea, and because of agentic tools, shortly thereafter have a result. ...</p>
+    <div class="meta">May 19, 2026 · 1 min</div>
+  </div>
+  <div class="card">
+    <h3>About 20 Years Ago</h3>
+    <p>What was I up to about 20 years ago? Thanks to the Web Design Museum, you, too, can be transported back to earlier days. ...</p>
+    <div class="meta">May 10, 2026 · 1 min</div>
+  </div>
+</div>
+
+<div class="picker" id="picker"></div>
+
+<script>
+'use strict';
+const bg = document.getElementById('bg');
+const picker = document.getElementById('picker');
+
+function twinkleHTML() {
+  let s = '';
+  for (let i = 0; i < 70; i++) {
+    const x = Math.random() * 100, y = Math.random() * 100;
+    const delay = (Math.random() * 6).toFixed(2), dur = (4 + Math.random() * 5).toFixed(2);
+    s += `<span style="left:${x}%;top:${y}%;animation-delay:-${delay}s;animation-duration:${dur}s"></span>`;
+  }
+  return s;
+}
+
+const options = {
+  'None': () => '',
+  'Aurora': () => '<div class="orb o1"><div class="jit jit1"><div class="blob blob1"></div></div></div><div class="orb o2"><div class="jit jit2"><div class="blob blob2"></div></div></div><div class="orb o3"><div class="jit jit3"><div class="blob blob3"></div></div></div>',
+  'Starfield': () => '<div class="stars"><div class="layer l1"></div><div class="layer l2"></div><div class="layer l3"></div></div>',
+  'Grid': () => '<div class="grid"></div><div class="grid-glow"></div>',
+  'Twinkle': () => `<div class="twinkle">${twinkleHTML()}</div>`,
+  'Drift': () => '<div class="drift"></div>',
+};
+
+Object.keys(options).forEach((name, i) => {
+  const b = document.createElement('button');
+  b.textContent = name;
+  b.onclick = () => {
+    bg.innerHTML = options[name]();
+    picker.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+  };
+  picker.appendChild(b);
+  if (name === 'Aurora') b.click();
+});
+</script>
+</body>
+</html>

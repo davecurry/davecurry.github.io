@@ -49,7 +49,7 @@ The site uses PaperMod's "Home-Info Mode" with:
 - **Build**: Automatic on pushes to `main` branch
 
 ### Content Patterns
-- Posts use tags like "working well", "productivity", "writing"
+- Posts use tags like "design", "projects", "writing"
 - Dates in ISO format with timezone (e.g., `2024-04-25T11:57:19-07:00`)
 - Draft status controlled by `draft: false/true` in frontmatter
 - Professional focus on design, technology, and work setup content

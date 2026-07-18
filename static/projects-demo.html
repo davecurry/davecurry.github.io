@@ -1,0 +1,186 @@
+<!doctype html>
+<html lang="en" data-theme="dark">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Projects page — layout options</title>
+<link href="https://fonts.googleapis.com/css2?family=Arvo:wght@400;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root {
+  --theme: #132335;
+  --entry: rgb(20, 33, 47);
+  --primary: #ee72f1;
+  --secondary: #b3b2b2;
+  --content: #cbcbcb;
+  --border: #2a3a4f;
+}
+* { margin: 0; box-sizing: border-box; }
+body {
+  font-family: "Fira Code", monospace;
+  background: var(--theme);
+  color: var(--content);
+  padding-bottom: 90px;
+}
+.wrap { max-width: 720px; margin: 0 auto; padding: 20px 24px; }
+.nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 48px; }
+.logo { font-family: "Arvo", serif; font-size: 1.2rem; color: var(--primary); }
+.nav a { color: var(--content); text-decoration: none; font-size: .95rem; margin-left: 20px; }
+.nav a.here { color: var(--primary); }
+h1 { font-family: "Arvo", serif; font-size: 2.2rem; margin-bottom: .3rem; }
+.sub { font-size: .85rem; color: var(--secondary); margin-bottom: 2.5rem; }
+a { color: var(--primary); }
+
+.proj-title { font-family: "Arvo", serif; font-size: 1.25rem; }
+.proj-title a { color: var(--content); text-decoration: none; }
+.proj-title a:hover { color: var(--primary); }
+.proj-desc { font-size: .85rem; color: var(--secondary); line-height: 1.55; }
+.about { font-size: .8rem; }
+
+/* ══ A. EDITORIAL — full-width image, text below ══ */
+.ed .item { margin-bottom: 56px; }
+.ed img { display: block; width: 100%; aspect-ratio: 16/9; object-fit: cover; object-position: top; border-radius: 6px; margin-bottom: 14px; }
+.ed .proj-desc { margin-top: 6px; }
+
+/* ══ B. MEDIA LIST — image left, text right, hairlines ══ */
+.ml .item { display: flex; gap: 22px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border); }
+.ml .item:first-child { padding-top: 0; }
+.ml .item:last-child { border-bottom: none; }
+.ml img { display: block; width: 240px; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 4px; flex-shrink: 0; }
+.ml .proj-title { font-weight: 700; }
+.ml .proj-title a:hover { color: var(--content); }
+.ml .proj-desc { margin-top: 8px; }
+
+/* ══ C. INDEX — text rows, image on hover ══ */
+.ix { position: relative; }
+.ix .item { display: flex; align-items: baseline; gap: 18px; padding: 22px 0; border-bottom: 1px solid var(--border); cursor: pointer; }
+.ix .num { font-size: .75rem; color: var(--secondary); }
+.ix .proj-title { font-size: 1.5rem; }
+.ix .proj-desc { margin-left: auto; text-align: right; max-width: 45%; }
+.ix .peek {
+  position: fixed;
+  pointer-events: none;
+  width: 340px;
+  aspect-ratio: 16/10;
+  object-fit: cover;
+  object-position: top;
+  border-radius: 6px;
+  box-shadow: 0 12px 50px rgba(0,0,0,.5);
+  opacity: 0;
+  transition: opacity .18s;
+  z-index: 5;
+}
+.ix .peek.show { opacity: 1; }
+
+/* ══ D. ALTERNATING — editorial with a smaller offset image ══ */
+.alt .item { display: flex; gap: 24px; align-items: flex-start; margin-bottom: 48px; }
+.alt .item:nth-child(even) { flex-direction: row-reverse; }
+.alt img { display: block; width: 55%; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 6px; flex-shrink: 0; }
+.alt .txt { padding-top: 8px; }
+.alt .proj-desc { margin-top: 10px; }
+
+/* picker */
+.picker {
+  position: fixed; bottom: 18px; left: 50%; transform: translateX(-50%);
+  display: flex; gap: 6px; z-index: 10;
+  background: rgba(10,18,28,.85); border: 1px solid var(--border);
+  border-radius: 999px; padding: 6px; backdrop-filter: blur(8px);
+}
+.picker button {
+  font-family: "Fira Code", monospace; font-size: .75rem; color: var(--secondary);
+  background: transparent; border: none; border-radius: 999px; padding: 7px 14px; cursor: pointer;
+}
+.picker button.on { background: var(--primary); color: #10131c; font-weight: 500; }
+</style>
+</head>
+<body>
+
+<div class="wrap">
+  <div class="nav">
+    <span class="logo">davecurry.net</span>
+    <span><a href="#" class="here">Projects</a><a href="#">Reading</a><a href="#">Who Me?</a></span>
+  </div>
+  <h1>Projects</h1>
+  <p class="sub">Interactive experiments, live and clickable.</p>
+  <div id="stage"></div>
+</div>
+
+<div class="picker" id="picker"></div>
+
+<script>
+'use strict';
+const projects = [
+  { slug: 'slide-clock', title: 'Slide Clock', desc: 'A clock that tells time by sliding its digits into view.', about: '/posts/slide-clock/' },
+  { slug: 'good-design', title: 'Ten Principles of Good Design', desc: "Dieter Rams' ten principles, one flip at a time.", about: '/posts/good-design/' },
+  { slug: 'animation-vocabulary', title: 'Animation Vocabulary', desc: 'Every animation term, with a live example built from HTML and CSS.' },
+  { slug: 'flip-clock', title: 'Retro Flip Clock', desc: 'A split-flap clock with themes, layouts, and a fullscreen mode.' },
+  { slug: 'ai-flip-clocks', title: 'AI Flip Clocks', desc: 'The same flip-clock prompt, handed to different AI models.' },
+];
+const img = p => `/projects/${p.slug}/project-thumb.png`;
+const live = p => `/projects/${p.slug}/`;
+const aboutLink = p => p.about ? ` <a class="about" href="${p.about}">About&nbsp;↗</a>` : '';
+
+const layouts = {
+  'Editorial': () => `<div class="ed">` + projects.map(p => `
+    <div class="item">
+      <a href="${live(p)}"><img src="${img(p)}" alt="${p.title}"></a>
+      <div class="proj-title"><a href="${live(p)}">${p.title}</a></div>
+      <div class="proj-desc">${p.desc}${aboutLink(p)}</div>
+    </div>`).join('') + `</div>`,
+
+  'Media list': () => `<div class="ml">` + projects.map(p => `
+    <div class="item">
+      <a href="${live(p)}"><img src="${img(p)}" alt="${p.title}"></a>
+      <div>
+        <div class="proj-title"><a href="${live(p)}">${p.title}</a></div>
+        <div class="proj-desc">${p.desc}${aboutLink(p)}</div>
+      </div>
+    </div>`).join('') + `</div>`,
+
+  'Index': () => `<div class="ix">` + projects.map((p, i) => `
+    <div class="item" onclick="location.href='${live(p)}'" data-img="${img(p)}">
+      <span class="num">0${i + 1}</span>
+      <div class="proj-title"><a href="${live(p)}">${p.title}</a></div>
+      <div class="proj-desc">${p.desc}</div>
+    </div>`).join('') + `<img class="peek" alt=""></div>`,
+
+  'Alternating': () => `<div class="alt">` + projects.map(p => `
+    <div class="item">
+      <a href="${live(p)}" style="width:55%"><img src="${img(p)}" alt="${p.title}" style="width:100%"></a>
+      <div class="txt">
+        <div class="proj-title"><a href="${live(p)}">${p.title}</a></div>
+        <div class="proj-desc">${p.desc}${aboutLink(p)}</div>
+      </div>
+    </div>`).join('') + `</div>`,
+};
+
+const stage = document.getElementById('stage');
+const picker = document.getElementById('picker');
+
+function wireIndexPeek() {
+  const peek = stage.querySelector('.peek');
+  if (!peek) return;
+  stage.querySelectorAll('.ix .item').forEach(item => {
+    item.addEventListener('mouseenter', () => { peek.src = item.dataset.img; peek.classList.add('show'); });
+    item.addEventListener('mouseleave', () => peek.classList.remove('show'));
+    item.addEventListener('mousemove', e => {
+      peek.style.left = Math.min(e.clientX + 24, innerWidth - 360) + 'px';
+      peek.style.top = (e.clientY - 100) + 'px';
+    });
+  });
+}
+
+Object.keys(layouts).forEach(name => {
+  const b = document.createElement('button');
+  b.textContent = name;
+  b.onclick = () => {
+    stage.innerHTML = layouts[name]();
+    picker.querySelectorAll('button').forEach(x => x.classList.remove('on'));
+    b.classList.add('on');
+    wireIndexPeek();
+  };
+  picker.appendChild(b);
+  if (name === 'Media list') b.click();
+});
+</script>
+</body>
+</html>
