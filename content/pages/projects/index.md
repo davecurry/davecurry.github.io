@@ -5,7 +5,15 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 1.5rem;">Last Updated: July 18, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 1.5rem;">Last Updated: July 19, 2026</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border);">
+<a href="/projects/oblique/daily-oblique/" style="flex-shrink: 0; box-shadow: none;"><img src="/projects/oblique/daily-oblique/project-thumb.png" alt="Daily Oblique" style="display: block; width: 240px; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 4px; margin: 0;"></a>
+<div style="flex: 1; min-width: 240px;">
+<div style="font-family: 'Arvo', serif; font-size: 1.25rem; font-weight: 700;"><a href="/projects/oblique/daily-oblique/" style="color: var(--content); text-decoration: none; box-shadow: none;">Daily Oblique</a></div>
+<p style="font-size: 0.85rem; color: var(--secondary); line-height: 1.55; margin: 8px 0 0;">One card a day, the same card for everyone. Changes at midnight.<br><a href="/posts/oblique-strategies-strategies/" style="font-size: 0.8rem;">About&nbsp;↗</a></p>
+</div>
+</div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border);">
 <a href="/projects/animation-vocabulary/" style="flex-shrink: 0; box-shadow: none;"><img src="/projects/animation-vocabulary/project-thumb.png" alt="Animation Vocabulary" style="display: block; width: 240px; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 4px; margin: 0;"></a>

@@ -4,7 +4,7 @@ date: 2026-05-19T07:00:00-0700
 cover:
   image: "good-design-thumb.png"
   relative: true
-tags: ['design', 'projects']
+tags: ['design']
 draft: false
 ---
 

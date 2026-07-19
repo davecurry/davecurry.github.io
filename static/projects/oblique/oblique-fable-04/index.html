@@ -1,0 +1,373 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  html, body { margin: 0; padding: 0; background: #e6e3dd; }
+  @keyframes obPulse { 0% { opacity: .25; } 50% { opacity: .55; } 100% { opacity: .25; } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: #e6e3dd; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; color: #1c1a17; padding: 64px 24px 96px;">
+  <div style="max-width: 920px; margin: 0 auto;">
+
+    <!-- ============ HEADER ============ -->
+    <header data-screen-label="Intro" style="margin-bottom: 20px;">
+      <div style="font-size: 11px; letter-spacing: 0.22em; color: #8a847a; margin-bottom: 14px;">INTERACTIVE CONCEPTS · FOUR DIRECTIONS</div>
+      <h1 style="font-size: 44px; font-weight: 500; letter-spacing: -0.01em; margin: 0 0 18px; line-height: 1.05;">Oblique Strategies</h1>
+      <div style="max-width: 640px; font-size: 14px; line-height: 1.65; color: #4d4840;">
+        <p style="margin: 0 0 10px;">The deck&rsquo;s whole identity is austerity &mdash; a white card, a black box, one sentence. So the design work lives in the <em>interaction</em>: each option below leads with a different metaphor for the same act of drawing a card. Every frame is live &mdash; click around.</p>
+        <p style="margin: 0;">Assumptions: strict warm monochrome; Helvetica, the deck&rsquo;s own voice (Option D tries a quiet serif reinterpretation); 32 well-known strategies as working content; motion kept slow and deliberate.</p>
+      </div>
+    </header>
+
+    <!-- ============ OPTION A — THE DRAW ============ -->
+    <section style="margin-top: 56px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; color: #8a847a;">OPTION A</span>
+        <h2 style="font-size: 21px; font-weight: 500; margin: 0;">The Draw</h2>
+      </div>
+      <p style="margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #6b655c; max-width: 620px;">The faithful one. The deck sits on a dark table; click it and the top card lifts, flips toward you, and holds. Returning it readies the next. Closest to the physical ritual.</p>
+
+      <div data-screen-label="Option A — The Draw" onClick="{{ drawA }}" style="position: relative; height: 560px; border-radius: 10px; overflow: hidden; background: radial-gradient(ellipse at 50% 30%, #232120 0%, #151312 70%); box-shadow: 0 1px 3px rgba(0,0,0,0.18); cursor: pointer;">
+
+        <!-- the box lid, set dressing -->
+        <div style="position: absolute; left: 50%; top: 52px; transform: translateX(-50%) ; width: 250px; height: 64px; background: linear-gradient(180deg, #232120 0%, #121110 100%); border-radius: 5px; box-shadow: 0 10px 24px rgba(0,0,0,0.5), inset 0 1px 0 rgba(255,255,255,0.06); display: flex; align-items: center; justify-content: center;">
+          <span style="font-family: Georgia, 'Times New Roman', serif; font-size: 11px; letter-spacing: 0.32em; color: #a8946a;">OBLIQUE STRATEGIES</span>
+        </div>
+
+        <!-- deck stack -->
+        <sc-for list="{{ aDeckLayers }}" as="L" hint-placeholder-count="8">
+          <div style="position: absolute; left: 50%; top: 63%; width: 200px; height: 128px; transform: translate(-50%, -50%) translateY({{ L.y }}px) rotate({{ L.r }}deg); background: #efece5; border-radius: 9px; box-shadow: 0 1px 2px rgba(0,0,0,0.4);"></div>
+        </sc-for>
+
+        <!-- the moving card -->
+        <div style="position: absolute; left: 50%; top: {{ aTop }}%; width: 200px; height: 128px; transform: translate(-50%, -50%) scale({{ aScale }}); transition: top 0.9s cubic-bezier(0.22, 0.9, 0.3, 1), transform 0.9s cubic-bezier(0.22, 0.9, 0.3, 1); z-index: 3; perspective: 1100px;">
+          <div style="position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateX({{ aFlip }}deg); transition: transform 0.9s cubic-bezier(0.3, 0.7, 0.25, 1);">
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #f7f4ee; border-radius: 9px; box-shadow: 0 6px 18px rgba(0,0,0,0.45);"></div>
+            <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateX(180deg); background: #faf8f3; border-radius: 9px; box-shadow: 0 14px 38px rgba(0,0,0,0.5); display: flex; align-items: center; justify-content: center; padding: 16px;">
+              <span style="font-size: 11.5px; line-height: 1.5; text-align: center; color: #211e1a; letter-spacing: 0.01em;">{{ aCardText }}</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- footer hint / return -->
+        <sc-if value="{{ aIdle }}" hint-placeholder-val="{{ true }}">
+          <div style="position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: 0.28em; color: rgba(240,236,228,0.45); animation: obPulse 4s ease-in-out infinite;">CLICK THE DECK TO DRAW</div>
+        </sc-if>
+        <sc-if value="{{ aDrawn }}" hint-placeholder-val="{{ false }}">
+          <button onClick="{{ returnA }}" style="position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); background: none; border: 1px solid rgba(240,236,228,0.25); border-radius: 999px; color: rgba(240,236,228,0.7); font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.22em; padding: 9px 22px; cursor: pointer;" style-hover="background: rgba(240,236,228,0.08); border: 1px solid rgba(240,236,228,0.45); color: rgba(240,236,228,0.95); border-radius: 999px; font-size: 10px; letter-spacing: 0.22em; padding: 9px 22px; position: absolute; bottom: 22px; left: 50%; transform: translateX(-50%); cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;">RETURN TO THE DECK</button>
+        </sc-if>
+      </div>
+    </section>
+
+    <!-- ============ OPTION B — EMERGENCE ============ -->
+    <section style="margin-top: 64px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; color: #8a847a;">OPTION B</span>
+        <h2 style="font-size: 21px; font-weight: 500; margin: 0;">Emergence</h2>
+      </div>
+      <p style="margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #6b655c; max-width: 620px;">The ambient one. No card at all &mdash; the phrase condenses slowly out of darkness, like a thought arriving. Click anywhere to dissolve it and let another surface. An optional drone hums underneath (bottom right).</p>
+
+      <div data-screen-label="Option B — Emergence" onClick="{{ drawB }}" style="position: relative; height: 560px; border-radius: 10px; overflow: hidden; background: radial-gradient(ellipse at 50% 45%, #181614 0%, #0d0c0b 75%); box-shadow: 0 1px 3px rgba(0,0,0,0.18); cursor: pointer; display: flex; align-items: center; justify-content: center;">
+        <div style="max-width: 580px; padding: 0 48px; text-align: center; font-size: 27px; line-height: 1.55; font-weight: 300; color: #ece8df; opacity: {{ bOpacity }}; filter: blur({{ bBlur }}px); letter-spacing: {{ bSpacing }}em; transition: {{ bTransition }};">{{ bText }}</div>
+
+        <div style="position: absolute; bottom: 26px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: 0.28em; color: rgba(236,232,223,0.3);">CLICK ANYWHERE FOR ANOTHER</div>
+
+        <button onClick="{{ toggleDrone }}" style="position: absolute; bottom: 20px; right: 22px; display: flex; align-items: center; gap: 8px; background: none; border: none; cursor: pointer; padding: 8px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.2em; color: rgba(236,232,223,0.55);">
+          <span style="display: inline-block; width: 7px; height: 7px; border-radius: 50%; background: {{ droneDot }}; transition: background 0.6s ease;"></span>
+          <span>{{ droneLabel }}</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- ============ OPTION C — THE SPREAD ============ -->
+    <section style="margin-top: 64px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; color: #8a847a;">OPTION C</span>
+        <h2 style="font-size: 21px; font-weight: 500; margin: 0;">The Spread</h2>
+      </div>
+      <p style="margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #6b655c; max-width: 620px;">The browsable one. The deck is tipped out onto the table, face down. Hover to feel a card lift; click to turn it over in place. Only one card may be face up at a time &mdash; turning a new one returns the last.</p>
+
+      <div data-screen-label="Option C — The Spread" style="position: relative; height: 560px; border-radius: 10px; overflow: hidden; background: linear-gradient(165deg, #d6d1c8 0%, #c9c3b8 100%); box-shadow: 0 1px 3px rgba(0,0,0,0.18);">
+        <sc-for list="{{ cCards }}" as="card" hint-placeholder-count="15">
+          <div onClick="{{ card.onClick }}" style="position: absolute; left: {{ card.left }}%; top: {{ card.top }}%; width: 168px; height: 106px; transform: rotate({{ card.rot }}deg); cursor: pointer; perspective: 900px; z-index: {{ card.z }};">
+            <div style="width: 100%; height: 100%; transition: transform 0.35s ease;" style-hover="width: 100%; height: 100%; transform: translateY(-6px); transition: transform 0.35s ease;">
+              <div style="position: absolute; inset: 0; transform-style: preserve-3d; transform: rotateY({{ card.flip }}deg); transition: transform 0.7s cubic-bezier(0.3, 0.7, 0.25, 1);">
+                <div style="position: absolute; inset: 0; backface-visibility: hidden; background: #f4f1ea; border-radius: 8px; box-shadow: 0 2px 6px rgba(40,35,28,0.3);"></div>
+                <div style="position: absolute; inset: 0; backface-visibility: hidden; transform: rotateY(180deg); background: #faf8f3; border-radius: 8px; box-shadow: 0 8px 22px rgba(40,35,28,0.35); display: flex; align-items: center; justify-content: center; padding: 12px;">
+                  <span style="font-size: 10px; line-height: 1.45; text-align: center; color: #211e1a;">{{ card.text }}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </sc-for>
+        <div style="position: absolute; bottom: 14px; left: 0; right: 0; text-align: center; font-size: 10px; letter-spacing: 0.28em; color: rgba(60,54,45,0.4); pointer-events: none;">CLICK A CARD TO TURN IT</div>
+      </div>
+    </section>
+
+    <!-- ============ OPTION D — DAILY OBLIQUE ============ -->
+    <section style="margin-top: 64px;">
+      <div style="display: flex; align-items: baseline; gap: 14px; margin-bottom: 6px;">
+        <span style="font-size: 11px; letter-spacing: 0.2em; color: #8a847a;">OPTION D</span>
+        <h2 style="font-size: 21px; font-weight: 500; margin: 0;">Daily Oblique</h2>
+      </div>
+      <p style="margin: 0 0 16px; font-size: 13px; line-height: 1.6; color: #6b655c; max-width: 620px;">The ritual one. No drawing at all &mdash; everyone in the world sees the same single card today, and it changes at midnight. Scarcity is the interaction. A small trail of the past week sits below; the serif is a deliberate reinterpretation.</p>
+
+      <div data-screen-label="Option D — Daily Oblique" style="position: relative; height: 560px; border-radius: 10px; overflow: hidden; background: #f6f4ef; box-shadow: 0 1px 3px rgba(0,0,0,0.18); display: flex; flex-direction: column; align-items: center; justify-content: center; padding: 48px;">
+        <div style="font-size: 11px; letter-spacing: 0.3em; color: #97907f;">{{ dDate }}</div>
+        <div style="width: 36px; height: 1px; background: #c9c2b3; margin: 26px 0 30px;"></div>
+        <div style="max-width: 600px; text-align: center; font-family: Georgia, 'Times New Roman', serif; font-size: 34px; line-height: 1.4; font-weight: 400; color: #211e1a; text-wrap: pretty;">{{ dText }}</div>
+        <div style="margin-top: 30px; font-size: 12px; color: #97907f; font-style: italic; font-family: Georgia, 'Times New Roman', serif;">{{ dNote }}</div>
+
+        <div style="position: absolute; bottom: 30px; left: 0; right: 0; display: flex; justify-content: center; gap: 8px;">
+          <sc-for list="{{ dChips }}" as="chip" hint-placeholder-count="7">
+            <button onClick="{{ chip.onClick }}" style="background: {{ chip.bg }}; border: 1px solid {{ chip.bd }}; color: {{ chip.fg }}; border-radius: 999px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.08em; padding: 7px 13px; cursor: pointer; transition: all 0.3s ease;">{{ chip.label }}</button>
+          </sc-for>
+        </div>
+      </div>
+    </section>
+
+    <!-- ============ NEXT STEPS ============ -->
+    <footer style="margin-top: 72px; max-width: 640px;">
+      <div style="font-size: 11px; letter-spacing: 0.22em; color: #8a847a; margin-bottom: 12px;">NEXT STEPS</div>
+      <ul style="margin: 0; padding-left: 18px; font-size: 13px; line-height: 1.8; color: #4d4840;">
+        <li>Tell me which direction (or which mix &mdash; e.g. A&rsquo;s draw with B&rsquo;s drone) and I&rsquo;ll build it out as a full standalone site, mobile included.</li>
+        <li>The full published deck has ~115 strategies; send me the edition you want and I&rsquo;ll swap in the complete text.</li>
+        <li>Candidates for round two: share/copy a card, a drawn-card history, sound design for A, a slow Eno-style color wash for B.</li>
+      </ul>
+    </footer>
+
+  </div>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.cards = [
+      "Honour thy error as a hidden intention",
+      "Use an old idea",
+      "Work at a different speed",
+      "Repetition is a form of change",
+      "Slow preparation, fast execution",
+      "Ask your body",
+      "Emphasise the flaws",
+      "What would your closest friend do?",
+      "Use an unacceptable colour",
+      "Turn it upside down",
+      "Try faking it",
+      "Do nothing for as long as possible",
+      "Remove specifics and convert to ambiguities",
+      "Faced with a choice, do both",
+      "Listen to the quiet voice",
+      "Is there something missing?",
+      "Only one element of each kind",
+      "Give way to your worst impulse",
+      "Towards the insignificant",
+      "Be extravagant",
+      "State the problem in words as clearly as possible",
+      "Simple subtraction",
+      "You don't have to be ashamed of using your own ideas",
+      "Infinitesimal gradations",
+      "Discover the recipes you are using and abandon them",
+      "Once the search is in progress, something will be found",
+      "What wouldn't you do?",
+      "Courage!",
+      "Disconnect from desire",
+      "Humanize something free of error",
+      "Imagine the music as a moving chain or caterpillar",
+      "Take away the elements in order of apparent non-importance"
+    ];
+    this.aOrder = this.shuffle(this.cards.slice());
+    this.bOrder = this.shuffle(this.cards.slice());
+    this.cAssign = this.shuffle(this.cards.slice()).slice(0, 15);
+    this.cSpots = [
+      [4, 6, -6], [23, 3, 4], [42, 7, -2], [61, 4, 7], [80, 8, -5],
+      [6, 36, 5], [24, 33, -7], [43, 38, 3], [62, 33, -4], [81, 36, 6],
+      [3, 66, -3], [25, 63, 6], [42, 68, -7], [60, 64, 2], [80, 68, -5]
+    ];
+    this.state = {
+      aDrawn: false, aIdx: 0,
+      bIdx: 0, bPhase: "pre",
+      droneOn: false,
+      cRevealed: null,
+      dOffset: 0
+    };
+    this._timers = [];
+  }
+
+  shuffle(arr) {
+    for (let i = arr.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [arr[i], arr[j]] = [arr[j], arr[i]];
+    }
+    return arr;
+  }
+
+  later(fn, ms) { this._timers.push(setTimeout(fn, ms)); }
+
+  componentDidMount() {
+    this.later(() => this.setState({ bPhase: "in" }), 500);
+  }
+
+  componentWillUnmount() {
+    this._timers.forEach(clearTimeout);
+    this.stopDrone(true);
+  }
+
+  // ---- Option A ----
+  drawA() {
+    if (!this.state.aDrawn) this.setState({ aDrawn: true });
+  }
+  returnA(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    this.setState({ aDrawn: false });
+    this.later(() => this.setState(s => ({ aIdx: (s.aIdx + 1) % this.aOrder.length })), 950);
+  }
+
+  // ---- Option B ----
+  drawB() {
+    if (this.state.bPhase !== "in") return;
+    this.setState({ bPhase: "out" });
+    this.later(() => {
+      this.setState(s => ({ bIdx: (s.bIdx + 1) % this.bOrder.length, bPhase: "pre" }));
+      this.later(() => this.setState({ bPhase: "in" }), 80);
+    }, 950);
+  }
+
+  toggleDrone(e) {
+    if (e && e.stopPropagation) e.stopPropagation();
+    if (this.state.droneOn) this.stopDrone(); else this.startDrone();
+  }
+  startDrone() {
+    try {
+      const Ctx = window.AudioContext || window.webkitAudioContext;
+      const ctx = new Ctx();
+      const master = ctx.createGain();
+      master.gain.setValueAtTime(0.0001, ctx.currentTime);
+      master.gain.linearRampToValueAtTime(0.045, ctx.currentTime + 4);
+      master.connect(ctx.destination);
+      const freqs = [110, 110.6, 165.2, 220.5];
+      this._oscs = freqs.map((f, i) => {
+        const o = ctx.createOscillator();
+        o.type = "sine";
+        o.frequency.value = f;
+        const g = ctx.createGain();
+        g.gain.value = i < 2 ? 0.34 : 0.18;
+        o.connect(g); g.connect(master);
+        o.start();
+        return o;
+      });
+      this._actx = ctx;
+      this._master = master;
+      this.setState({ droneOn: true });
+    } catch (err) { /* audio unavailable */ }
+  }
+  stopDrone(immediate) {
+    if (!this._actx) { if (!immediate) this.setState({ droneOn: false }); return; }
+    const ctx = this._actx, master = this._master, oscs = this._oscs || [];
+    this._actx = null; this._master = null; this._oscs = null;
+    if (immediate) {
+      try { ctx.close(); } catch (e) {}
+    } else {
+      try {
+        master.gain.cancelScheduledValues(ctx.currentTime);
+        master.gain.setValueAtTime(master.gain.value, ctx.currentTime);
+        master.gain.linearRampToValueAtTime(0.0001, ctx.currentTime + 1.5);
+        setTimeout(() => { try { oscs.forEach(o => o.stop()); ctx.close(); } catch (e) {} }, 1700);
+      } catch (e) { try { ctx.close(); } catch (e2) {} }
+      this.setState({ droneOn: false });
+    }
+  }
+
+  // ---- Option D ----
+  dayInfo(offset) {
+    const d = new Date();
+    d.setDate(d.getDate() - offset);
+    const seed = Math.floor(d.getTime() / 86400000);
+    const idx = ((seed % this.cards.length) + this.cards.length) % this.cards.length;
+    return { date: d, text: this.cards[idx] };
+  }
+
+  renderVals() {
+    const s = this.state;
+
+    // A
+    const rots = [-1.2, 0.8, -0.5, 1.4, -0.9, 0.6, -1.5, 1.0];
+    const aDeckLayers = rots.map((r, i) => ({ y: 14 - i * 1.6, r: r }));
+
+    // B
+    let bOpacity = 0, bBlur = 24, bSpacing = 0.42, bTransition = "none";
+    if (s.bPhase === "in") {
+      bOpacity = 1; bBlur = 0; bSpacing = 0.06;
+      bTransition = "opacity 4.5s ease, filter 4.5s ease, letter-spacing 4.5s ease";
+    } else if (s.bPhase === "out") {
+      bOpacity = 0; bBlur = 12; bSpacing = 0.18;
+      bTransition = "opacity 0.9s ease, filter 0.9s ease, letter-spacing 0.9s ease";
+    }
+
+    // C
+    const cCards = this.cSpots.map((spot, i) => ({
+      left: spot[0], top: spot[1], rot: spot[2],
+      flip: s.cRevealed === i ? 180 : 0,
+      z: s.cRevealed === i ? 5 : 1,
+      text: this.cAssign[i],
+      onClick: () => this.setState(st => ({ cRevealed: st.cRevealed === i ? null : i }))
+    }));
+
+    // D
+    const today = this.dayInfo(s.dOffset);
+    const dDate = today.date.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
+    const dChips = [6, 5, 4, 3, 2, 1, 0].map(off => {
+      const info = this.dayInfo(off);
+      const active = off === s.dOffset;
+      return {
+        label: off === 0 ? "Today" : info.date.toLocaleDateString("en-GB", { weekday: "short", day: "numeric" }),
+        bg: active ? "#211e1a" : "transparent",
+        fg: active ? "#f6f4ef" : "#8a8270",
+        bd: active ? "#211e1a" : "#d4cdbd",
+        onClick: () => this.setState({ dOffset: off })
+      };
+    });
+
+    return {
+      // A
+      aDeckLayers: aDeckLayers,
+      aTop: s.aDrawn ? 38 : 63,
+      aScale: s.aDrawn ? 1.65 : 1,
+      aFlip: s.aDrawn ? 180 : 0,
+      aDrawn: s.aDrawn,
+      aIdle: !s.aDrawn,
+      aCardText: this.aOrder[s.aIdx],
+      drawA: () => this.drawA(),
+      returnA: (e) => this.returnA(e),
+      // B
+      bText: this.bOrder[s.bIdx],
+      bOpacity: bOpacity,
+      bBlur: bBlur,
+      bSpacing: bSpacing,
+      bTransition: bTransition,
+      drawB: () => this.drawB(),
+      toggleDrone: (e) => this.toggleDrone(e),
+      droneLabel: s.droneOn ? "DRONE ON" : "DRONE",
+      droneDot: s.droneOn ? "#a8946a" : "rgba(236,232,223,0.25)",
+      // C
+      cCards: cCards,
+      // D
+      dDate: dDate,
+      dText: today.text,
+      dNote: s.dOffset === 0 ? "One card a day. Return tomorrow." : "From earlier this week.",
+      dChips: dChips
+    };
+  }
+}
+</script>
+</body>
+</html>

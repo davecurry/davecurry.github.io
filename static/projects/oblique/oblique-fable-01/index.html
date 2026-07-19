@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous">
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital@0;1&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/three@0.149.0/build/three.min.js"></script>
+  <style>
+    html,body{margin:0;padding:0;height:100%;overflow:hidden;background:#f7f5f1;}
+    *{box-sizing:border-box;}
+  </style>
+</helmet>
+<div style="position:fixed;inset:0;overflow:hidden;font-family:Helvetica,Arial,sans-serif;user-select:none;-webkit-user-select:none;">
+
+  <sc-if value="{{ m0 }}" hint-placeholder-val="{{ true }}">
+    <section data-screen-label="I — Tabletop" style="position:absolute;inset:0;background:#f7f5f1;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:48px;">
+      <div style="perspective:1600px;">
+        <div onClick="{{ o1Click }}" style="width:min(400px,82vw);aspect-ratio:10/7;position:relative;cursor:pointer;transform-style:preserve-3d;transform:{{ o1OuterT }};opacity:{{ o1OuterO }};transition:{{ o1OuterTrans }};">
+          <div style="position:absolute;inset:0;transform-style:preserve-3d;transform:{{ o1InnerT }};transition:{{ o1InnerTrans }};">
+            <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;background:#161514;border-radius:4px;box-shadow:0 22px 48px rgba(20,15,5,0.16);display:flex;align-items:center;justify-content:center;">
+              <div style="position:absolute;inset:12px;border:1px solid rgba(255,253,245,0.22);border-radius:2px;"></div>
+              <div style="color:rgba(255,253,245,0.55);font-size:11px;letter-spacing:0.34em;text-transform:uppercase;">Oblique Fable</div>
+            </div>
+            <div style="position:absolute;inset:0;backface-visibility:hidden;-webkit-backface-visibility:hidden;transform:rotateY(180deg);background:#fffefa;border:1px solid #e6e2d8;border-radius:4px;box-shadow:0 22px 48px rgba(20,15,5,0.13);display:flex;align-items:center;justify-content:center;padding:40px;">
+              <div style="font-size:clamp(18px,2.6vw,23px);line-height:1.5;color:#16140f;text-align:center;text-wrap:pretty;">{{ o1Prompt }}</div>
+              <div style="position:absolute;bottom:14px;left:0;right:0;text-align:center;font-size:9px;letter-spacing:0.3em;color:#b9b3a6;">{{ o1No }} / 36</div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div style="font-size:10px;letter-spacing:0.26em;color:#a9a399;text-transform:uppercase;">{{ o1Caption }}</div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ m1 }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="II — Paper" style="position:absolute;inset:0;background-color:#ebe1cb;background-image:radial-gradient(ellipse at 50% 30%, rgba(255,250,235,0.7), rgba(212,196,164,0.4) 78%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:52px;">
+      <div style="position:relative;width:min(440px,84vw);aspect-ratio:10/7;">
+        <div style="position:absolute;inset:0;background:#f8f1de;border:1px solid #e2d5b6;border-radius:3px;box-shadow:0 16px 36px rgba(80,60,20,0.14);transform:rotate(4deg) translate(6px,4px);"></div>
+        <div style="position:absolute;inset:0;background:#fbf5e5;border:1px solid #e6dabd;border-radius:3px;box-shadow:0 18px 40px rgba(80,60,20,0.15);transform:rotate(-2.6deg) translate(-4px,2px);"></div>
+        <div onPointerDown="{{ o2Down }}" onPointerMove="{{ o2Move }}" onPointerUp="{{ o2Up }}" onPointerCancel="{{ o2Up }}" style="position:absolute;inset:0;touch-action:none;cursor:grab;background:#fdf8ea;border:1px solid #e8dcc0;border-radius:3px;box-shadow:0 26px 54px rgba(70,50,15,0.2);display:flex;align-items:center;justify-content:center;padding:44px;transform:{{ o2TopT }};transition:{{ o2TopTrans }};opacity:{{ o2TopO }};">
+          <div style="font-family:'EB Garamond',Georgia,serif;font-size:clamp(22px,3.2vw,28px);line-height:1.42;color:#2c2417;text-align:center;text-wrap:pretty;">{{ o2Prompt }}</div>
+          <div style="position:absolute;bottom:16px;left:0;right:0;text-align:center;font-family:'EB Garamond',Georgia,serif;font-style:italic;font-size:13px;color:#b3a382;">No. {{ o2No }}</div>
+        </div>
+      </div>
+      <div style="font-size:10px;letter-spacing:0.26em;color:#9d8f6f;text-transform:uppercase;">Drag the card away</div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ m2 }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="III — Darkroom" onPointerDown="{{ o3Down }}" onPointerUp="{{ o3Up }}" onPointerLeave="{{ o3Up }}" onContextMenu="{{ prevent }}" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 45%, #15151a, #08080b 80%);touch-action:none;cursor:pointer;display:flex;align-items:center;justify-content:center;">
+      <div style="max-width:min(640px,86vw);font-family:'EB Garamond',Georgia,serif;font-size:clamp(26px,4vw,36px);line-height:1.45;color:#ece9dd;text-align:center;text-wrap:pretty;text-shadow:0 0 28px rgba(255,246,214,0.28);filter:blur({{ o3Blur }}px);opacity:{{ o3Op }};letter-spacing:{{ o3Ls }};transform:translateY({{ o3Ty }}px);">{{ o3Prompt }}</div>
+      <div style="position:absolute;bottom:92px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:0.3em;color:#5e5d66;text-transform:uppercase;opacity:{{ o3CapOp }};transition:opacity 0.6s ease;">{{ o3Caption }}</div>
+    </section>
+  </sc-if>
+
+  <sc-if value="{{ m3 }}" hint-placeholder-val="{{ false }}">
+    <section data-screen-label="IV — Constellation" onClick="{{ o4Click }}" style="position:absolute;inset:0;background:radial-gradient(ellipse at 50% 40%, #10131c, #07080d 75%);overflow:hidden;cursor:pointer;">
+      <div ref="{{ o4Ref }}" style="position:absolute;inset:0;"></div>
+      <div style="position:absolute;inset:0;display:flex;align-items:center;justify-content:center;pointer-events:none;">
+        <div style="width:min(540px,84vw);aspect-ratio:10/7;position:relative;background:#fbfaf6;border-radius:4px;box-shadow:0 30px 90px rgba(0,0,0,0.55);display:flex;align-items:center;justify-content:center;padding:48px;opacity:{{ o4CardO }};transform:scale({{ o4CardS }});transition:opacity 0.4s ease, transform 0.5s cubic-bezier(0.2,0.8,0.25,1);">
+          <div style="font-size:clamp(20px,3vw,26px);line-height:1.5;color:#14130f;text-align:center;text-wrap:pretty;">{{ o4Prompt }}</div>
+        </div>
+      </div>
+      <div style="position:absolute;bottom:92px;left:0;right:0;text-align:center;font-size:10px;letter-spacing:0.3em;color:#565b66;text-transform:uppercase;">{{ o4Caption }}</div>
+    </section>
+  </sc-if>
+
+  <div style="position:absolute;top:22px;left:26px;z-index:20;font-size:11px;letter-spacing:0.3em;text-transform:uppercase;color:{{ wmC }};pointer-events:none;">Oblique Fable</div>
+
+  <div style="position:absolute;bottom:20px;left:0;right:0;z-index:20;display:flex;justify-content:center;">
+    <div style="display:flex;gap:4px;padding:6px;border-radius:999px;background:rgba(127,127,127,0.1);border:1px solid rgba(127,127,127,0.16);backdrop-filter:blur(10px);-webkit-backdrop-filter:blur(10px);">
+      <sc-for list="{{ swBtns }}" as="b" hint-placeholder-count="4">
+        <button onClick="{{ b.onClick }}" style="appearance:none;border:none;border-radius:999px;padding:7px 14px;cursor:pointer;font-family:Helvetica,Arial,sans-serif;font-size:10px;letter-spacing:0.18em;text-transform:uppercase;background:{{ b.bg }};color:{{ b.color }};" style-hover="opacity:0.75;">{{ b.label }}</button>
+      </sc-for>
+    </div>
+  </div>
+
+</div>
+
+</x-dc>
+<script type="text/x-dc" data-dc-script>
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    this.prompts = [
+      'Do the dull part first, and do it beautifully.',
+      'Subtract until it breaks. Put back one thing.',
+      'Let the quietest element lead.',
+      'Make the mistake louder.',
+      'Begin at the ending and walk backwards.',
+      'Trade tools with an imaginary collaborator.',
+      'What would this be as a rumor?',
+      'Repeat it until it means something else.',
+      'Leave the room. Let it finish itself.',
+      'Use your other hand.',
+      'Describe it to a child. Obey the description.',
+      'The flaw is a doorway.',
+      'Halve the speed of everything.',
+      'Remove your favorite part.',
+      'What is it avoiding?',
+      'Invert the hierarchy.',
+      'Make it for exactly one person.',
+      'Add silence.',
+      'Pretend it is finished. What is missing?',
+      'Let chance make the next decision.',
+      'Ask the material what it wants.',
+      'Build the frame before the picture.',
+      'Steal from your earlier self.',
+      'Make the background the subject.',
+      'Work as if no one will ever see it.',
+      'Work as if everyone will see it tomorrow.',
+      'Exaggerate the proportions by ten.',
+      'Find the rhythm, then break it once.',
+      'What would the opposite discipline do?',
+      'Keep the accident. Lose the plan.',
+      'Name it first. Then make the name true.',
+      'Imitate the weather.',
+      'Only edges. No centers.',
+      'Do it again, but tired.',
+      'Trust the version you almost deleted.',
+      'Stop while it is still asking questions.'
+    ];
+    this.state = {
+      mode: 0,
+      o1i: 0, o1Flipped: false, o1Leaving: false, o1Entering: false,
+      o2i: 0, o2x: 0, o2y: 0, o2Dragging: false, o2Flying: false, o2Reset: false,
+      o3i: 0, o3p: 0, o3Developed: false,
+      o4Prompt: '', o4Show: false
+    };
+    this.ord1 = this.shuf(); this.ord2 = this.shuf(); this.ord3 = this.shuf(); this.ord4 = this.shuf();
+    this._o4i = 0;
+  }
+
+  shuf() {
+    const a = Array.from({ length: 36 }, (_, i) => i);
+    for (let i = a.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      const t = a[i]; a[i] = a[j]; a[j] = t;
+    }
+    return a;
+  }
+
+  prevent = (e) => { e.preventDefault(); };
+
+  setMode = (m) => {
+    if (m === this.state.mode) return;
+    this.setState({ mode: m });
+    if (m === 3) {
+      setTimeout(() => this.o4Start(), 60);
+    } else {
+      this._o4running = false;
+      if (this._o4raf) { cancelAnimationFrame(this._o4raf); this._o4raf = null; }
+    }
+  };
+
+  // ---- I: Tabletop ----
+  o1Click = () => {
+    const s = this.state;
+    if (s.o1Leaving || s.o1Entering) return;
+    if (!s.o1Flipped) { this.setState({ o1Flipped: true }); return; }
+    this.setState({ o1Leaving: true });
+    setTimeout(() => {
+      this.setState(p => ({ o1i: (p.o1i + 1) % 36, o1Flipped: false, o1Leaving: false, o1Entering: true }));
+      setTimeout(() => this.setState({ o1Entering: false }), 50);
+    }, 520);
+  };
+
+  // ---- II: Paper ----
+  o2Down = (e) => {
+    if (this.state.o2Flying) return;
+    try { e.currentTarget.setPointerCapture(e.pointerId); } catch (err) {}
+    this._o2sx = e.clientX; this._o2sy = e.clientY;
+    this.setState({ o2Dragging: true, o2x: 0, o2y: 0 });
+  };
+  o2Move = (e) => {
+    if (!this.state.o2Dragging) return;
+    this.setState({ o2x: e.clientX - this._o2sx, o2y: e.clientY - this._o2sy });
+  };
+  o2Up = () => {
+    if (!this.state.o2Dragging) return;
+    const x = this.state.o2x, y = this.state.o2y;
+    const d = Math.hypot(x, y);
+    if (d > 110) {
+      const nx = x / d, ny = y / d;
+      this.setState({ o2Dragging: false, o2Flying: true, o2x: x + nx * 900, o2y: y + ny * 900 });
+      setTimeout(() => {
+        this.setState(s => ({ o2i: (s.o2i + 1) % 36, o2Flying: false, o2Reset: true, o2x: 0, o2y: 0 }));
+        setTimeout(() => this.setState({ o2Reset: false }), 50);
+      }, 420);
+    } else {
+      this.setState({ o2Dragging: false, o2x: 0, o2y: 0 });
+    }
+  };
+
+  // ---- III: Darkroom ----
+  o3Down = () => {
+    this._o3hold = true;
+    if (this.state.o3Developed && !this._o3dis) this._o3dis = true;
+    this.o3Run();
+  };
+  o3Up = () => { this._o3hold = false; this.o3Run(); };
+  o3Run() {
+    if (this._o3raf) return;
+    this._o3last = performance.now();
+    this._o3raf = requestAnimationFrame(this.o3Tick);
+  }
+  o3Tick = (ts) => {
+    this._o3raf = null;
+    const dt = Math.min(50, ts - this._o3last); this._o3last = ts;
+    let p = this.state.o3p, dev = this.state.o3Developed, done = false;
+    if (this._o3dis) {
+      p -= dt / 300;
+      if (p <= 0) {
+        this._o3dis = false;
+        this.setState(s => ({ o3i: (s.o3i + 1) % 36, o3p: 0, o3Developed: false }));
+        if (this._o3hold) this._o3raf = requestAnimationFrame(this.o3Tick);
+        return;
+      }
+    } else if (dev) {
+      done = true;
+    } else if (this._o3hold) {
+      p += dt / 1600;
+      if (p >= 1) { p = 1; dev = true; done = true; }
+    } else {
+      p -= dt / 500;
+      if (p <= 0) { p = 0; done = true; }
+    }
+    this.setState({ o3p: p, o3Developed: dev });
+    if (!done) this._o3raf = requestAnimationFrame(this.o3Tick);
+  };
+
+  // ---- IV: Constellation (three.js) ----
+  o4Ref = (el) => {
+    this._o4ref = el;
+    if (el && this._o4renderer && this._o4renderer.domElement.parentNode !== el) {
+      el.appendChild(this._o4renderer.domElement);
+    }
+  };
+  o4Start = () => {
+    if (this.state.mode !== 3) return;
+    const el = this._o4ref;
+    if (!el) { setTimeout(this.o4Start, 100); return; }
+    if (!window.THREE) {
+      this._o4tries = (this._o4tries || 0) + 1;
+      if (this._o4tries < 100) setTimeout(this.o4Start, 150);
+      return;
+    }
+    const THREE = window.THREE;
+    if (!this._o4renderer) {
+      const w = el.clientWidth || window.innerWidth, h = el.clientHeight || window.innerHeight;
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+      renderer.setSize(w, h);
+      renderer.domElement.style.cssText = 'position:absolute;inset:0;display:block;';
+      el.appendChild(renderer.domElement);
+      const scene = new THREE.Scene();
+      const cam = new THREE.PerspectiveCamera(50, w / h, 0.1, 100);
+      cam.position.set(0, 0, 11);
+      const grp = new THREE.Group();
+      scene.add(grp);
+      const geo = new THREE.PlaneGeometry(1.5, 1.05);
+      this._o4meshes = [];
+      for (let i = 0; i < 36; i++) {
+        const mat = new THREE.MeshBasicMaterial({ color: 0xeeede7, transparent: true, opacity: 0.8, side: THREE.DoubleSide });
+        const m = new THREE.Mesh(geo, mat);
+        const r = 4.2 + Math.random() * 3.4;
+        const th = Math.random() * Math.PI * 2;
+        const ph = Math.acos(2 * Math.random() - 1);
+        m.position.set(r * Math.sin(ph) * Math.cos(th), r * Math.cos(ph) * 0.72, r * Math.sin(ph) * Math.sin(th));
+        m.rotation.set(Math.random() * Math.PI, Math.random() * Math.PI, Math.random() * Math.PI);
+        m.userData = { sx: (Math.random() - 0.5) * 0.004, sy: (Math.random() - 0.5) * 0.004 };
+        grp.add(m);
+        this._o4meshes.push(m);
+      }
+      const n = 260, pos = new Float32Array(n * 3);
+      for (let i = 0; i < n * 3; i++) pos[i] = (Math.random() - 0.5) * 22;
+      const pg = new THREE.BufferGeometry();
+      pg.setAttribute('position', new THREE.BufferAttribute(pos, 3));
+      grp.add(new THREE.Points(pg, new THREE.PointsMaterial({ color: 0x8a8f9c, size: 0.045, transparent: true, opacity: 0.5 })));
+      this._o4renderer = renderer; this._o4scene = scene; this._o4cam = cam; this._o4grp = grp;
+      this._mx = 0; this._my = 0;
+      window.addEventListener('pointermove', this.o4Pointer);
+      window.addEventListener('resize', this.o4Resize);
+    } else if (this._o4ref && this._o4renderer.domElement.parentNode !== this._o4ref) {
+      this._o4ref.appendChild(this._o4renderer.domElement);
+    }
+    this.o4Resize();
+    if (!this._o4running) {
+      this._o4running = true;
+      this._o4raf = requestAnimationFrame(this.o4Loop);
+    }
+  };
+  o4Pointer = (e) => {
+    this._mx = (e.clientX / window.innerWidth - 0.5) * 2;
+    this._my = (e.clientY / window.innerHeight - 0.5) * 2;
+  };
+  o4Resize = () => {
+    const el = this._o4ref;
+    if (!el || !this._o4renderer) return;
+    const w = el.clientWidth, h = el.clientHeight;
+    if (!w || !h) return;
+    this._o4cam.aspect = w / h;
+    this._o4cam.updateProjectionMatrix();
+    this._o4renderer.setSize(w, h);
+  };
+  o4Click = () => {
+    if (!this._o4renderer || this._o4busy) return;
+    if (this._o4focus) {
+      this._o4return = true; this._o4busy = true; this._o4hidden = false;
+      this.setState({ o4Show: false });
+    } else {
+      const arr = this._o4meshes;
+      const m = arr[Math.floor(Math.random() * arr.length)];
+      m.userData.base = m.position.clone();
+      m.userData.baseQ = m.quaternion.clone();
+      this._o4focus = m; this._o4return = false; this._o4hidden = false; this._o4busy = true;
+      this.setState({ o4Prompt: this.prompts[this.ord4[this._o4i % 36]] });
+      this._o4i++;
+    }
+  };
+  o4Loop = () => {
+    if (!this._o4running) return;
+    this._o4raf = requestAnimationFrame(this.o4Loop);
+    const THREE = window.THREE, grp = this._o4grp, cam = this._o4cam;
+    grp.rotation.y += ((this._mx || 0) * 0.22 - grp.rotation.y) * 0.03;
+    grp.rotation.x += ((this._my || 0) * 0.12 - grp.rotation.x) * 0.03;
+    const f = this._o4focus, dim = !!f && !this._o4return;
+    for (const m of this._o4meshes) {
+      if (m !== f) { m.rotation.x += m.userData.sx; m.rotation.y += m.userData.sy; }
+      const t = (m === f && this._o4hidden) ? 0 : (m === f) ? 0.95 : (dim ? 0.08 : 0.8);
+      m.material.opacity += (t - m.material.opacity) * 0.07;
+    }
+    if (f) {
+      if (!this._o4return) {
+        const target = grp.worldToLocal(new THREE.Vector3(0, 0, 9.0));
+        f.position.lerp(target, 0.085);
+        const q0 = f.quaternion.clone();
+        f.lookAt(cam.position);
+        const q1 = f.quaternion.clone();
+        f.quaternion.copy(q0).slerp(q1, 0.12);
+        if (!this.state.o4Show && f.position.distanceTo(target) < 0.12) {
+          this._o4hidden = true; this._o4busy = false;
+          this.setState({ o4Show: true });
+        }
+      } else {
+        f.position.lerp(f.userData.base, 0.07);
+        f.quaternion.slerp(f.userData.baseQ, 0.07);
+        if (f.position.distanceTo(f.userData.base) < 0.06) {
+          this._o4focus = null; this._o4busy = false;
+        }
+      }
+    }
+    this._o4renderer.render(this._o4scene, cam);
+  };
+
+  componentDidMount() {
+    if (this.state.mode === 3) this.o4Start();
+  }
+  componentWillUnmount() {
+    this._o4running = false;
+    if (this._o4raf) cancelAnimationFrame(this._o4raf);
+    if (this._o3raf) cancelAnimationFrame(this._o3raf);
+    window.removeEventListener('pointermove', this.o4Pointer);
+    window.removeEventListener('resize', this.o4Resize);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const dark = s.mode === 2 || s.mode === 3;
+    const labels = ['I \u00b7 Tabletop', 'II \u00b7 Paper', 'III \u00b7 Darkroom', 'IV \u00b7 Constellation'];
+    const swBtns = labels.map((label, i) => ({
+      label,
+      onClick: () => this.setMode(i),
+      color: s.mode === i ? (dark ? '#f1efe7' : '#181610') : (dark ? '#73737b' : '#a59f93'),
+      bg: s.mode === i ? (dark ? 'rgba(255,255,255,0.13)' : 'rgba(0,0,0,0.06)') : 'rgba(0,0,0,0)'
+    }));
+    const p = s.o3p;
+    return {
+      m0: s.mode === 0, m1: s.mode === 1, m2: s.mode === 2, m3: s.mode === 3,
+      swBtns,
+      wmC: dark ? '#85858d' : '#a8a297',
+      // I
+      o1Prompt: this.prompts[this.ord1[s.o1i]],
+      o1No: String(s.o1i + 1).padStart(2, '0'),
+      o1InnerT: s.o1Flipped ? 'rotateY(180deg)' : 'rotateY(0deg)',
+      o1InnerTrans: s.o1Entering ? 'none' : 'transform 0.85s cubic-bezier(0.25,0.8,0.25,1)',
+      o1OuterT: s.o1Leaving ? 'translateX(150%) rotate(10deg)' : s.o1Entering ? 'translateY(28px) scale(0.97)' : 'translateY(0px) scale(1)',
+      o1OuterO: (s.o1Leaving || s.o1Entering) ? 0 : 1,
+      o1OuterTrans: s.o1Entering ? 'none' : 'transform 0.55s cubic-bezier(0.3,0.7,0.2,1), opacity 0.5s ease',
+      o1Click: this.o1Click,
+      o1Caption: s.o1Flipped ? 'Click for the next card' : 'Click to turn the card',
+      // II
+      o2Prompt: this.prompts[this.ord2[s.o2i]],
+      o2No: String(this.ord2[s.o2i] + 1).padStart(2, '0'),
+      o2TopT: 'translate(' + s.o2x + 'px, ' + s.o2y + 'px) rotate(' + (s.o2x * 0.05).toFixed(2) + 'deg)',
+      o2TopTrans: (s.o2Dragging || s.o2Reset) ? 'none' : 'transform 0.5s cubic-bezier(0.22,0.8,0.3,1), opacity 0.4s ease',
+      o2TopO: s.o2Flying ? 0 : 1,
+      o2Down: this.o2Down, o2Move: this.o2Move, o2Up: this.o2Up,
+      // III
+      o3Prompt: this.prompts[this.ord3[s.o3i]],
+      o3Blur: ((1 - p) * 9).toFixed(2),
+      o3Op: Math.pow(Math.max(p, 0), 1.25).toFixed(3),
+      o3Ls: (0.3 - 0.22 * p).toFixed(3) + 'em',
+      o3Ty: ((1 - p) * 5).toFixed(2),
+      o3Caption: s.o3Developed ? 'Press and hold for the next' : 'Press and hold to develop',
+      o3CapOp: (p === 0 || s.o3Developed) ? 0.9 : 0,
+      o3Down: this.o3Down, o3Up: this.o3Up, prevent: this.prevent,
+      // IV
+      o4Prompt: s.o4Prompt || '',
+      o4CardO: s.o4Show ? 1 : 0,
+      o4CardS: s.o4Show ? 1 : 0.93,
+      o4Caption: s.o4Show ? 'Click to return the card' : 'Click to draw from the drift',
+      o4Click: this.o4Click, o4Ref: this.o4Ref
+    };
+  }
+}
+</script>
+</body>
+</html>

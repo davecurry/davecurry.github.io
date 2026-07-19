@@ -1,0 +1,312 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<script src="./support.js"></script>
+</head>
+<body>
+<x-dc>
+<helmet>
+<style>
+  html, body { margin: 0; padding: 0; background: #f6f4ef; }
+  @keyframes obFadeUp { from { opacity: 0; transform: translateY(10px); } to { opacity: 1; transform: translateY(0); } }
+</style>
+</helmet>
+
+<div style="min-height: 100vh; background: {{ pageBg }}; color: {{ ink }}; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; display: flex; flex-direction: column; transition: background 1.2s ease, color 1.2s ease;">
+
+  <!-- top bar -->
+  <header data-screen-label="Header" style="display: flex; justify-content: space-between; align-items: center; padding: 26px clamp(20px, 5vw, 48px);">
+    <div style="font-size: 11px; letter-spacing: 0.3em; color: {{ faint }};">DAILY OBLIQUE</div>
+    <nav style="display: flex; gap: 22px; align-items: center;">
+      <button onClick="{{ toggleAbout }}" style="background: none; border: none; padding: 4px; cursor: pointer; font-family: inherit; font-size: 11px; letter-spacing: 0.18em; color: {{ faint }};" style-hover="background: none; border: none; padding: 4px; cursor: pointer; font-family: inherit; font-size: 11px; letter-spacing: 0.18em; color: {{ ink }};">{{ aboutLabel }}</button>
+    </nav>
+  </header>
+
+  <!-- card -->
+  <main data-screen-label="Today's card" style="flex: 1; display: flex; flex-direction: column; align-items: center; justify-content: center; text-align: center; padding: 24px clamp(20px, 6vw, 64px) 40px;">
+    <sc-if value="{{ showCard }}" hint-placeholder-val="{{ true }}">
+      <div key="{{ cardKey }}" style="display: flex; flex-direction: column; align-items: center; animation: obFadeUp 1.6s cubic-bezier(0.2, 0.7, 0.3, 1) both;">
+        <div style="font-size: 11px; letter-spacing: 0.3em; color: {{ faint }};">{{ dateLabel }}</div>
+        <div style="width: 36px; height: 1px; background: {{ rule }}; margin: clamp(22px, 4vh, 34px) 0;"></div>
+        <blockquote style="margin: 0; max-width: 680px; font-family: Georgia, 'Times New Roman', serif; font-weight: 400; font-size: clamp(26px, 4.6vw, 42px); line-height: 1.35; text-wrap: pretty; white-space: pre-line; color: {{ ink }};">{{ cardText }}</blockquote>
+        <div style="margin-top: clamp(24px, 4vh, 36px); font-family: Georgia, 'Times New Roman', serif; font-style: italic; font-size: 13px; color: {{ faint }};">{{ ritualNote }}</div>
+        <button onClick="{{ copyCard }}" style="margin-top: 26px; background: none; border: 1px solid {{ rule }}; border-radius: 999px; padding: 9px 20px; cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.22em; color: {{ faint }}; transition: all 0.3s ease;" style-hover="margin-top: 26px; background: none; border: 1px solid {{ ink }}; border-radius: 999px; padding: 9px 20px; cursor: pointer; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.22em; color: {{ ink }}; transition: all 0.3s ease;">{{ copyLabel }}</button>
+      </div>
+    </sc-if>
+
+    <sc-if value="{{ showAbout }}" hint-placeholder-val="{{ false }}">
+      <div data-screen-label="About" style="max-width: 520px; text-align: left; animation: obFadeUp 0.9s ease both;">
+        <div style="font-size: 11px; letter-spacing: 0.3em; color: {{ faint }}; margin-bottom: 22px;">ABOUT</div>
+        <p style="margin: 0 0 14px; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.7; color: {{ ink }};">Oblique Strategies is a deck of cards created in 1975 by Brian Eno and Peter Schmidt. Each card carries a single aphorism &mdash; a way of breaking a creative deadlock by approaching the problem from the side rather than head-on.</p>
+        <p style="margin: 0 0 14px; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.7; color: {{ ink }};">The instructions were simple: when stuck, draw a card and trust it, even &mdash; especially &mdash; when it seems irrelevant.</p>
+        <p style="margin: 0; font-family: Georgia, 'Times New Roman', serif; font-size: 17px; line-height: 1.7; color: {{ ink }};">This site draws one card a day. The same card for everyone. It changes at midnight.</p>
+        <p style="margin: 22px 0 0; font-size: 11px; line-height: 1.7; color: {{ faint }};">Card texts &copy; Brian Eno and Peter Schmidt. The physical deck is available at enoshop.co.uk.</p>
+      </div>
+    </sc-if>
+  </main>
+
+  <!-- week trail + countdown -->
+  <footer data-screen-label="Week trail" style="padding: 0 clamp(20px, 5vw, 48px) 30px; display: flex; flex-direction: column; align-items: center; gap: 18px;">
+    <sc-if value="{{ showTrail }}" hint-placeholder-val="{{ true }}">
+      <div style="display: flex; flex-wrap: wrap; justify-content: center; gap: 8px;">
+        <sc-for list="{{ chips }}" as="chip" hint-placeholder-count="7">
+          <button onClick="{{ chip.onClick }}" title="{{ chip.title }}" style="background: {{ chip.bg }}; border: 1px solid {{ chip.bd }}; color: {{ chip.fg }}; border-radius: 999px; font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif; font-size: 10px; letter-spacing: 0.08em; padding: 8px 14px; min-height: 32px; cursor: pointer; transition: all 0.3s ease;">{{ chip.label }}</button>
+        </sc-for>
+      </div>
+    </sc-if>
+    <div style="font-size: 10px; letter-spacing: 0.24em; color: {{ faint }};">{{ countdown }}</div>
+  </footer>
+</div>
+</x-dc>
+<script type="text/x-dc" data-dc-script data-props="{&quot;theme&quot;: {&quot;editor&quot;: &quot;enum&quot;, &quot;options&quot;: [&quot;paper&quot;, &quot;night&quot;], &quot;default&quot;: &quot;paper&quot;, &quot;tsType&quot;: &quot;string&quot;, &quot;section&quot;: &quot;Appearance&quot;}, &quot;showHistory&quot;: {&quot;editor&quot;: &quot;boolean&quot;, &quot;default&quot;: true, &quot;tsType&quot;: &quot;boolean&quot;, &quot;section&quot;: &quot;Features&quot;}}">
+class Component extends DCLogic {
+  constructor(props) {
+    super(props);
+    // Full text from the user's PDF (Davidson compilation of the 1975/1978/1979 editions).
+    this.cards = [
+      "Think of the radio",
+      "Don't be frightened of clich\u00E9s",
+      "What is the reality of the situation?",
+      "Are there sections? Consider transitions",
+      "Turn it upside down",
+      "Allow an easement\n(an easement is the abandonment of a stricture)",
+      "Simple subtraction",
+      "Remove specifics and convert to ambiguities",
+      "Go slowly all the way round the outside",
+      "A line has two sides",
+      "Infinitesimal gradations",
+      "Make an exhaustive list of everything you might do and do the last thing on the list",
+      "Into the impossible",
+      "Ask people to work against their better judgment",
+      "Take away the elements in order of apparent non-importance",
+      "Change instrument roles",
+      "Accretion",
+      "Disconnect from desire",
+      "Emphasize repetitions",
+      "Don't be afraid of things because they're easy to do",
+      "Is there something missing?",
+      "Don't be frightened to display your talents",
+      "Breathe more deeply",
+      "Honor thy error as a hidden intention",
+      "Only one element of each kind",
+      "Use unqualified people",
+      "How would you have done it?",
+      "Emphasize differences",
+      "Do nothing for as long as possible",
+      "Bridges\n\u2013build\n\u2013burn",
+      "Water",
+      "You don't have to be ashamed of using your own ideas",
+      "Tidy up",
+      "Do the words need changing?",
+      "Ask your body",
+      "Make a sudden, destructive unpredictable action; incorporate",
+      "Consult other sources",
+      "Use an unacceptable color",
+      "Humanize something free of error",
+      "Use filters",
+      "Balance the consistency principle with the inconsistency principle",
+      "Fill every beat with something",
+      "Discard an axiom",
+      "What wouldn't you do?",
+      "Decorate, decorate",
+      "Listen to the quiet voice",
+      "Is it finished?",
+      "Put in earplugs",
+      "Give the game away",
+      "Reverse",
+      "Abandon normal instruments",
+      "Use fewer notes",
+      "Repetition is a form of change",
+      "Give way to your worst impulse",
+      "Trust in the you of now",
+      "What would your closest friend do?",
+      "Distorting time",
+      "Make a blank valuable by putting it in an exquisite frame",
+      "The inconsistency principle",
+      "Ghost echoes",
+      "You can only make one dot at a time",
+      "Just carry on",
+      "(Organic) machinery",
+      "Don't break the silence",
+      "Discover the recipes you are using and abandon them",
+      "Cascades",
+      "Courage!",
+      "What mistakes did you make last time?",
+      "You are an engineer",
+      "Consider different fading systems",
+      "Mute and continue",
+      "It is quite possible (after all)",
+      "Don't stress one thing more than another",
+      "Remove ambiguities and convert to specifics",
+      "Look at the order in which you do things",
+      "Go outside. Shut the door.",
+      "Do we need holes?",
+      "Cluster analysis",
+      "Work at a different speed",
+      "Do something boring",
+      "Define an area as \u2018safe\u2019 and use it as an anchor",
+      "Overtly resist change",
+      "Accept advice",
+      "Look closely at the most embarrassing details and amplify them",
+      "Mechanicalize something idiosyncratic",
+      "Emphasize the flaws",
+      "Remember those quiet evenings",
+      "Take a break",
+      "The tape is now the music",
+      "Short circuit\n(example; a man eating peas with the idea that they will improve his virility shovels them straight into his lap)",
+      "Use an old idea",
+      "Destroy\n\u2013nothing\n\u2013the most important thing",
+      "Change nothing and continue with immaculate consistency",
+      "Imagine the music as a moving chain or caterpillar",
+      "Intentions\n\u2013credibility of\n\u2013nobility of\n\u2013humility of",
+      "Imagine the music as a set of disconnected events",
+      "Imagine the piece as a set of disconnected events",
+      "What are you really thinking about just now? Incorporate.",
+      "Children's voices\n\u2013speaking\n\u2013singing",
+      "Assemble some of the instruments in a group and treat the group",
+      "Shut the door and listen from outside",
+      "Is the tuning appropriate?",
+      "Look at a very small object, look at its centre",
+      "Feedback recordings into an acoustic situation",
+      "Towards the insignificant",
+      "Simply a matter of work",
+      "Not building a wall but making a brick",
+      "Revaluation (a warm feeling)",
+      "Disciplined self-indulgence",
+      "The most important thing is the thing most easily forgotten",
+      "Idiot glee",
+      "Be extravagant",
+      "State the problem in words as clearly as possible",
+      "Always first steps",
+      "Question the heroic approach",
+      "Always give yourself credit for having more than personality",
+      "Faced with a choice, do both",
+      "Tape your mouth",
+      "Twist the spine",
+      "Get your neck massaged",
+      "Do the washing up",
+      "Convert a melodic element into a rhythmic element",
+      "Spectrum analysis",
+      "Lowest common denominator check\n\u2013single beat\n\u2013single note\n\u2013single riff",
+      "Listen in total darkness, or in a very large room, very quietly",
+      "Would anybody want it?",
+      "Retrace your steps",
+      "Go to an extreme, move back to a more comfortable place",
+      "Once the search is in progress, something will be found",
+      "Only a part, not the whole",
+      "From nothing to more than nothing",
+      "Be less critical more often"
+    ];
+    this.state = { offset: 0, about: false, copied: false, now: Date.now() };
+  }
+
+  componentDidMount() {
+    this._tick = setInterval(() => this.setState({ now: Date.now() }), 30000);
+  }
+  componentWillUnmount() {
+    clearInterval(this._tick);
+    clearTimeout(this._copyT);
+  }
+
+  dayInfo(offset) {
+    const d = new Date();
+    d.setHours(0, 0, 0, 0);
+    d.setDate(d.getDate() - offset);
+    // deterministic per calendar day, scrambled so consecutive days aren't consecutive cards
+    const seed = Math.floor((d.getTime() - d.getTimezoneOffset() * 60000) / 86400000);
+    return { date: d, text: this.cards[this.cardIndex(seed)] };
+  }
+
+  hashSeed(seed) {
+    let h = seed ^ 0x85ebca6b;
+    h = Math.imul(h ^ (h >>> 16), 0x45d9f3b);
+    h = Math.imul(h ^ (h >>> 13), 0x45d9f3b);
+    return (h ^ (h >>> 16)) >>> 0;
+  }
+
+  // Deterministic like before, but with a guarantee: no card repeats within any
+  // rolling 7-day window. Days are resolved in order from the epoch; a day whose
+  // hashed candidate matches one of the previous 6 days' cards probes forward to
+  // the next free card. One ~20k-step pass, memoized for the session.
+  cardIndex(seed) {
+    if (!this._cardIdx) this._cardIdx = new Map();
+    if (this._cardIdx.has(seed)) return this._cardIdx.get(seed);
+    const N = this.cards.length;
+    const recent = [];
+    for (let s = 0; s <= seed; s++) {
+      let i = this.hashSeed(s) % N;
+      while (recent.includes(i)) i = (i + 1) % N;
+      this._cardIdx.set(s, i);
+      recent.push(i);
+      if (recent.length > 6) recent.shift();
+    }
+    return this._cardIdx.get(seed);
+  }
+
+  copyCard(info) {
+    const line = "\u201C" + info.text + "\u201D \u2014 Oblique Strategies, " +
+      info.date.toLocaleDateString("en-GB", { day: "numeric", month: "long", year: "numeric" });
+    if (navigator.clipboard) navigator.clipboard.writeText(line).catch(() => {});
+    this.setState({ copied: true });
+    clearTimeout(this._copyT);
+    this._copyT = setTimeout(() => this.setState({ copied: false }), 2000);
+  }
+
+  renderVals() {
+    const s = this.state;
+    const theme = this.props.theme ?? "paper";
+    const showTrail = this.props.showHistory ?? true;
+    const dark = theme === "night";
+    const pageBg = dark ? "#161412" : "#f6f4ef";
+    const ink = dark ? "#e9e5dc" : "#211e1a";
+    const faint = dark ? "#7d766a" : "#97907f";
+    const rule = dark ? "#3a352e" : "#d4cdbd";
+
+    const info = this.dayInfo(s.offset);
+    const dateLabel = info.date.toLocaleDateString("en-GB", { weekday: "long", day: "numeric", month: "long", year: "numeric" }).toUpperCase();
+
+    const chips = [6, 5, 4, 3, 2, 1, 0].map(off => {
+      const d = this.dayInfo(off);
+      const active = off === s.offset && !s.about;
+      return {
+        label: off === 0 ? "Today" : d.date.toLocaleDateString("en-GB", { weekday: "short", day: "numeric" }),
+        title: d.text,
+        bg: active ? ink : "transparent",
+        fg: active ? pageBg : faint,
+        bd: active ? ink : rule,
+        onClick: () => this.setState({ offset: off, about: false })
+      };
+    });
+
+    // countdown to local midnight
+    const mid = new Date();
+    mid.setHours(24, 0, 0, 0);
+    const mins = Math.max(0, Math.round((mid.getTime() - s.now) / 60000));
+    const hh = Math.floor(mins / 60), mm = mins % 60;
+    const countdown = s.offset === 0
+      ? "NEXT CARD IN " + hh + "H " + (mm < 10 ? "0" : "") + mm + "M"
+      : "AN EARLIER CARD \u00B7 " + Math.abs(s.offset) + (s.offset === 1 ? " DAY AGO" : " DAYS AGO");
+
+    return {
+      pageBg, ink, faint, rule,
+      showCard: !s.about,
+      showAbout: s.about,
+      showTrail: showTrail && !s.about,
+      aboutLabel: s.about ? "CLOSE" : "ABOUT",
+      toggleAbout: () => this.setState(st => ({ about: !st.about })),
+      cardKey: "card-" + s.offset,
+      dateLabel,
+      cardText: info.text,
+      ritualNote: s.offset === 0 ? "One card a day. Return tomorrow." : "From earlier this week.",
+      copyLabel: s.copied ? "COPIED" : "COPY CARD",
+      copyCard: () => this.copyCard(info),
+      chips,
+      countdown
+    };
+  }
+}
+</script>
+</body>
+</html>
