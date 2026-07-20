@@ -8,7 +8,7 @@ tags: ['design']
 draft: false
 ---
 
-Following the release of Fable in early June, I thought a fun Claude Design + Fable project would be <!--more--> creating a virtual version of [Brian Eno's Oblique Strategies Deck](https://enoshop.co.uk/products/oblique-strategies?variant=51221629501780), a set of *lateral thinking dilemmas* I've long admired.
+Following the release of Fable in early June, I thought a fun Claude Design + Fable project would be creating a virtual version of [Brian Eno's Oblique Strategies Deck](https://enoshop.co.uk/products/oblique-strategies?variant=51221629501780), a set of *lateral thinking dilemmas* I've long admired.
 
 I got started shortly before our brilliantly boneheaded government made the questionable move of taking away our access to Fable. So, let's pause for hamstrings.
 
