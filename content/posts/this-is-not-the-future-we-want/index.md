@@ -4,7 +4,7 @@ date: 2026-07-18T08:00:00-07:00
 cover:
   image: "nope-thumb.png"
   relative: true
-tags: ['design']
+tags: ['design', 'ai']
 draft: false
 ---
 

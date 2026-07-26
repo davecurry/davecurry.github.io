@@ -5,7 +5,15 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 1.5rem;">Last Updated: July 24, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 1.5rem;">Last Updated: July 26, 2026</p>
+
+<div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border);">
+<a href="/posts/creating-a-claude-desktop-buddy-with-clawd-gifs/" style="flex-shrink: 0; box-shadow: none;"><img src="/projects/claude-desktop-buddy/project-thumb.gif" alt="Claude Desktop Buddy" style="display: block; width: 240px; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 4px; margin: 0;"></a>
+<div style="flex: 1; min-width: 240px;">
+<div style="font-family: 'Arvo', serif; font-size: 1.25rem; font-weight: 700;"><a href="/posts/creating-a-claude-desktop-buddy-with-clawd-gifs/" style="color: var(--content); text-decoration: none; box-shadow: none;">Claude Desktop Buddy</a></div>
+<p style="font-size: 0.85rem; color: var(--secondary); line-height: 1.55; margin: 8px 0 0;">A Clawd tamagotchi, flashed with Clawd GIFs, sitting on my desk.<br><a href="/posts/creating-a-claude-desktop-buddy-with-clawd-gifs/" style="font-size: 0.8rem;">About&nbsp;↗</a></p>
+</div>
+</div>
 
 <div style="display: flex; flex-wrap: wrap; gap: 22px; align-items: center; padding: 26px 0; border-bottom: 1px solid var(--border);">
 <a href="/projects/stagelight/" style="flex-shrink: 0; box-shadow: none;"><img src="/projects/stagelight/project-thumb.png" alt="Stagelight" style="display: block; width: 240px; aspect-ratio: 16/10; object-fit: cover; object-position: top; border-radius: 4px; margin: 0;"></a>
