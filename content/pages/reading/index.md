@@ -5,21 +5,21 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: August 14, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: August 21, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/162332.The_Sailor_Who_Fell_from_Grace_with_the_Sea">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1327629352i/162332.jpg"
-         alt="The Sailor Who Fell from Grace with the Sea by Yukio Mishima"
+  <a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388274852i/55096.jpg"
+         alt="The Piano Tuner by Daniel Mason"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-[***The Sailor Who Fell from Grace with the Sea***](https://www.goodreads.com/book/show/162332.The_Sailor_Who_Fell_from_Grace_with_the_Sea)
+[***The Piano Tuner***](https://www.goodreads.com/book/show/55096.The_Piano_Tuner)
 
-(1963) Yukio Mishima
+(2002) Daniel Mason
 </div>
 
 ***
@@ -27,6 +27,13 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div style="display: flex; align-items: flex-end; gap: 8px;">
+<img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327629352l/162332._SY75_.jpg" alt="The Sailor Who Fell from Grace with the Sea" style="float: left; margin-right: 16px;">
+
+[*The Sailor Who Fell from Grace with the Sea*](https://www.goodreads.com/book/show/162332.The_Sailor_Who_Fell_from_Grace_with_the_Sea) (1963) Yukio Mishima
+
+</div>
 
 <div style="display: flex; align-items: flex-end; gap: 8px;">
 <img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1734098749l/220772912._SY75_.jpg" alt="The Eye of the Bedlam Bride" style="float: left; margin-right: 16px;">
