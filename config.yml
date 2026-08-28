@@ -71,15 +71,9 @@ params:
     homeInfoParams:
         Title: "Dave Curry"
         Content: |
-          ## Design Leader for [HBO Max](/hbomax.jpg) at Warner Bros. Discovery ##
-          
-          - 
-          
+          ## Dave Curry is a Design Leader for [HBO Max](/hbomax.jpg) at Warner Bros. Discovery ##
+
           - Previously WarnerMedia, HBO, and #AgencyLife
-
-          -
-
-          - My exceptional team and I consistently strive to evolve and enhance the HBO Max user experience for our global customers. Product design is a never-ending journey of improvement, experimentation, and innovation.
 
     socialIcons: # optional
         - name: "LinkedIn"

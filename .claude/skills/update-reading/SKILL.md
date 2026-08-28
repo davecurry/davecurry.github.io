@@ -46,11 +46,11 @@ Hero block (top of file):
 
 <div style="text-align: center; margin-bottom: 2rem;">
 
-[***{TITLE}***]({GOODREADS_URL})
-
-({YEAR}) {AUTHOR}
+[***{TITLE}***]({GOODREADS_URL}) ({YEAR}) {AUTHOR}
 </div>
 ```
+
+Title, year and author sit on ONE line — same shape as the year-list entries below it. Don't split the author onto its own paragraph.
 
 Year-list entry:
 ```html

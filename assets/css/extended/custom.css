@@ -4,41 +4,18 @@ Read https://github.com/adityatelange/hugo-PaperMod/wiki/FAQs#bundling-custom-cs
 */
 
 
-.arvo-regular {
-  font-family: "Arvo", serif;
-  font-weight: 400;
-  font-style: normal;
-}
-
-.arvo-bold {
-  font-family: "Arvo", serif;
-  font-weight: 700;
-  font-style: normal;
-}
-
-.arvo-regular-italic {
-  font-family: "Arvo", serif;
-  font-weight: 400;
-  font-style: italic;
-}
-
-.arvo-bold-italic {
-  font-family: "Arvo", serif;
-  font-weight: 700;
-  font-style: italic;
-}
-
 :root {
   --tag-block-bg: rgb(33, 28, 31);
   --tag-bg: rgb(245, 245, 245);
 }
 
+/* Headline = Space Grotesk, body = IBM Plex Sans */
 body {
-    font-family: "Fira Code", monospace;
-    font-size: 1rem;
+    font-family: "IBM Plex Sans", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    font-size: 18px;
     font-weight: 400;
-    letter-spacing: .01em;
-    line-height: 1.5;
+    letter-spacing: 0;
+    line-height: 1.55;
     margin: 0;
 }
 
@@ -48,15 +25,36 @@ h3,
 h4,
 h5,
 h6 {
-  font-family: "Arvo", serif;
-  letter-spacing: .02em;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+  letter-spacing: -0.01em;
 }
 
 .logo a {
-  font-family: "Arvo", serif;
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 1.2rem;
-  font-weight: 400
+  font-weight: 500
 }
+
+.home-info .entry-content h2 {
+  font-size: 32px;
+}
+
+.home-info {
+  min-height: auto;
+  margin: 8px 0 16px 0;
+}
+
+/* Gap under the headline (was an empty markdown list item acting as a spacer) */
+.home-info .entry-content ul {
+  margin-top: 10px;
+}
+
+#menu a {
+  font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-weight: 500;
+}
+
 
 a,button {
   color: var(--primary)
@@ -69,25 +67,30 @@ body,h1,h2,h3,h4,h5,h6 {
 .post-content code {
   margin: auto 4px;
   padding: 4px 6px;
-  font-size: 1em;
+  font-size: 0.85em;
   line-height: 1.5;
-  color: #ee72f1;
+  color: var(--signal);
   background: var(--code-bg);
   border-radius: 2px;
 }
 
-/* Pagination (Next/Prev): inactive pill like the projects-demo picker,
-   pink only on hover */
+/* Pagination (Next/Prev): quiet resting pill, signal fill on hover */
 .pagination a {
-  background: rgba(10, 18, 28, 0.85);
+  background: #232326;
   border: 1px solid var(--border);
   color: var(--secondary);
 }
 
 .pagination a:hover {
-  background: var(--primary);
-  border-color: var(--primary);
-  color: #10131c;
+  background: var(--border);
+}
+
+/* Post cards: excerpt sits a step brighter than the date, so each card
+   reads title → preview → meta rather than flattening into one gray.
+   The home-info subline uses the same tier. */
+.post-entry .entry-content,
+.home-info .entry-content {
+  color: var(--secondary-bright);
 }
 
 /* PaperMod hides covers on tag pages (.tag-entry); show them there too */
@@ -102,11 +105,16 @@ body,h1,h2,h3,h4,h5,h6 {
   align-items: start;
 }
 
-.post-entry:has(.entry-cover) .entry-cover {
+.post-entry:has(.entry-cover) .entry-cover-link {
+  display: block;
   grid-column: 1;
   grid-row: 1 / 4;    /* span all rows */
   margin-right: 1rem;
   margin-bottom: 0;
+}
+
+.post-entry:has(.entry-cover) .entry-cover {
+  margin: 0;
 }
 
 .post-entry:has(.entry-cover) .entry-header {
@@ -138,92 +146,167 @@ body,h1,h2,h3,h4,h5,h6 {
     background: var(--tag-bg);
 }
 
+/* Mono + Signal — neutral ground, links carry the theme's inset underline
+   rather than a hue; one mint signal is rationed to the logo, the active
+   nav item, and hover states. */
 :root[data-theme="dark"] {
+  --primary: #ECECEE;   /* links: text-colored + underline, not a hue */
+  --secondary: #8C8C90;        /* meta / dates — dimmest */
+  --secondary-bright: #C4C4C9; /* post-card excerpts — one step up */
+  --content: #ECECEE;
+  --theme: #1C1C1E;
+  --entry: #232326;
+  --border: #303034;
+  --tertiary: #3A3A3E;
+  --signal: #7CE0C0;
+  --tag-block-bg: #232326;
+  --tag-bg: #232326;
+  --code-block-bg: rgba(124, 224, 192, 0.12);
+  --code-bg: rgba(124, 224, 192, 0.12);
+}
 
+/* The theme only underlines links inside .post-content; the home-info
+   hero lives in .entry-content, so give it the same treatment. */
+.home-info .entry-content a {
+  box-shadow: 0 1px 0 rgba(236, 236, 238, 0.6);
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
 
-  /* bluer */
+/* Post card thumbnail: a little shake on hover, pinned at the bottom
+   center so it reads like the image is wobbling on a hinge rather
+   than spinning freely. */
+.entry-cover-link img {
+  transform-origin: 50% 100%;
+}
 
-  --primary: #ee72f1;
-  --secondary: #b3b2b2;
-  --content: #cbcbcb;
-  --theme: #132335;
-  --entry: rgb(20 33 47);
-  --tag-block-bg: rgb(38, 38, 52);
-  --tag-bg: rgb(16 26 38);
-  --code-block-bg: rgb(238, 114, 241, 0.2);
-  --code-bg: rgb(238, 114, 241, 0.2);
+/* Image-wrapper links shouldn't pick up the theme's text-link underline
+   (its box-shadow rule matches any <a> inside .post-content, images
+   included, on pages like Reading/Projects — the extra selector beats
+   its specificity, same fix as .project-title above). */
+.entry-cover-link,
+.post-content .entry-cover-link {
+  box-shadow: none;
+}
+
+.entry-cover-link:hover img,
+.post-entry:has(.project-title:hover) .entry-cover-link img,
+.project-row:has(.project-title:hover) .entry-cover-link img {
+  animation: entry-cover-shake 0.4s ease-in-out;
+}
+
+/* Reading page: title-then-<br>-then-meta pattern. The <br>'s own line
+   box is an unpredictable amount of space (inherits the wrapping div's
+   full body line-height, ignoring the title/span's sizing) — hide it
+   and control the gap explicitly with margin instead. */
+.project-row .project-title + br,
+.hero-title + br {
+  display: none;
+}
+
+.project-row .project-title,
+.hero-title {
+  display: block;
+  width: fit-content;
+  line-height: 1.3;
+  margin-bottom: 4px;
+}
+
+.hero-title {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.project-row .project-title ~ span,
+.hero-title ~ span {
+  display: block;
+  line-height: 1.2;
+}
+
+/* Hero cover is too large for the shake to read well — exclude it. */
+.hero-cover-link:hover img,
+.hero-cover-link img {
+  animation: none;
+}
+
+@keyframes entry-cover-shake {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(-4deg); }
+  50% { transform: rotate(3deg); }
+  75% { transform: rotate(-2deg); }
+}
+
+/* Cancel the theme's whole-card press-down (:active scale) — it made
+   sense when the entire card was one click target; now only the
+   title and image are links, so the card itself shouldn't react. */
+.post-entry:active {
+  transform: none;
+}
+
+/* Post/project/book titles: no underline at rest — the font, size and
+   weight already read as a heading. Underline + mint only on hover.
+   The extra `.post-content .project-title` selector beats the theme's
+   `.post-content a` rule, which otherwise wins on specificity for
+   titles on pages whose content renders inside .post-content
+   (Projects, Reading) but not on the home/list template. */
+.project-title,
+.post-content .project-title {
+  color: var(--content);
+  box-shadow: none;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
+}
+
+/* The rationed signal hue */
+[data-theme="dark"] .logo a { color: var(--signal); }
+[data-theme="dark"] .logo a:hover {
+  text-decoration-line: underline;
+  text-decoration-color: var(--signal);
+  text-underline-offset: 3px;
+}
+[data-theme="dark"] #menu .active { color: var(--signal); border-bottom: none; }
+
+/* Regular content links already carry a permanent underline (theme's
+   box-shadow on .post-content a); hover only needs the color to change,
+   not a second underline mechanism stacked on top. */
+[data-theme="dark"] .post-content a:hover,
+[data-theme="dark"] .social-icons a:hover { color: var(--signal); }
+
+/* Nav + logo have no underline at rest, so hover adds one via
+   text-decoration (box-shadow gets clipped by #menu's overflow: auto). */
+[data-theme="dark"] #menu a:hover {
+  color: var(--signal);
+  text-decoration-line: underline;
+  text-decoration-color: var(--signal);
+  text-underline-offset: 3px;
+}
+[data-theme="dark"] .project-title:hover {
+  color: var(--signal);
+  box-shadow: 0 1px 0 var(--signal);
+}
+[data-theme="dark"] .home-info .entry-content a:hover {
+  color: var(--signal);
+  box-shadow: 0 1px 0 var(--signal);
+}
+
+/* Click pixel-burst: styling for the squares spawned in extend_footer.html */
+.click-burst-pixel {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 1px;
+  height: 1px;
+  background: var(--signal);
+  pointer-events: none;
+  z-index: 9999;
+}
+
+/* Hide PaperMod's hover-only "#" anchor-link icons next to headings */
+.anchor {
+  display: none !important;
 }
 
 /* Remove vertical scrollbar from code blocks */
 .post-content pre code {
   overflow-y: hidden;
-}
-
-/* ── Aurora ambient background (dark mode only) ──────────────
-   Three blurred blobs on elliptical orbits: an outer element
-   sweeps x, the inner blob bobs y a quarter-period out of phase
-   (two sinusoids = smooth ellipse). A middle "jitter" layer
-   wobbles at durations that don't divide into the orbit periods,
-   so the path never visibly repeats.
-   All delays offset by --aur-t0 (seconds since a fixed epoch,
-   set in extend_footer.html) so the animation phase carries
-   across page navigations instead of resetting. */
-#aurora {
-  position: fixed;
-  inset: 0;
-  z-index: -1;
-  overflow: hidden;
-  pointer-events: none;
-  display: none;
-}
-
-[data-theme="dark"] #aurora { display: block; }
-
-.aur-orb { position: absolute; }
-.aur-jit { position: relative; }
-.aur-blob {
-  position: relative;
-  border-radius: 50%;
-  filter: blur(90px);
-  opacity: .17;
-}
-
-.aur-o1 { top: -20%; left: -15%; animation: aur-ox1 21s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
-.aur-blob1 { width: 55vw; height: 55vw; background: #ee72f1; animation: aur-oy1 21s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 10.5s); }
-@keyframes aur-ox1 { from { transform: translateX(0); } to { transform: translateX(60vw); } }
-@keyframes aur-oy1 { from { transform: translateY(-10vh) scale(1); } to { transform: translateY(10vh) scale(1.15); } }
-
-.aur-o2 { bottom: -25%; right: -10%; animation: aur-ox2 17s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
-.aur-blob2 { width: 45vw; height: 45vw; background: #4f7cff; animation: aur-oy2 17s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 8.5s); }
-@keyframes aur-ox2 { from { transform: translateX(0); } to { transform: translateX(-55vw); } }
-@keyframes aur-oy2 { from { transform: translateY(9vh) scale(1); } to { transform: translateY(-9vh) scale(0.9); } }
-
-.aur-o3 { top: 40%; left: 55%; animation: aur-ox3 14s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
-.aur-blob3 { width: 35vw; height: 35vw; background: #22d3ee; opacity: .10; animation: aur-oy3 14s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 7s); }
-@keyframes aur-ox3 { from { transform: translateX(0); } to { transform: translateX(-70vw); } }
-@keyframes aur-oy3 { from { transform: translateY(12vh) scale(1); } to { transform: translateY(-12vh) scale(1.2); } }
-
-.aur-jit1 { animation: aur-jit1 13.7s ease-in-out infinite alternate; animation-delay: var(--aur-t0, 0s); }
-.aur-jit2 { animation: aur-jit2 11.3s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 4.1s); }
-.aur-jit3 { animation: aur-jit3 9.1s ease-in-out infinite alternate; animation-delay: calc(var(--aur-t0, 0s) - 2.3s); }
-@keyframes aur-jit1 {
-  0%   { transform: translate(0, 0); }
-  37%  { transform: translate(-4vw, 3vh); }
-  71%  { transform: translate(3vw, -2vh); }
-  100% { transform: translate(-2vw, -3vh); }
-}
-@keyframes aur-jit2 {
-  0%   { transform: translate(0, 0); }
-  43%  { transform: translate(3.5vw, -3vh); }
-  100% { transform: translate(-3vw, 2.5vh); }
-}
-@keyframes aur-jit3 {
-  0%   { transform: translate(0, 0); }
-  31%  { transform: translate(-3vw, -3.5vh); }
-  67%  { transform: translate(4vw, 2vh); }
-  100% { transform: translate(2vw, 3.5vh); }
-}
-
-@media (prefers-reduced-motion: reduce) {
-  #aurora * { animation: none !important; }
 }
