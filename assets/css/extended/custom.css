@@ -348,8 +348,16 @@ body,h1,h2,h3,h4,h5,h6 {
   gap: 24px;
   position: sticky;
   top: 0;
+  /* 100vh on mobile Safari/Chrome includes the area behind the
+     collapsing address/toolbar, so a fixed-height 100vh element gets
+     clipped shorter than the real visible viewport and its bottom
+     content (or scroll range) ends up hidden. 100dvh tracks the
+     actual visible viewport as the toolbar shows/hides; kept as a
+     second declaration so unsupporting browsers fall back to 100vh. */
   height: 100vh;
+  height: 100dvh;
   overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
 }
 
 .shell .main {
@@ -667,6 +675,7 @@ body,h1,h2,h3,h4,h5,h6 {
     top: 0;
     left: 0;
     height: 100vh;
+    height: 100dvh;
     z-index: 40;
     width: var(--sidebar-width) !important;
     padding: 24px 20px !important;
