@@ -65,3 +65,54 @@
   }
 })();
 </script>
+
+{{- /* Sidebar: collapse/expand toggle (persisted) + mobile drawer
+       open/close. Collapsed state is also read synchronously in
+       extend_head.html to avoid a flash on load. */}}
+<script>
+(function () {
+  var html = document.documentElement;
+  var collapseBtn = document.getElementById('sidebar-collapse-btn');
+  var closeBtn = document.getElementById('sidebar-close-btn');
+  var menuBtn = document.querySelector('.topbar-menu-btn');
+  var scrim = document.getElementById('sidebar-scrim');
+
+  if (collapseBtn) {
+    collapseBtn.addEventListener('click', function () {
+      var collapsed = html.classList.toggle('sidebar-collapsed');
+      localStorage.setItem('sidebar-collapsed', collapsed ? '1' : '0');
+      collapseBtn.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
+    });
+  }
+
+  function openDrawer() {
+    html.classList.add('sidebar-drawer-open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'true');
+  }
+  function closeDrawer() {
+    html.classList.remove('sidebar-drawer-open');
+    if (menuBtn) menuBtn.setAttribute('aria-expanded', 'false');
+  }
+
+  if (menuBtn) menuBtn.addEventListener('click', openDrawer);
+  if (closeBtn) closeBtn.addEventListener('click', closeDrawer);
+  if (scrim) scrim.addEventListener('click', closeDrawer);
+
+  document.addEventListener('keydown', function (e) {
+    if (e.key === 'Escape') closeDrawer();
+  });
+
+  // Drop the drawer-open state if a resize crosses back onto desktop,
+  // where the sidebar is inline again and the drawer classes no longer
+  // apply to it.
+  var mql = window.matchMedia('(min-width: 1001px)');
+  var onBreakpointChange = function (e) {
+    if (e.matches) closeDrawer();
+  };
+  if (mql.addEventListener) {
+    mql.addEventListener('change', onBreakpointChange);
+  } else if (mql.addListener) {
+    mql.addListener(onBreakpointChange);
+  }
+})();
+</script>

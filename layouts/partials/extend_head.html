@@ -2,6 +2,15 @@
 {{- /*     Insert any custom code (web-analytics, resources, etc.) - it will appear in the <head></head> section of every page. */ -}}
 {{- /*     Can be overwritten by partial with the same name in the global layouts. */ -}}
 
+<!-- Sidebar collapsed state, read synchronously so the sidebar never
+     flashes expanded-then-collapsed on load. Mirrors the theme's own
+     pref-theme script above. -->
+<script>
+    if (localStorage.getItem('sidebar-collapsed') === '1') {
+        document.documentElement.classList.add('sidebar-collapsed');
+    }
+</script>
+
 <!-- Umami analytics -->
 <script defer src="https://cloud.umami.is/script.js" data-website-id="544fa658-dcbd-41fd-9e7b-d85248eaf698"></script>
 

@@ -1,0 +1,97 @@
+{{- /* Left nav sidebar (desktop rail + mobile drawer), replacing PaperMod's
+       horizontal header. Same markup serves both: CSS repositions it into a
+       fixed off-canvas drawer below the breakpoint. Collapse/expand and
+       drawer-open state are driven by extend_footer.html; the collapsed
+       class is also set synchronously in extend_head.html to avoid a
+       flash of the expanded sidebar on load. */}}
+
+<div class="mobile-topbar">
+    <button type="button" class="topbar-menu-btn" aria-label="Open menu" aria-controls="site-sidebar" aria-expanded="false">
+        <span class="material-symbols-outlined" aria-hidden="true">menu</span>
+    </button>
+    <a href="{{ "" | absLangURL }}" class="topbar-wordmark">{{ site.Title }}</a>
+    <span class="topbar-spacer" aria-hidden="true"></span>
+</div>
+
+<div class="sidebar-scrim" id="sidebar-scrim" aria-hidden="true"></div>
+
+<aside class="site-sidebar" id="site-sidebar">
+    <div class="sidebar-head">
+        {{- /* Hidden entirely when collapsed — see custom.css. */}}
+        <a href="{{ "" | absLangURL }}" class="sidebar-wordmark" aria-label="{{ site.Title }} home">{{ site.Title }}</a>
+        <button type="button" class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Collapse sidebar">
+            <span class="material-symbols-outlined icon-collapse" aria-hidden="true">left_panel_close</span>
+            <span class="material-symbols-outlined icon-expand" aria-hidden="true">left_panel_open</span>
+        </button>
+        <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">
+            <span class="material-symbols-outlined" aria-hidden="true">close</span>
+        </button>
+    </div>
+
+    {{- $currentPage := . }}
+    <nav class="sidebar-nav">
+        {{- range site.Menus.main }}
+        {{- $menu_item_url := (cond (strings.HasSuffix .URL "/") .URL (printf "%s/" .URL)) | absLangURL }}
+        {{- $page_url := $currentPage.Permalink | absLangURL }}
+        {{- $is_active := eq $menu_item_url $page_url }}
+        {{- $icon := "" }}
+        {{- if eq .Name "Blog" }}{{ $icon = "article" }}
+        {{- else if eq .Name "Projects" }}{{ $icon = "auto_awesome" }}
+        {{- else if eq .Name "Reading" }}{{ $icon = "book" }}
+        {{- else if eq .Name "Who Me?" }}{{ $icon = "sentiment_very_satisfied" }}
+        {{- end }}
+        <a href="{{ .URL | absLangURL }}" class="sidebar-nav-row{{ if $is_active }} active{{ end }}" title="{{ .Name }}">
+            <span class="sidebar-nav-icon material-symbols-outlined" aria-hidden="true">{{ $icon }}</span>
+            <span class="sidebar-nav-label">{{ .Name }}</span>
+        </a>
+        {{- end }}
+        {{- range site.Params.socialIcons }}
+        <a href="{{ trim .url " " | safeURL }}" class="sidebar-nav-row" target="_blank" rel="noopener noreferrer me" title="{{ .name }}">
+            <span class="sidebar-nav-icon sidebar-nav-icon-svg" aria-hidden="true">{{ partial "svg.html" (dict "name" .name) }}</span>
+            <span class="sidebar-nav-label">{{ .name }}</span>
+        </a>
+        {{- end }}
+    </nav>
+
+    {{- with site.Params.now }}
+    <div class="sidebar-now">
+        {{- with .watching }}
+        <div class="now-label">{{ .label | default "Currently watching" }}</div>
+        <div class="now-row">
+            {{- if .url }}
+            <a href="{{ .url }}" class="now-poster-link"><img class="now-poster" src="{{ .poster }}" alt="" loading="lazy"></a>
+            {{- else }}
+            <img class="now-poster" src="{{ .poster }}" alt="" loading="lazy">
+            {{- end }}
+            <div class="now-meta">
+                {{- if .url }}
+                <a href="{{ .url }}" class="now-title now-title-link">{{ .title }}</a>
+                {{- else }}
+                <div class="now-title">{{ .title }}</div>
+                {{- end }}
+                <div class="now-sub">{{ .meta }}</div>
+            </div>
+        </div>
+        {{- end }}
+        {{- with .lastMovie }}
+        <div class="now-label now-label-second">{{ .label | default "Last movie watched" }}</div>
+        <div class="now-row">
+            {{- if .url }}
+            <a href="{{ .url }}" class="now-poster-link"><img class="now-poster" src="{{ .poster }}" alt="" loading="lazy"></a>
+            {{- else }}
+            <img class="now-poster" src="{{ .poster }}" alt="" loading="lazy">
+            {{- end }}
+            <div class="now-meta">
+                {{- if .url }}
+                <a href="{{ .url }}" class="now-title now-title-link">{{ .title }}</a>
+                {{- else }}
+                <div class="now-title">{{ .title }}</div>
+                {{- end }}
+                <div class="now-sub">{{ .meta }}</div>
+            </div>
+        </div>
+        {{- end }}
+        <div class="sidebar-copyright">&copy; {{ now.Year }}</div>
+    </div>
+    {{- end }}
+</aside>

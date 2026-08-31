@@ -1,12 +1,12 @@
 {{- /* Collapses homeInfoParams.Title + Content into one flowing block —
-       no separate <h1>, "Dave Curry" leads straight into the sentence. */ -}}
+       no separate <h1>, "Dave Curry" leads straight into the sentence.
+       No social-icons footer here either — LinkedIn now lives in the
+       sidebar nav (header.html), so a second copy under the bio would
+       be redundant. */ -}}
 {{- with site.Params.homeInfoParams }}
 <article class="first-entry home-info">
     <div class="entry-content">
         {{ .Content | markdownify }}
     </div>
-    <footer class="entry-footer">
-        {{ partial "social_icons.html" (dict "align" site.Params.homeInfoParams.AlignSocialIconsTo) }}
-    </footer>
 </article>
 {{- end -}}
