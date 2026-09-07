@@ -1,9 +1,7 @@
 {{- /* Left nav sidebar (desktop rail + mobile drawer), replacing PaperMod's
        horizontal header. Same markup serves both: CSS repositions it into a
-       fixed off-canvas drawer below the breakpoint. Collapse/expand and
-       drawer-open state are driven by extend_footer.html; the collapsed
-       class is also set synchronously in extend_head.html to avoid a
-       flash of the expanded sidebar on load. */}}
+       fixed off-canvas drawer below the breakpoint. Drawer-open state is
+       driven by extend_footer.html. */}}
 
 <div class="mobile-topbar">
     <button type="button" class="topbar-menu-btn" aria-label="Open menu" aria-controls="site-sidebar" aria-expanded="false">
@@ -17,12 +15,7 @@
 
 <aside class="site-sidebar" id="site-sidebar">
     <div class="sidebar-head">
-        {{- /* Hidden entirely when collapsed — see custom.css. */}}
         <a href="{{ "" | absLangURL }}" class="sidebar-wordmark" aria-label="{{ site.Title }} home">{{ site.Title }}</a>
-        <button type="button" class="sidebar-collapse-btn" id="sidebar-collapse-btn" aria-label="Collapse sidebar">
-            <span class="material-symbols-outlined icon-collapse" aria-hidden="true">left_panel_close</span>
-            <span class="material-symbols-outlined icon-expand" aria-hidden="true">left_panel_open</span>
-        </button>
         <button type="button" class="sidebar-close-btn" id="sidebar-close-btn" aria-label="Close menu">
             <span class="material-symbols-outlined" aria-hidden="true">close</span>
         </button>

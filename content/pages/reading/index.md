@@ -5,19 +5,19 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: August 21, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: September 7, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner" class="entry-cover-link hero-cover-link">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388274852i/55096.jpg"
-         alt="The Piano Tuner by Daniel Mason"
+  <a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="entry-cover-link hero-cover-link">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1760789256i/232497556.jpg"
+         alt="This Inevitable Ruin by Matt Dinniman"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
-<a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner" class="project-title hero-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; font-size: 1.25rem; text-decoration: none;"><em>The Piano Tuner</em></a><br>
-<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.95rem;">(2002) Daniel Mason</span>
+<a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="project-title hero-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; font-size: 1.25rem; text-decoration: none;"><em>This Inevitable Ruin</em> — Dungeon Crawler Carl, #7</a><br>
+<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.95rem;">(2024) Matt Dinniman</span>
 </div>
 
 ***
@@ -25,6 +25,14 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div class="project-row" style="display: flex; align-items: center; gap: 12px;">
+<a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner" class="entry-cover-link"><img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388274852i/55096._SY75_.jpg" alt="The Piano Tuner" style="flex-shrink: 0;"></a>
+<div>
+<a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner" class="project-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; text-decoration: none;"><em>The Piano Tuner</em></a><br>
+<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.85rem;">(2002) Daniel Mason</span>
+</div>
+</div>
 
 <div class="project-row" style="display: flex; align-items: center; gap: 12px;">
 <a href="https://www.goodreads.com/book/show/162332.The_Sailor_Who_Fell_from_Grace_with_the_Sea" class="entry-cover-link"><img src="https://i.gr-assets.com/images/S/compressed.photo.goodreads.com/books/1327629352l/162332._SY75_.jpg" alt="The Sailor Who Fell from Grace with the Sea" style="flex-shrink: 0;"></a>

@@ -66,24 +66,13 @@
 })();
 </script>
 
-{{- /* Sidebar: collapse/expand toggle (persisted) + mobile drawer
-       open/close. Collapsed state is also read synchronously in
-       extend_head.html to avoid a flash on load. */}}
+{{- /* Sidebar: mobile drawer open/close. */}}
 <script>
 (function () {
   var html = document.documentElement;
-  var collapseBtn = document.getElementById('sidebar-collapse-btn');
   var closeBtn = document.getElementById('sidebar-close-btn');
   var menuBtn = document.querySelector('.topbar-menu-btn');
   var scrim = document.getElementById('sidebar-scrim');
-
-  if (collapseBtn) {
-    collapseBtn.addEventListener('click', function () {
-      var collapsed = html.classList.toggle('sidebar-collapsed');
-      localStorage.setItem('sidebar-collapsed', collapsed ? '1' : '0');
-      collapseBtn.setAttribute('aria-label', collapsed ? 'Expand sidebar' : 'Collapse sidebar');
-    });
-  }
 
   function openDrawer() {
     html.classList.add('sidebar-drawer-open');

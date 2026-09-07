@@ -317,12 +317,11 @@ body,h1,h2,h3,h4,h5,h6 {
    Mobile (<=1000px): the same markup becomes an off-canvas drawer behind
    a top bar with a hamburger. See layouts/partials/header.html for markup,
    layouts/_default/baseof.html for the .shell wrapper, and
-   layouts/partials/extend_footer.html for the collapse/drawer JS.
+   layouts/partials/extend_footer.html for the drawer JS.
    ========================================================================== */
 
 :root {
   --sidebar-width: 260px;
-  --sidebar-width-collapsed: 64px;
   --sidebar-bg: #1A1A1C;
 }
 
@@ -380,10 +379,6 @@ body,h1,h2,h3,h4,h5,h6 {
   justify-content: space-between;
   gap: 10px;
   flex-shrink: 0;
-  /* Fixed to the expanded wordmark's line height so collapsing (which
-     drops the wordmark and leaves only the button) doesn't shrink this
-     row and pull the nav items up underneath it. */
-  min-height: 29.76px;
 }
 
 .sidebar-wordmark {
@@ -395,7 +390,6 @@ body,h1,h2,h3,h4,h5,h6 {
   box-shadow: none;
 }
 
-.sidebar-collapse-btn,
 .sidebar-close-btn {
   background: none;
   border: none;
@@ -403,23 +397,14 @@ body,h1,h2,h3,h4,h5,h6 {
   margin: 0;
   cursor: pointer;
   color: var(--secondary);
-  display: flex;
+  display: none;
   align-items: center;
   justify-content: center;
   flex-shrink: 0;
 }
 
-.sidebar-collapse-btn .material-symbols-outlined,
 .sidebar-close-btn .material-symbols-outlined {
   font-size: 20px;
-}
-
-.sidebar-collapse-btn .icon-expand {
-  display: none;
-}
-
-.sidebar-close-btn {
-  display: none;
 }
 
 /* Nav rows */
@@ -564,62 +549,6 @@ body,h1,h2,h3,h4,h5,h6 {
   color: var(--secondary);
 }
 
-/* Collapsed rail — desktop only; on mobile the drawer always renders
-   expanded regardless of this stored preference (see mobile block). */
-@media screen and (min-width: 1001px) {
-  html.sidebar-collapsed .site-sidebar {
-    width: var(--sidebar-width-collapsed);
-    padding: 24px 0;
-    align-items: center;
-  }
-
-  html.sidebar-collapsed .sidebar-head {
-    flex-direction: column;
-    gap: 16px;
-  }
-
-  /* Expand control sits alone at the top when collapsed — the wordmark
-     (full text and the "dc" badge alike) drops out entirely; "Blog" in
-     the nav below still links home. */
-  html.sidebar-collapsed .sidebar-collapse-btn {
-    order: -1;
-  }
-
-  html.sidebar-collapsed .sidebar-wordmark {
-    display: none;
-  }
-
-  html.sidebar-collapsed .sidebar-collapse-btn .icon-collapse {
-    display: none;
-  }
-
-  html.sidebar-collapsed .sidebar-collapse-btn .icon-expand {
-    display: flex;
-  }
-
-  html.sidebar-collapsed .sidebar-nav-row {
-    width: 40px;
-    height: 40px;
-    padding: 0;
-    justify-content: center;
-  }
-
-  html.sidebar-collapsed .sidebar-nav-label {
-    display: none;
-  }
-
-  /* The Now block's posters don't read at icon-rail size — drop the
-     media entirely when collapsed and keep just the copyright line. */
-  html.sidebar-collapsed .now-label,
-  html.sidebar-collapsed .now-row {
-    display: none;
-  }
-
-  html.sidebar-collapsed .sidebar-copyright {
-    font-size: 11px;
-  }
-}
-
 /* Mobile: top bar + off-canvas drawer */
 @media screen and (max-width: 1000px) {
   .shell {
@@ -685,10 +614,6 @@ body,h1,h2,h3,h4,h5,h6 {
 
   html.sidebar-drawer-open .site-sidebar {
     transform: translateX(0);
-  }
-
-  .sidebar-collapse-btn {
-    display: none;
   }
 
   .sidebar-close-btn {
