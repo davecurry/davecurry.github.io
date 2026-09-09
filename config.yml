@@ -92,8 +92,8 @@ params:
             url: "https://www.themoviedb.org/tv/85552-euphoria/season/3"
         lastMovie:
             label: "Last movie watched"
-            title: "Leave Her to Heaven"
-            meta: "1945"
-            poster: "https://media.themoviedb.org/t/p/w185/aUzQZt2UlaurZ3wlhzVXQb6PQk8.jpg"
-            url: "https://www.themoviedb.org/movie/17645-leave-her-to-heaven"
+            title: "Father Mother Sister Brother"
+            meta: "2025"
+            poster: "https://media.themoviedb.org/t/p/w185/96O3Ol3f2veMxAxYqsML8rOumB9.jpg"
+            url: "https://www.themoviedb.org/movie/1159206-father-mother-sister-brother"
 
