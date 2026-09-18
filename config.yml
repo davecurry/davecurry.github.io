@@ -85,11 +85,11 @@ params:
     # Sidebar "Now" block — hand-edited, shown in layouts/partials/header.html
     now:
         watching:
-            label: "Currently watching"
-            title: "Euphoria"
-            meta: "Season 3"
-            poster: "https://media.themoviedb.org/t/p/w185/ypmtwojDd751Peszi62DVLytqqC.jpg"
-            url: "https://www.themoviedb.org/tv/85552-euphoria/season/3"
+            label: "Currently rewatching"
+            title: "Ripley"
+            meta: "2024"
+            poster: "https://media.themoviedb.org/t/p/w185/rpSo8z9alultGVTqQ3dkLEyU8xx.jpg"
+            url: "https://www.themoviedb.org/tv/94028-ripley"
         lastMovie:
             label: "Last movie watched"
             title: "Father Mother Sister Brother"
