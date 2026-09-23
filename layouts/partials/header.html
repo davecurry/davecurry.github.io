@@ -48,41 +48,47 @@
 
     {{- with site.Params.now }}
     <div class="sidebar-now">
-        {{- with .watching }}
-        <div class="now-label">{{ .label | default "Currently watching" }}</div>
-        <div class="now-row">
-            {{- if .url }}
-            <a href="{{ .url }}" class="now-poster-link"><img class="now-poster" src="{{ .poster }}" alt="" loading="lazy"></a>
-            {{- else }}
-            <img class="now-poster" src="{{ .poster }}" alt="" loading="lazy">
-            {{- end }}
-            <div class="now-meta">
-                {{- if .url }}
-                <a href="{{ .url }}" class="now-title now-title-link">{{ .title }}</a>
+        {{- $keys := slice "watching" "recent" }}
+        {{- range $i, $section := slice .watching .recent }}
+        {{- with $section }}
+        {{- $count := len .items }}
+        <div class="now-section" data-now-section data-now-key="{{ index $keys $i }}">
+            <div class="now-label">{{ .label }}</div>
+            <div class="now-row">
+                {{- if gt $count 1 }}
+                {{- /* Posters stack; clicking the stack cycles to the next item.
+                       data-pos 0-2 are the visible cards, "back" is hidden. */}}
+                <button type="button" class="now-stack" data-now-stack aria-label="Show next ({{ $count }} titles)">
+                    {{- range $i, $item := .items }}
+                    <img class="now-poster" src="{{ .poster }}" alt="" data-now-poster data-pos="{{ if lt $i 3 }}{{ $i }}{{ else }}back{{ end }}">
+                    {{- end }}
+                </button>
                 {{- else }}
-                <div class="now-title">{{ .title }}</div>
+                {{- range .items }}
+                {{- if .url }}
+                <a href="{{ .url }}" class="now-poster-link"><img class="now-poster" src="{{ .poster }}" alt="" loading="lazy"></a>
+                {{- else }}
+                <img class="now-poster" src="{{ .poster }}" alt="" loading="lazy">
                 {{- end }}
-                <div class="now-sub">{{ .meta }}</div>
+                {{- end }}
+                {{- end }}
+                <div class="now-metas">
+                    {{- range $i, $item := .items }}
+                    <div class="now-meta" data-now-item="{{ $i }}"{{ if $i }} hidden{{ end }}>
+                        {{- /* The link stays inline (per-line underline) inside a
+                               block that owns the font-size/line-height; an
+                               inline link's wrapped lines are spaced by its
+                               parent block's line-height, not its own. */}}
+                        <div class="now-title">
+                            {{- if .url }}<a href="{{ .url }}" class="now-title-link">{{ .title }}</a>{{ else }}{{ .title }}{{ end -}}
+                        </div>
+                        <div class="now-sub">{{ .meta }}</div>
+                    </div>
+                    {{- end }}
+                </div>
             </div>
         </div>
         {{- end }}
-        {{- with .lastMovie }}
-        <div class="now-label now-label-second">{{ .label | default "Last movie watched" }}</div>
-        <div class="now-row">
-            {{- if .url }}
-            <a href="{{ .url }}" class="now-poster-link"><img class="now-poster" src="{{ .poster }}" alt="" loading="lazy"></a>
-            {{- else }}
-            <img class="now-poster" src="{{ .poster }}" alt="" loading="lazy">
-            {{- end }}
-            <div class="now-meta">
-                {{- if .url }}
-                <a href="{{ .url }}" class="now-title now-title-link">{{ .title }}</a>
-                {{- else }}
-                <div class="now-title">{{ .title }}</div>
-                {{- end }}
-                <div class="now-sub">{{ .meta }}</div>
-            </div>
-        </div>
         {{- end }}
         <div class="sidebar-copyright">&copy; {{ now.Year }}</div>
     </div>

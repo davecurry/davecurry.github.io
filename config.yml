@@ -82,18 +82,41 @@ params:
         - name: "LinkedIn"
           url: "http://linkedin.com/in/davecurry"
 
-    # Sidebar "Now" block — hand-edited, shown in layouts/partials/header.html
+    # Sidebar "Now" block — hand-edited, shown in layouts/partials/header.html.
+    # Each section is a poster stack: the first item is on top, and clicking
+    # the stack cycles through the rest.
     now:
         watching:
-            label: "Currently rewatching"
-            title: "Ripley"
-            meta: "2024"
-            poster: "https://media.themoviedb.org/t/p/w185/rpSo8z9alultGVTqQ3dkLEyU8xx.jpg"
-            url: "https://www.themoviedb.org/tv/94028-ripley"
-        lastMovie:
-            label: "Last movie watched"
-            title: "Father Mother Sister Brother"
-            meta: "2025"
-            poster: "https://media.themoviedb.org/t/p/w185/96O3Ol3f2veMxAxYqsML8rOumB9.jpg"
-            url: "https://www.themoviedb.org/movie/1159206-father-mother-sister-brother"
-
+            label: "Currently Watching"
+            items:
+                - title: "JAŸ-Z in 8"
+                  meta: "Season One"
+                  poster: "https://media.themoviedb.org/t/p/w185/ncwa0H2NxO64sHnY3Xda0pWtdcl.jpg"
+                  url: "https://play.hbomax.com/show/8056f7fe-8788-4e79-8733-b7a11524e000"
+                - title: "Youth"
+                  meta: "Season One"
+                  poster: "https://media.themoviedb.org/t/p/w185/zKaTNcWmP2dxYnxmOAVhBvSqNy9.jpg"
+                  url: "https://play.hbomax.com/show/e8d516df-be68-42a3-8180-82a4b56ff589"
+                - title: "Ripley"
+                  meta: "Season One"
+                  poster: "https://media.themoviedb.org/t/p/w185/rpSo8z9alultGVTqQ3dkLEyU8xx.jpg"
+                  url: "https://www.themoviedb.org/tv/94028-ripley"
+        recent:
+            label: "Recently Watched"
+            items:
+                - title: "Conan O'Brien Must Go"
+                  meta: "Season 3"
+                  poster: "https://media.themoviedb.org/t/p/w185/oWD5vxCy9WeseW1QtKnh0Kr3z8Z.jpg"
+                  url: "https://play.hbomax.com/show/64e28eee-b3cc-4e08-b071-5a795b911dd2"
+                - title: "Father Mother Sister Brother"
+                  meta: "2025"
+                  poster: "https://media.themoviedb.org/t/p/w185/96O3Ol3f2veMxAxYqsML8rOumB9.jpg"
+                  url: "https://www.themoviedb.org/movie/1159206-father-mother-sister-brother"
+                - title: "Euphoria"
+                  meta: "Season 3"
+                  poster: "https://media.themoviedb.org/t/p/w185/ypmtwojDd751Peszi62DVLytqqC.jpg"
+                  url: "https://play.hbomax.com/show/4ffd33c9-e0d6-4cd6-bd13-34c266c79be0"
+                - title: "Leave Her to Heaven"
+                  meta: "1945"
+                  poster: "https://media.themoviedb.org/t/p/w185/aUzQZt2UlaurZ3wlhzVXQb6PQk8.jpg"
+                  url: "https://www.themoviedb.org/movie/17645-leave-her-to-heaven"

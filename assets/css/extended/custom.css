@@ -289,18 +289,6 @@ body,h1,h2,h3,h4,h5,h6 {
   box-shadow: 0 1px 0 var(--signal);
 }
 
-/* Click pixel-burst: styling for the squares spawned in extend_footer.html */
-.click-burst-pixel {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 1px;
-  height: 1px;
-  background: var(--signal);
-  pointer-events: none;
-  z-index: 9999;
-}
-
 /* Hide PaperMod's hover-only "#" anchor-link icons next to headings */
 .anchor {
   display: none !important;
@@ -475,8 +463,14 @@ body,h1,h2,h3,h4,h5,h6 {
   margin-top: auto;
   display: flex;
   flex-direction: column;
-  gap: 12px;
+  gap: 20px;
   flex-shrink: 0;
+}
+
+.now-section {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
 }
 
 .now-label {
@@ -486,14 +480,144 @@ body,h1,h2,h3,h4,h5,h6 {
   color: var(--secondary);
 }
 
-.now-label-second {
-  margin-top: 8px;
-}
-
 .now-row {
   display: flex;
   gap: 10px;
   align-items: flex-start;
+}
+
+.now-metas {
+  flex: 1;
+  min-width: 0;
+}
+
+.now-meta.is-entering {
+  animation: now-meta-fade 0.3s ease-out;
+}
+
+@keyframes now-meta-fade {
+  from { opacity: 0; transform: translateY(3px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Poster stack: the top card sits where a single poster would; up to two
+   more peek out to the right, each a bit smaller and darker. Scaling from
+   the right edge keeps the peeking slivers an even ~5px apart. */
+.now-stack {
+  position: relative;
+  width: 60px;
+  height: 75px;
+  flex-shrink: 0;
+  padding: 0;
+  border: none;
+  background: none;
+  cursor: pointer;
+  display: block;
+}
+
+.now-stack:focus-visible {
+  outline: 2px solid var(--signal);
+  outline-offset: 3px;
+  border-radius: 4px;
+}
+
+.now-stack .now-poster {
+  position: absolute;
+  top: 0;
+  left: 0;
+  transform-origin: 100% 50%;
+  transition: transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1),
+              opacity 0.35s ease,
+              filter 0.35s ease;
+}
+
+.now-stack .now-poster[data-pos="0"] {
+  z-index: 3;
+  transform-origin: 50% 100%; /* hinge point for the title-hover wobble */
+}
+
+.now-stack .now-poster[data-pos="1"] {
+  z-index: 2;
+  transform: translateX(5px) scale(0.94);
+  filter: brightness(0.55);
+}
+
+.now-stack .now-poster[data-pos="2"] {
+  z-index: 1;
+  transform: translateX(10px) scale(0.88);
+  filter: brightness(0.35);
+}
+
+.now-stack .now-poster[data-pos="back"] {
+  z-index: 0;
+  transform: translateX(10px) scale(0.88);
+  opacity: 0;
+}
+
+/* Hint that the stack does something: the back cards fan out a touch. */
+.now-stack:hover .now-poster[data-pos="1"] {
+  transform: translateX(8px) scale(0.94);
+  filter: brightness(0.7);
+}
+
+.now-stack:hover .now-poster[data-pos="2"] {
+  transform: translateX(15px) scale(0.88);
+  filter: brightness(0.45);
+}
+
+/* Card swap: the top card pulls up and out to the left, drops behind the
+   deck at the midpoint, then slides into its back slot. The end state comes
+   from --end-* vars (set in JS to match its new data-pos) so there's no jump
+   when the animation hands off to the resting style. The other cards wait a
+   beat before stepping forward so the swap reads in order. */
+/* Restoring a saved position on page load: jump straight there. */
+.now-stack.is-restoring .now-poster {
+  transition: none;
+}
+
+.now-stack .now-poster.is-wobbling {
+  animation: entry-cover-shake 0.4s ease-in-out;
+}
+
+/* After .is-wobbling so a swap started mid-wobble takes over. */
+.now-stack .now-poster.is-leaving {
+  animation: now-card-swap 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.now-stack.is-swapping .now-poster:not(.is-leaving) {
+  transition-delay: 0.15s;
+}
+
+@keyframes now-card-swap {
+  0% {
+    z-index: 4;
+    transform: none;
+    opacity: 1;
+    filter: brightness(1);
+  }
+  40% {
+    z-index: 4;
+    transform: translate(-16px, -6px) rotate(-8deg);
+    opacity: 1;
+    filter: brightness(0.8);
+  }
+  41%, 100% {
+    z-index: 0;
+  }
+  100% {
+    transform: translateX(var(--end-x)) scale(var(--end-scale));
+    opacity: var(--end-opacity);
+    filter: brightness(var(--end-b));
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .now-stack .now-poster {
+    transition: none;
+  }
+  .now-meta.is-entering {
+    animation: none;
+  }
 }
 
 .now-poster {
@@ -516,13 +640,14 @@ body,h1,h2,h3,h4,h5,h6 {
    links, and hovering either one wobbles the poster — same pattern
    used on post/project/book cards. */
 .now-poster-link:hover .now-poster,
-.now-row:has(.now-title-link:hover) .now-poster {
+.now-row:has(.now-title-link:hover) .now-poster-link .now-poster,
+.now-row:has(.now-title-link:hover) .now-poster[data-pos="0"] {
   animation: entry-cover-shake 0.4s ease-in-out;
 }
 
 .now-title {
   font-size: 14px;
-  line-height: 1.0;
+  line-height: 1.2;
   color: var(--primary);
 }
 
@@ -543,7 +668,7 @@ body,h1,h2,h3,h4,h5,h6 {
 }
 
 .sidebar-copyright {
-  margin-top: 28px;
+  margin-top: 20px;
   font-size: 12px;
   line-height: 24px;
   color: var(--secondary);
