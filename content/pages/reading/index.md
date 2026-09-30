@@ -5,19 +5,19 @@ draft = false
 hidemeta = true
 +++
 
-<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: September 7, 2026</p>
+<p style="font-size: 0.85rem; color: var(--secondary); margin-top: -1.0rem; margin-bottom: 2rem;">Last Updated: September 30, 2026</p>
 
 <div style="text-align: center; margin: 2rem 0 1.5rem;">
-  <a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="entry-cover-link hero-cover-link">
-    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1760789256i/232497556.jpg"
-         alt="This Inevitable Ruin by Matt Dinniman"
+  <a href="https://www.goodreads.com/book/show/236773511-black-bag" class="entry-cover-link hero-cover-link">
+    <img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1755053585i/236773511.jpg"
+         alt="Black Bag by Luke Kennard"
          style="display: block; margin: 0 auto; max-width: 320px; width: 100%; box-shadow: 0 8px 40px rgba(0,0,0,0.35); border-radius: 4px;">
   </a>
 </div>
 
 <div style="text-align: center; margin-bottom: 2rem;">
-<a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="project-title hero-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; font-size: 1.25rem; text-decoration: none;"><em>This Inevitable Ruin</em> — Dungeon Crawler Carl, #7</a><br>
-<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.95rem;">(2024) Matt Dinniman</span>
+<a href="https://www.goodreads.com/book/show/236773511-black-bag" class="project-title hero-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; font-size: 1.25rem; text-decoration: none;"><em>Black Bag</em></a><br>
+<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.95rem;">(2026) Luke Kennard</span>
 </div>
 
 ***
@@ -25,6 +25,14 @@ hidemeta = true
 ### 2026 Book List
 
 <div style="display: flex; flex-direction: column; gap: 8px;">
+
+<div class="project-row" style="display: flex; align-items: center; gap: 12px;">
+<a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="entry-cover-link"><img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1760789256i/232497556._SY75_.jpg" alt="This Inevitable Ruin" style="flex-shrink: 0;"></a>
+<div>
+<a href="https://www.goodreads.com/book/show/232497556-this-inevitable-ruin" class="project-title" style="font-family: 'Space Grotesk', ui-sans-serif, system-ui, sans-serif; font-weight: 500; font-style: italic; text-decoration: none;"><em>This Inevitable Ruin</em> — Dungeon Crawler Carl, #7</a><br>
+<span style="font-family: 'IBM Plex Sans', ui-sans-serif, system-ui, sans-serif; color: var(--secondary); font-size: 0.85rem;">(2024) Matt Dinniman</span>
+</div>
+</div>
 
 <div class="project-row" style="display: flex; align-items: center; gap: 12px;">
 <a href="https://www.goodreads.com/book/show/55096.The_Piano_Tuner" class="entry-cover-link"><img src="https://m.media-amazon.com/images/S/compressed.photo.goodreads.com/books/1388274852i/55096._SY75_.jpg" alt="The Piano Tuner" style="flex-shrink: 0;"></a>

@@ -97,13 +97,17 @@ params:
                   meta: "Season One"
                   poster: "https://media.themoviedb.org/t/p/w185/zKaTNcWmP2dxYnxmOAVhBvSqNy9.jpg"
                   url: "https://play.hbomax.com/show/e8d516df-be68-42a3-8180-82a4b56ff589"
+        recent:
+            label: "Recently Watched"
+            items:
                 - title: "Ripley"
                   meta: "Season One"
                   poster: "https://media.themoviedb.org/t/p/w185/rpSo8z9alultGVTqQ3dkLEyU8xx.jpg"
                   url: "https://www.themoviedb.org/tv/94028-ripley"
-        recent:
-            label: "Recently Watched"
-            items:
+                - title: "Blue Heron"
+                  meta: "2026"
+                  poster: "https://media.themoviedb.org/t/p/w185/4hfMbVbYc2gsMnSE1K8Oc9LQH4j.jpg"
+                  url: "https://www.themoviedb.org/movie/1184941-blue-heron"
                 - title: "Conan O'Brien Must Go"
                   meta: "Season 3"
                   poster: "https://media.themoviedb.org/t/p/w185/oWD5vxCy9WeseW1QtKnh0Kr3z8Z.jpg"
