@@ -168,7 +168,10 @@
        immediately on each page load so the block doesn't pop in late, then
        refreshed from the API, and again every two minutes while the tab is
        visible. Elements are built with the DOM API, never innerHTML, since
-       track names come from outside the site. Stays hidden on error. */}}
+       track names come from outside the site. Until songs arrive the section
+       shows a same-size skeleton (from header.html); if the first request
+       fails or times out, the section hides instead. It sits above the stable
+       content in the bottom-anchored Now block, so hiding moves nothing. */}}
 <script>
 (function () {
   var block = document.querySelector('[data-lastfm-key]');
@@ -182,8 +185,10 @@
     '&user=' + encodeURIComponent(block.dataset.lastfmUser) +
     '&api_key=' + encodeURIComponent(block.dataset.lastfmKey);
 
+  var TIMEOUT = 8000;
   var row = block.querySelector('[data-music-row]');
   var signature = '';
+  var shown = false;
 
   function el(tag, cls, attrs) {
     var e = document.createElement(tag);
@@ -250,7 +255,16 @@
       signature = sig;
       build(tracks);
     }
+    shown = true;
+    block.classList.remove('is-loading');
+    block.removeAttribute('aria-busy');
     block.hidden = false;
+  }
+
+  // Only the first load can fail visibly: once songs are showing, a failed
+  // refresh just leaves them in place.
+  function giveUp() {
+    if (!shown) block.hidden = true;
   }
 
   function parseTrack(track) {
@@ -283,15 +297,21 @@
   }
 
   function refresh() {
-    fetch(url)
+    var ctrl = window.AbortController ? new AbortController() : null;
+    var timer = setTimeout(function () {
+      if (ctrl) ctrl.abort();
+      giveUp();
+    }, TIMEOUT);
+    fetch(url, ctrl ? { signal: ctrl.signal } : {})
       .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
       .then(function (data) {
         var tracks = parse(data);
-        if (!tracks.length) return;
+        if (!tracks.length) return giveUp();
         render(tracks);
         try { sessionStorage.setItem(CACHE_KEY, JSON.stringify(tracks)); } catch (e) {}
       })
-      .catch(function () {});
+      .catch(giveUp)
+      .then(function () { clearTimeout(timer); });
   }
 
   try { render(JSON.parse(sessionStorage.getItem(CACHE_KEY))); } catch (e) {}

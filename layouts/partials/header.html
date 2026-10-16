@@ -50,11 +50,17 @@
     <div class="sidebar-now">
         {{- with site.Params.lastfm }}{{ if .apiKey }}
         {{- /* Recent tracks from Last.fm, built into a square-card stack by
-               extend_footer.html; stays hidden until there's a track to show
-               (or if the request fails). */}}
-        <div class="now-section now-music" data-now-section data-now-key="music" data-lastfm-user="{{ .user }}" data-lastfm-key="{{ .apiKey }}" hidden>
+               extend_footer.html. Ships with a same-size skeleton so the
+               songs fill in place; the section hides if the request fails. */}}
+        <div class="now-section now-music is-loading" data-now-section data-now-key="music" data-lastfm-user="{{ .user }}" data-lastfm-key="{{ .apiKey }}" aria-busy="true">
             <div class="now-label">Soundtrack</div>
-            <div class="now-row" data-music-row></div>
+            <div class="now-row" data-music-row>
+                <div class="now-skel-stack" aria-hidden="true"><span></span><span></span></div>
+                <div class="now-metas" aria-hidden="true">
+                    <div class="now-skel-line"></div>
+                    <div class="now-skel-line now-skel-line-short"></div>
+                </div>
+            </div>
         </div>
         {{- end }}{{ end }}
         {{- $count := len .items }}
