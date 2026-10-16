@@ -58,7 +58,12 @@
     return item.querySelector('.now-title').textContent.trim();
   }
 
-  document.querySelectorAll('[data-now-stack]').forEach(function (stack) {
+  // Exposed so the Soundtrack block can set up its stack after building it
+  // from Last.fm data.
+  window.initNowStack = initNowStack;
+  document.querySelectorAll('[data-now-stack]').forEach(initNowStack);
+
+  function initNowStack(stack) {
     var section = stack.closest('[data-now-section]');
     var posters = stack.querySelectorAll('[data-now-poster]');
     var items = section.querySelectorAll('[data-now-item]');
@@ -153,6 +158,147 @@
         front.removeEventListener('animationend', done);
       });
     });
-  });
+  }
+})();
+</script>
+
+{{- /* Sidebar Soundtrack: last few tracks from Last.fm as a square-card
+       stack (same swap/wobble/position-memory as Screen Time, via
+       initNowStack). The last result is cached in sessionStorage and drawn
+       immediately on each page load so the block doesn't pop in late, then
+       refreshed from the API, and again every two minutes while the tab is
+       visible. Elements are built with the DOM API, never innerHTML, since
+       track names come from outside the site. Stays hidden on error. */}}
+<script>
+(function () {
+  var block = document.querySelector('[data-lastfm-key]');
+  if (!block) return;
+
+  var SHOW = 5;
+  var CACHE_KEY = 'lastfm-tracks';
+  var PLACEHOLDER = '2a96cbd8b46e442fc41c2b86b821562f'; // Last.fm's "no art" star
+  // Ask for extra so repeat plays can be collapsed and still leave SHOW.
+  var url = 'https://ws.audioscrobbler.com/2.0/?method=user.getrecenttracks&limit=15&format=json' +
+    '&user=' + encodeURIComponent(block.dataset.lastfmUser) +
+    '&api_key=' + encodeURIComponent(block.dataset.lastfmKey);
+
+  var row = block.querySelector('[data-music-row]');
+  var signature = '';
+
+  function el(tag, cls, attrs) {
+    var e = document.createElement(tag);
+    if (cls) e.className = cls;
+    for (var k in attrs || {}) e.setAttribute(k, attrs[k]);
+    return e;
+  }
+
+  function artCard(t, i) {
+    var card;
+    if (t.image) {
+      card = el('img', 'now-poster', { src: t.image, alt: '' });
+    } else {
+      card = el('div', 'now-poster now-art-blank');
+    }
+    card.setAttribute('data-now-poster', '');
+    card.dataset.pos = i < 3 ? String(i) : 'back';
+    return card;
+  }
+
+  function meta(t, i) {
+    var m = el('div', 'now-meta');
+    m.dataset.nowItem = String(i);
+    if (i) m.hidden = true;
+    var title = el('div', 'now-title');
+    // title attr: long names are clipped to two lines in the sidebar.
+    var link = el('a', 'now-title-link', { href: t.url, title: t.name });
+    link.textContent = t.name;
+    title.appendChild(link);
+    var sub = el('div', 'now-sub', { title: t.artist });
+    sub.textContent = t.artist;
+    m.appendChild(title);
+    m.appendChild(sub);
+    return m;
+  }
+
+  function build(tracks) {
+    row.textContent = '';
+    if (tracks.length > 1) {
+      var stack = el('button', 'now-stack now-stack-square', {
+        type: 'button',
+        'aria-label': 'Show next (' + tracks.length + ' songs)'
+      });
+      stack.setAttribute('data-now-stack', '');
+      tracks.forEach(function (t, i) { stack.appendChild(artCard(t, i)); });
+      row.appendChild(stack);
+    } else {
+      var single = el('a', 'now-art-link' + (tracks[0].image ? '' : ' no-art'), { href: tracks[0].url });
+      if (tracks[0].image) single.appendChild(el('img', 'now-art', { src: tracks[0].image, alt: '' }));
+      row.appendChild(single);
+    }
+    var metas = el('div', 'now-metas');
+    tracks.forEach(function (t, i) { metas.appendChild(meta(t, i)); });
+    row.appendChild(metas);
+    if (tracks.length > 1 && window.initNowStack) window.initNowStack(row.querySelector('[data-now-stack]'));
+  }
+
+  function render(tracks) {
+    if (!tracks || !tracks.length) return;
+    var sig = tracks.map(function (t) { return t.name + '\u0000' + t.artist; }).join('\u0001');
+    // Only rebuild when the songs change, so a refresh doesn't disturb the
+    // stack (which restores its place by title when it is rebuilt).
+    if (sig !== signature) {
+      signature = sig;
+      build(tracks);
+    }
+    block.hidden = false;
+  }
+
+  function parseTrack(track) {
+    var image = (track.image || []).reduce(function (best, img) {
+      return img['#text'] && img.size === 'extralarge' ? img['#text'] : (best || img['#text']);
+    }, '');
+    if (!image || image.indexOf(PLACEHOLDER) !== -1) image = '';
+    var artist = (track.artist && (track.artist['#text'] || track.artist.name)) || '';
+    return {
+      name: track.name,
+      artist: artist,
+      // Last.fm has no Spotify IDs, and an exact track link would need a
+      // Spotify API secret; a search for "track artist" lands on it reliably.
+      url: 'https://open.spotify.com/search/' + encodeURIComponent(track.name + ' ' + artist),
+      image: image
+    };
+  }
+
+  function parse(data) {
+    var list = data && data.recenttracks && data.recenttracks.track;
+    list = Array.isArray(list) ? list : list ? [list] : [];
+    var seen = {};
+    return list.filter(function (t) { return t && t.name; }).map(parseTrack).filter(function (t) {
+      // One card per song: a song on repeat shouldn't fill the stack.
+      var key = (t.name + '\u0000' + t.artist).toLowerCase();
+      if (seen[key]) return false;
+      seen[key] = true;
+      return true;
+    }).slice(0, SHOW);
+  }
+
+  function refresh() {
+    fetch(url)
+      .then(function (r) { return r.ok ? r.json() : Promise.reject(r.status); })
+      .then(function (data) {
+        var tracks = parse(data);
+        if (!tracks.length) return;
+        render(tracks);
+        try { sessionStorage.setItem(CACHE_KEY, JSON.stringify(tracks)); } catch (e) {}
+      })
+      .catch(function () {});
+  }
+
+  try { render(JSON.parse(sessionStorage.getItem(CACHE_KEY))); } catch (e) {}
+
+  refresh();
+  setInterval(function () {
+    if (!document.hidden) refresh();
+  }, 120000);
 })();
 </script>

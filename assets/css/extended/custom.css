@@ -473,6 +473,11 @@ body,h1,h2,h3,h4,h5,h6 {
   gap: 12px;
 }
 
+/* .now-section sets display:flex, which would otherwise override [hidden]. */
+.now-section[hidden] {
+  display: none;
+}
+
 .now-label {
   font-family: "Space Grotesk", ui-sans-serif, system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
   font-size: 14px;
@@ -485,6 +490,101 @@ body,h1,h2,h3,h4,h5,h6 {
   gap: 10px;
   align-items: flex-start;
 }
+
+/* Soundtrack (Last.fm). Album art is square, so it matches the posters'
+   width rather than their height. */
+.now-label {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.now-art-link {
+  display: block;
+  flex-shrink: 0;
+  width: 50px;
+  height: 50px;
+  border-radius: 3px;
+  border: 1px solid var(--border);
+  background: var(--entry);
+  overflow: hidden;
+  box-shadow: none;
+  position: relative;
+}
+
+.now-art {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+.now-art-link.no-art .now-art {
+  display: none;
+}
+
+/* Soundtrack's stack: same deck as Screen Time, with square cards. */
+/* Song titles vary a lot in length, and the Now block is pinned to the
+   sidebar bottom, so a taller Soundtrack row would shove Screen Time up and
+   down while cycling. Cap titles at two lines and always reserve two lines'
+   room, so the row is the same height whichever song is on top. */
+.now-music .now-title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* The artist also gets up to two lines. */
+.now-music .now-sub {
+  line-height: 1.3;
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+}
+
+/* Room for the tallest case (two title lines + two artist lines), so the row
+   is the same height whichever song is on top. */
+.now-music .now-metas {
+  min-height: calc(14px * 1.2 * 2 + 2px + 12px * 1.3 * 2);
+}
+
+/* Doubled class so these outrank the base .now-stack rules further down. */
+.now-stack.now-stack-square {
+  height: 50px;
+}
+
+.now-stack.now-stack-square .now-poster {
+  height: 50px;
+}
+
+.now-art-blank {
+  background: var(--entry);
+}
+
+/* Last.fm has no art for some tracks; show a quiet note glyph instead. */
+.now-art-blank::after,
+.now-art-link.no-art::after {
+  content: "music_note";
+  font-family: "Material Symbols Outlined";
+  font-size: 22px;
+  line-height: 1;
+  color: var(--secondary);
+  position: absolute;
+  inset: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.now-music .now-row:has(.now-title-link:hover) .now-art-link,
+.now-art-link:hover {
+  border-color: var(--secondary);
+}
+
 
 .now-metas {
   flex: 1;
@@ -656,9 +756,16 @@ body,h1,h2,h3,h4,h5,h6 {
   box-shadow: none;
 }
 
+/* A real text underline, not the box-shadow used elsewhere: at this tight
+   line-height the inline box is taller than the line, so a box-shadow line
+   lands on the next line's text, and the last line's gets clipped by the
+   two-line clamp. A text underline hangs off each line's baseline instead. */
 [data-theme="dark"] .now-title-link:hover {
   color: var(--signal);
-  box-shadow: 0 1px 0 var(--signal);
+  text-decoration-line: underline;
+  text-decoration-color: var(--signal);
+  text-decoration-thickness: 1px;
+  text-underline-offset: 2px;
 }
 
 .now-sub {
@@ -668,7 +775,6 @@ body,h1,h2,h3,h4,h5,h6 {
 }
 
 .sidebar-copyright {
-  margin-top: 20px;
   font-size: 12px;
   line-height: 24px;
   color: var(--secondary);

@@ -28,7 +28,7 @@
         {{- $page_url := $currentPage.Permalink | absLangURL }}
         {{- $is_active := eq $menu_item_url $page_url }}
         {{- $icon := "" }}
-        {{- if eq .Name "Blog" }}{{ $icon = "article" }}
+        {{- if eq .Name "Feed" }}{{ $icon = "dynamic_feed" }}
         {{- else if eq .Name "Projects" }}{{ $icon = "auto_awesome" }}
         {{- else if eq .Name "Reading" }}{{ $icon = "book" }}
         {{- else if eq .Name "Who Me?" }}{{ $icon = "sentiment_very_satisfied" }}
@@ -48,11 +48,17 @@
 
     {{- with site.Params.now }}
     <div class="sidebar-now">
-        {{- $keys := slice "watching" "recent" }}
-        {{- range $i, $section := slice .watching .recent }}
-        {{- with $section }}
+        {{- with site.Params.lastfm }}{{ if .apiKey }}
+        {{- /* Recent tracks from Last.fm, built into a square-card stack by
+               extend_footer.html; stays hidden until there's a track to show
+               (or if the request fails). */}}
+        <div class="now-section now-music" data-now-section data-now-key="music" data-lastfm-user="{{ .user }}" data-lastfm-key="{{ .apiKey }}" hidden>
+            <div class="now-label">Soundtrack</div>
+            <div class="now-row" data-music-row></div>
+        </div>
+        {{- end }}{{ end }}
         {{- $count := len .items }}
-        <div class="now-section" data-now-section data-now-key="{{ index $keys $i }}">
+        <div class="now-section" data-now-section data-now-key="screen">
             <div class="now-label">{{ .label }}</div>
             <div class="now-row">
                 {{- if gt $count 1 }}
@@ -88,8 +94,6 @@
                 </div>
             </div>
         </div>
-        {{- end }}
-        {{- end }}
         <div class="sidebar-copyright">&copy; {{ now.Year }}</div>
     </div>
     {{- end }}
